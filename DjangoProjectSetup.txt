@@ -1,0 +1,115 @@
+Create django project
+
+--> Create repos on github, add python gitnomore, gnu license
+--> Clone to pc and edit out #db.sqlite3 in .gitnomore
+--> in terminal >python -m venv env_<projname>
+	>set-executionpolicy remotesigned -Scope CurrentUser
+	>.\env_<projname>\Scripts\activate
+	> pip install django==3.0.3
+	> python -m django --version (to check)
+
+--> create proj	> django-admin startproject <projectname>
+	>go to manage.py level dir and cd <projname>
+--> test		
+	> python manage.py runserver
+
+--> create app	
+	>python manage.py startapp <appname>
+
+--> add app to settings installed_apps "appname" at end of list
+--> create sqlite 		
+	> python manage.py makemigrations
+	(repeat models set) > python manage.py migrate
+--> create admin user 	
+	> python manage.py createsuperuser
+--> create templates folder manually for .html pages
+--> create forms.py file manually
+
+--> to run a project 
+command prompt >> .\env_<projname>\Scripts\activate
+	goto the folder that conatains manage.py and run..
+command prompt env_<projectname> in green >> python manage.py runserver
+''make sure env_<projname>, pyvenv.cfg file has correct python path, may say not found''
+
+
+--> for testing > python -m pip install selenium
+
+--> get mozilla gecko driver or chrome driver and add to app folder 
+not ./env_ same level as manage.py is or in scripts folder
+	
+--> in test add > from selenium import webdriver
+				> browser=webdriver.Firefox()
+	write tests, run on command line > python manage.py test (or what ever path if more than one file)
+	class FunctionalTestCase(TestCase):
+		def setUp(self):
+			self.browser=webdriver.Firefox()
+		def tearDown(self):
+			# close the browser
+			self.browser.quit()
+			
+--> in settings 
+		DATABASES = {
+			'default': {
+				'ENGINE': 'django.db.backends.sqlite3',
+				'NAME': BASE_DIR / 'db.sqlite3',
+				'TEST_NAME' : BASE_DIR / 'test_db.sqlite3',
+			}
+			
+--> in settings 
+	STATIC_URL = '/static/'
+	#STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+	STATICFILES_DIRS=[
+		os.path.join(BASE_DIR,'static')
+	]
+	
+--> 'django_filters',
+    'widget_tweaks',
+    'crispy_forms',
+    'captcha',
+    'django_static_fontawesome',
+	
+--> at end of urls 
+		]+ static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+
+		urlpatterns += static(settings.MEDIA_URL, document_root = 
+			settings.MEDIA_ROOT)
+		MEDIA_URL = '/media/'
+		MEDIA_ROOT = BASE_DIR   
+
+--> url calls html page and method in.. 
+	views calls name of form..
+	form referenced in html also |crispy  
+--> create file form.py
+--> install crispy-forms and add to settings installed_apps
+--> create static folder with images folder inside
+
+
+remember 
+- {% csrf_token %} before forms in html
+
+
+
+- 	<form action="{% url 'home' %}" method="post">
+		<!-- As this is a POST we need a csrf token -->
+		{% csrf_token %}
+		<!-- load the form in p tags -->
+		{{ form.as_p }}
+		<!-- Add a submit button -->
+		<input name="submit" type="submit" value="Hash">
+	</form>
+
+
+Design project 
+what is it for
+
+who is going to see/use it
+
+what html pages are there
+
+what is in each page
+
+how is going to be accessed
+
+
+

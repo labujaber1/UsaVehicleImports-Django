@@ -1,0 +1,41 @@
+.\env_myProject\Scripts\Activate
+
+Log into GitHub and create a new repository with
+Python .gitignore
+License of your choice e.g. GNU General Public.
+Open VS Code and clone your new repository
+Edit .gitignore and comment out line: #db.sqlite3
+Save, commit and sync changes to ensure link to GitHub works.
+In a Terminal window: 
+>python -m venv env_myTestProject
+Creates a folder contain a set of scripts
+Activate the VE
+>set-executionpolicy remotesigned -Scope CurrentUser
+>.\env_myTestProject\Scripts\Activate
+Note changed prompt: (env_myTestProject)
+pip install django==3.0.3
+Note this should be installing Django to your Virtual Environment so you should see the changes in source control
+Can check it is installed:
+python -m django --version
+django-admin startproject <projectname> (add . at end to avoid 2 tier folder structure)
+Navigate to project directory, check in correct place should be same level as manage.py
+> python manage.py runserver
+Should see the server running at it's portnumber : "Starting development server at http://127.0.0.1:8000/"
+Should be able to browse to that site and wee a welcome message. Also note generation of db.sqlite3 file
+Component within a Django project.
+A folder within the project containing python files.
+Each app fulfils a single purpose.
+>python manage.py startapp <appname>
+Creates a folder called <appname> 
+Edit projectname/settings.py
+Add line to INSTALLED_APPS section 'appname',
+
+create models for db
+python manage.py makemigrations 
+python manage.py showmigrations 
+python manage.py migrate 
+python manage.py createsuperuser
+## initially name=user, email=user@user.com, password=password
+>type admin in url when runserver to reach admin page
+
+

@@ -1,0 +1,166 @@
+{% extends "base.html" %}{% block content %} {% load static %}
+
+<div class="container pb-4">
+  <br />
+  <h1 class="mt-5 mb-4">GALLERY</h1>
+  <p>
+    We have a variety of American vehicles in stock either currently being
+    imported or already located in the UK. Below are examples of the types of
+    stock we hold.
+  </p>
+
+  <!-- 
+        Javascript to create cards based on images in inventory folder.
+        Client will have an admin page accessed by adding '/admin/admin.html' on home page
+        , no visible links. They will log in and amend the folder CRUD including 
+        an image, video?, price and description. Need to upload images to fixed path
+        in project '/images-inventory' and url saved to db. Save when done and logoff.
+        Enable email and password to also be changed by client.
+        No further actions to add to website. 
+        Will require non relational database using just two tables for the cars and
+        store user email/password. Need server-side php code to update db (mysql?).
+        Email can be changed from current mail service if wish but no code included.
+    -->
+
+  <div class="container-fluid p-2 mb-4">
+    <div id="vehicle-list" class="row row-cols-1 row-cols-md-2 g-3">
+      <!-- cards created for each vehicle from displayVehicle() js method admin/edit-inventoryJS.js-->
+    </div>
+  </div>
+</div>
+
+<div class="image-parallax">
+  <div class="container">
+    <div class="header-content">
+      <h1>Find more vehicles on Facebook and Instagram</h1>
+      <p>Sourced from the East Coast USA for you.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mb-5 mt-5">
+  <h1 class="text-center">Previous examples</h1>
+  <br />
+  <p class="text-center">
+    Below are examples of vehicles we have previously sourced and imported for
+    clients from the USA to the UK.
+  </p>
+  <br />
+  <div class="container rounded-3">
+    <div
+      class="container-fluid p-2 carousel-background rounded-3 shadow"
+      style="max-width: 600px"
+    >
+      <!-- Gallery loaded and unloaded cars -->
+      <div
+        id="carouselCaptions"
+        class="carousel slide carousel-fade rounded-3"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="4"
+            aria-label="Slide 5"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselCaptions"
+            data-bs-slide-to="5"
+            aria-label="Slide 6"
+          ></button>
+        </div>
+        <div class="carousel-inner rounded-3">
+          <div class="carousel-item active">
+            <img
+              src="{% static '/images/gallery/gallery-1.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{% static '/images/gallery/gallery-2.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{% static '/images/gallery/gallery-3.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{% static '/images/gallery/gallery-5.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{% static '/images/gallery/gallery-6.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="{% static '/images/gallery/gallery-7.jpg' %}"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
