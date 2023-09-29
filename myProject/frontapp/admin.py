@@ -1,21 +1,31 @@
 from django.contrib import admin
-from .models import Vehicle
-from .models import Images
-from .models import GeneralEnquiry
+from .models import Vehicle, Images, GeneralEnquiry, Post
 
 # Register your models here.
 
 
+class ImageAdmin(admin.StackedInline):
+    model = Images
+
+
 @admin.register(Vehicle)
-class VehicleAdmin(admin.ModelAdmin):
-    pass
+class ImagesAdmin(admin.ModelAdmin):
+    inlines = [ImageAdmin]
+
+    class Meta:
+        model = Vehicle
 
 
 @admin.register(Images)
-class ImagesAdmin(admin.ModelAdmin):
+class ImageAdmin(admin.ModelAdmin):
     pass
 
 
 @admin.register(GeneralEnquiry)
 class GeneralEnquiryAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Post)
+class Post(admin.ModelAdmin):
     pass

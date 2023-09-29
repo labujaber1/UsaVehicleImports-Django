@@ -17,7 +17,7 @@
         content="Personalised importer of pre-owned american vehicles and bikes from the east coast to the UK. 
         Provides sourcing, purchasing and transportation services as a full or individual package 
         including a door-to-door service, covid safe if required.">
-
+    
     <!-- css styles -->
     <link rel="stylesheet" type="text/css" href="{% static "/css/style.css" %}">
     <!-- font awesome -->
@@ -30,211 +30,16 @@
 
 <body> 
 
-    <!-- Nav links to the right of logo, logo smaller-->
-    <nav class="navbar navbar-expand-lg sticky-top p-2 bg-white">       
-        <div class="container-md w-50 p-0">
-            <a class="navbar-brand m-0" href="#">
-                <img class="img-fluid" src= "{% static 'images/home/usa-imports-logo.png' %}" width="300" alt="USA Vehicle Imports logo">
-            </a>
-        </div>   
-                
-        <div class="d-flex align-items-center"> 
-            <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>    
-            
-            <div class="navbar-collapse collapse " id="navbarNav">
-                <!-- COLLAPSABLE -->
-                <ul class="nav navbar-nav align-items-center">
-                    <li>
-                        <a class="nav-item nav-link" href="{% url 'Home' %}">Home</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="{% url 'Services' %}">Services</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="{% url 'Gallery' %}">Gallery</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="#contactUs">Contact us</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" style="color: coral;" title="Facebook" href="https://www.facebook.com/Usavehicleimports/">
-                            <i class="fa fa-facebook-square fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" style="color: coral;" title="Instagram" href="https://www.instagram.com/usa.vehicle.imports/">
-                            <i class="fa fa-instagram fa-2x"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    
+{% include 'includes/nav.html' %}     
 
 {% block content %}
 
 {% endblock %}
 
-<!-- Button to view enquiry form -->
-<div class="container-fluid container-form-bgcolor pt-3 pb-3">
-    <div class="row mt-5 mb-5">
-      <div class="col-12 mt-2 mb-2">
-        <button
-          type="button"
-          class="btn btn-secondary btn-lg d-block w-50 m-auto shadow rounded-pill"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseContactForm"
-          aria-expanded="false"
-          aria-controls="collapseContactForm"
-        >
-          Get in touch
-        </button>
-      </div>
-    </div>
-    <!-- Hidden collapsable enquiry form using third party email service FormSpree.io. 
-    Receiving email account logged with formspree. -->
-    <div class="collapse" id="collapseContactForm">
-      <form
-        id="contactForm"
-        method="post"
-        action="https://formspree.io/f/mbjvoewj"
-      >
-        <div
-          class="container bg-light px-1 pt-3 pb-3 p-sm-3 mb-5 shadow rounded-3"
-          style="max-width: 600px"
-        >
-          <h1 class="text-center text-black-50">Enquiry form</h1>
-          <!-- name, email, phone number, enquiry comments -->
-          <div class="form-floating m-sm-3">
-            <input
-              type="text"
-              class="form-control"
-              name="_enqName"
-              id="enqName"
-              value=""
-              aria-describedby="enqNameMessage"
-              placeholder="Name"
-              required
-              pattern="[a-zA-Z]+"
-              title="Only letters required"
-            />
-            <label for="enqName">Name *</label>
-            <small id="enqNameMessage" class="form-text text-muted"
-              >This will only generate an enquiry email to us, we will not share
-              your details with anyone else.</small
-            >
-          </div>
-          <div class="row g-2">
-            <div class="col-md">
-              <div class="form-floating m-sm-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  name="_enqEmail"
-                  id="enqEmail"
-                  value=""
-                  placeholder="name@example.com"
-                  required
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$"
-                  title="Valid email required"
-                />
-                <label for="enqEmail">Email address *</label>
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="form-floating mb-2 m-sm-3">
-                <input
-                  type="tel"
-                  class="form-control"
-                  name="_enqTelephoneNumber"
-                  id="enqTelephoneNumber"
-                  value=""
-                  placeholder="Telephone number"
-                  pattern="[0-9]+"
-                  title="Only numbers required"
-                />
-                <label for="enqTelephoneNumber">Telephone number</label>
-              </div>
-            </div>
-          </div>
-  
-          <div class="form-floating m-sm-3">
-            <textarea
-              class="form-control"
-              placeholder="Leave your enquiry here"
-              name="_enqDetails"
-              id="enqDetails"
-              value=""
-              style="height: 100px"
-              required
-            ></textarea>
-            <label for="enqDetails">Enquiry details *</label>
-          </div>
-          <p>
-            <small id="enqRequired" class="form-text text-muted mx-3"
-              >* required</small
-            >
-          </p>
-          <button type="submit" class="btn btn-primary mx-3">Submit</button>
-        </div>
-      </form>
-    </div>
-  
-    <!-- Email confirmation note to make visible or call thankyou.html -->
-    <!--<div class="container" id="thankyou" >
-        <div class="container-fluid shadow mt-5 text-center p-5 w-50" >
-            <h2>Thank You for Your Enquiry.</h2>
-            <p>Your form has been submitted successfully.</p>
-            <p>We will contact you as soon as possible.</p>
-        </div>
-    </div>-->
-  </div>
+{% include 'includes/contactForm.html' %}  
 
-<a id="contactUs"></a>
-<footer class="bg-dark text-white">
-    <div class="container p-5">
-        <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
-            <div class="col">
-                <p class="fs-3">Get in touch:</p>
-                <p>Enquiry form above</a></p>
-                <p>
-                    07939 661433
-                </p>
-                <p>Email<a href="mailto:info@usavehicleimports.com"> usavehicleimports</a></p>                
-                <p>
-                    <a class="nav-item nav-link" title="Facebook" href="https://www.facebook.com/Usavehicleimports/"> Facebook</a>                       
-                    <a class="nav-item nav-link" title="Instagram" href="https://www.instagram.com/usa.vehicle.imports/"> or Instagram</a>
-                </p>                  
-            </div>
-        
-          
-            <div class="col lh-1">
-                
-                <p class="m-1">USA Vehicle Imports</p>
-                <p class="m-1">
-                    Unit 2,
-                    Lincoln Road,
-                    Horncastle
-                </p class="m-1">    
-                <p class="m-1">LN9 5AW</p>
-                <a class="navbar-brand" href="#">
-                    <img class="img-thumbnail mt-3 mb-3 w-50" src="{% static "/images/home/usa-imports-logo.png" %}" alt="USA Vehicle Imports logo">
-                </a>
-                <div class="text-sm-start lh-sm text-white-50">
-                    <p class="m-0 p-0 fw-light" style="font-size: 0.8rem;">Copyright @2023 USA VEHICLE IMPORTS</p>
-                    <p class="fw-lighter" style="font-size: 0.7rem;">All rights reserved</p>
-                </div>
-                <a href="{% url 'admin:index' %}">Admin sign-in</a>
-            </div>
-            
-        </div>
-    </div>
+{% include 'includes/footer.html' %}
 
-</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     
 </body>

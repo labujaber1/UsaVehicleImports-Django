@@ -1,51 +1,44 @@
-{% extends "base.html" %}{% block content %} {% load static %}
+{% extends "Base.html" %}{% block content %} {% load static %}
 
-<div class="container pb-4">
-  <br />
-  <h1 class="mt-5 mb-4">GALLERY</h1>
-  <p>
-    We have a variety of American vehicles in stock either currently being
-    imported or already located in the UK. Below are examples of the types of
-    stock we hold.
-  </p>
-
-  <!-- 
-        Javascript to create cards based on images in inventory folder.
-        Client will have an admin page accessed by adding '/admin/admin.html' on home page
-        , no visible links. They will log in and amend the folder CRUD including 
-        an image, video?, price and description. Need to upload images to fixed path
-        in project '/images-inventory' and url saved to db. Save when done and logoff.
-        Enable email and password to also be changed by client.
-        No further actions to add to website. 
-        Will require non relational database using just two tables for the cars and
-        store user email/password. Need server-side php code to update db (mysql?).
-        Email can be changed from current mail service if wish but no code included.
-    -->
-
-  <div class="container-fluid p-2 mb-4">
-    <div id="vehicle-list" class="row row-cols-1 row-cols-md-2 g-3">
-      <!-- cards created for each vehicle from displayVehicle() js method admin/edit-inventoryJS.js-->
-    </div>
-  </div>
-</div>
-
+<!-- move dynamic invent cards script to views and just call -->
 <div class="image-parallax">
   <div class="container">
     <div class="header-content">
-      <h1>Find more vehicles on Facebook and Instagram</h1>
-      <p>Sourced from the East Coast USA for you.</p>
+      <h1 class="mt-5 mb-4">GALLERY</h1>
+      <p>
+        We have a variety of American vehicles in stock either currently being
+        imported or already located in the UK. Below are examples of the types
+        of stock we hold. <i class="fa fa-arrow-circle-o-down ms-5"></i>
+      </p>
     </div>
   </div>
 </div>
 
+<!-- Dynamically created inventory cards from db -->
+{% include 'includes/inventoryCarousel.html' %}
+
+<!-- Text to redirect to social media -->
+<div class="container-fluid bg-black m-0 p-5 text-white-50">
+  <h1>Find more vehicles on Facebook and Instagram</h1>
+  <p>Sourced from the East Coast USA for you.</p>
+</div>
+
+<!-- Introduction text to fixed gallery of previous stock examples -->
+<div class="image-parallax-other">
+  <div class="container">
+    <div class="header-content">
+      <h1 class="mt-5 mb-4">Previous examples</h1>
+      <p>
+        Below are examples of vehicles we have previously sourced and imported
+        for clients from the USA to the UK.
+        <i class="fa fa-arrow-circle-o-down ms-5"></i>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Fixed gallery carousel of cars non-dynamic-->
 <div class="container-fluid mb-5 mt-5">
-  <h1 class="text-center">Previous examples</h1>
-  <br />
-  <p class="text-center">
-    Below are examples of vehicles we have previously sourced and imported for
-    clients from the USA to the UK.
-  </p>
-  <br />
   <div class="container rounded-3">
     <div
       class="container-fluid p-2 carousel-background rounded-3 shadow"
@@ -163,4 +156,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

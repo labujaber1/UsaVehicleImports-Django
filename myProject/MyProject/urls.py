@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from frontapp import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,6 +26,11 @@ urlpatterns = [
     path('', views.home, name="Home"),
     path('Services/', views.services, name="Services"),
     path('Gallery/', views.gallery, name="Gallery"),
+    path('News/', views.news, name="News"),
+    # can do paths this way if more than 1 app exists in project so that
+    # each app has own url file rather than massive list here
+    # path('frontapp/', include('frontapp.urls'))
+    # path('otherapp/', include('otherapp.urls'))
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

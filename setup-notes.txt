@@ -38,4 +38,24 @@ python manage.py createsuperuser
 ## initially name=user, email=user@user.com, password=password
 >type admin in url when runserver to reach admin page
 
+## upgrade django
+1- Update pip
+python -m pip install --upgrade pip
+2- If you already install Django update by using the following command
+pip install --upgrade Django
+or you can uninstall it using the following command
+pip uninstall Django
+3- If you don't install it yet use the following command
+python -m pip install Django
+4- Type your code
 
+Web site page images
+myProject -> static -> images -> 
+    showing set gallery page -> gallery folder
+    showing transportation page -> transportation folder
+    showing on home page -> home folder
+    showing background images in parallax -> css folder
+
+Website inventory vehicles that will change by site owner
+In admin upload set as media file so path is myProject -> media -> images -> inventory
+Can also upload video to myProject -> media -> video

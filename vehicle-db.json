@@ -1,0 +1,52 @@
+[
+  {
+    "id": 2,
+    "type": "car",
+    "name": "1930 Ford Model A",
+    "price": 29995.00,
+    "availability": "available",
+    "description": "A working hot dog concession from Daytona International Raceway. UK Registered V5 MOT and Tax Exempt. ",
+    "images": [
+      "/images/inventory/1930-Ford-Model-A-1.jpg",
+      "/images/inventory/1930-Ford-Model-A-2.jpg",
+      "/images/inventory/1930-Ford-Model-A-3.jpg",
+      "/images/inventory/1930-Ford-Model-A-4.jpg"
+    ]
+  },
+  {
+    "id": 1,
+    "type": "car",
+    "name": "66 Plymouth Fury 111",
+    "price": 11995.00,
+    "availability": "available",
+    "description": "Experience the future with this cutting-edge product.",
+    "images": [
+      "/images/inventory/66-Plymouth-Fury-111.jpg"
+      
+    ]
+  },
+  {
+    "id": 3,
+    "type": "car",
+    "name": "86 Plymouth Fury Cop Car",
+    "price": 8995.00,
+    "availability": "available",
+    "description": "Upgrade your daily routine with this amazing product.",
+    "images": [
+      "/images/inventory/86-Plymouth-Fury-Cop-Car.jpg"
+      
+    ]
+  },
+  {
+    "id": 4,
+    "type": "car",
+    "name": "1941 Dodge Sedan",
+    "price": 0,
+    "availability": "sold",
+    "description": "Upgrade your daily route with this amazing vehicle.",
+    "images": [
+      "/images/inventory/1941-Dodge-Sedan.jpg"
+      
+    ]
+  }
+]

@@ -1,0 +1,86 @@
+{% load static %}
+
+<div class="container-fluid bg-light-subtle mb-5 mt-3">
+  <div class="container p-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+      {% for item in vehicle %}
+      <div class="col">
+        <!-- Vehicle Card with Carousel -->
+        <div class="card shadow h-100 rounded-2 rounded-border-bottom">
+          <!-- Carousel -->
+          <div
+            id="carousel-{{ item.id }}"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <!-- Bootstrap Carousel Indicators -->
+            <ol class="carousel-indicators">
+              {% for image in item.vehicle_fk.all %}
+              <a
+                data-bs-target="#carousel-{{ item.id }}"
+                data-bs-slide-to="{{ forloop.counter0 }}"
+                class="{% if forloop.first %}active{% endif %}"
+                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-label="Slide {{ forloop.counter }}"
+              ></a>
+              {% endfor %}
+            </ol>
+
+            <!-- Carousel Slides -->
+            <div class="carousel-inner">
+              {% for image in item.vehicle_fk.all %}
+              <div
+                class="carousel-item {% if forloop.first %}active{% endif %}"
+              >
+                <img
+                  src="{{ image.images.url }}"
+                  class="d-block w-100"
+                  alt="Vehicle Image"
+                />
+                <p>Image path: {{ image.images.url }}</p>
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- Carousel Controls -->
+            <a
+              class="carousel-control-prev"
+              href="#carousel-{{ item.id }}"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carousel-{{ item.id }}"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </a>
+          </div>
+          <!-- /Carousel -->
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">Price: ${{ item.price }}</p>
+            <p class="card-text">Availability: {{ item.availability }}</p>
+            <p class="card-text">Description: {{ item.description }}</p>
+          </div>
+        </div>
+        <!-- /Vehicle Card with Carousel -->
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
