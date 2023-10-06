@@ -23,9 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-#qv!vc!!s&-so09li=nrtx9)n#qt5644*p)+b!@6q3u_s9egyk'
 
+# Email form data using "https://formspree.io/f/mbjvoewj" account
+# so no requirement for smtp mail settings.
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -39,8 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "frontapp",
+    "crispy_forms",
+    "crispy_bootstrap5",
+    "icecream",
 
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -106,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
 

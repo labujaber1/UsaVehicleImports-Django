@@ -1,6 +1,6 @@
 
 <!doctype html>
-{% load static %}
+{% load crispy_forms_tags %}{% load static %}
 
 <head>
 
@@ -17,7 +17,9 @@
         content="Personalised importer of pre-owned american vehicles and bikes from the east coast to the UK. 
         Provides sourcing, purchasing and transportation services as a full or individual package 
         including a door-to-door service, covid safe if required.">
-    
+        
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/x-icon" href="../static/images/other/favicon.ico">
     <!-- css styles -->
     <link rel="stylesheet" type="text/css" href="{% static "/css/style.css" %}">
     <!-- font awesome -->
@@ -32,12 +34,20 @@
 
 {% include 'includes/nav.html' %}     
 
-{% block content %}
+<div id="content">
+    {% block content %} {% endblock content %}
+</div>
 
-{% endblock %}
+<div id="form">
+    {% block form %} {% endblock form %}
+</div>
 
-{% include 'includes/contactForm.html' %}  
+<div id="footer">
+    {% block footer %} {% endblock footer %}
+</div>
+<!--not calling url for form data -->
 
+{% include 'includes/contactForm.html' %}
 {% include 'includes/footer.html' %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

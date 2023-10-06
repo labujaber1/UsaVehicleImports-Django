@@ -1,8 +1,11 @@
 {% load static %}
 <!-- Nav links to the right of logo, logo smaller-->
-<nav class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg">
+<nav
+  class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg"
+  method="GET"
+>
   <div class="container-md w-50 p-0">
-    <a class="navbar-brand m-0" href="#">
+    <a class="navbar-brand m-0" href="/">
       <img
         class="img-fluid"
         src="{% static 'images/home/usa-imports-logo.png' %}"
@@ -29,16 +32,32 @@
       <!-- COLLAPSABLE -->
       <ul class="nav navbar-nav align-items-center">
         <li>
-          <a class="nav-item nav-link" href="{% url 'Home' %}">Home</a>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Contact2Form' %}"
+            >Contact form</a
+          >
         </li>
         <li>
-          <a class="nav-item nav-link" href="{% url 'Services' %}">Services</a>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Footer2Data' %}"
+            >Footer</a
+          >
         </li>
         <li>
-          <a class="nav-item nav-link" href="{% url 'Gallery' %}">Gallery</a>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}">Home</a>
         </li>
         <li>
-          <a class="nav-item nav-link" href="{% url 'News' %}">Our News</a>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
+            >Gallery</a
+          >
+        </li>
+        <li>
+          <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
+            >Our News</a
+          >
         </li>
         <li>
           <a class="nav-item nav-link" href="#contactUs">Contact us</a>

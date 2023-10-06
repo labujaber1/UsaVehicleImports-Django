@@ -59,3 +59,7 @@ myProject -> static -> images ->
 Website inventory vehicles that will change by site owner
 In admin upload set as media file so path is myProject -> media -> images -> inventory
 Can also upload video to myProject -> media -> video
+
+
+{% url 'add_client_save' as action_path %}
+{% include 'admintemplate/form_template.html' with messages=messages form=form action_path=action_path button_text="Add Client" %}

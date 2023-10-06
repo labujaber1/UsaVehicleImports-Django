@@ -23,14 +23,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name="Home"),
-    path('Services/', views.services, name="Services"),
-    path('Gallery/', views.gallery, name="Gallery"),
-    path('News/', views.news, name="News"),
     # can do paths this way if more than 1 app exists in project so that
     # each app has own url file rather than massive list here
-    # path('frontapp/', include('frontapp.urls'))
-    # path('otherapp/', include('otherapp.urls'))
+    path('', include('frontapp.urls')),
+    # path('', include('otherapp.urls'))
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

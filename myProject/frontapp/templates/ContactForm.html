@@ -1,0 +1,38 @@
+{% extends "Base.html" %}{% block form %}{% load crispy_forms_tags %}
+<div class="container-fluid container-form-bgcolor pt-3 pb-3" id="enqForm">
+  <div class="row mt-5 mb-5">
+    <div class="col-12 mt-2 mb-2">
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg d-block w-50 m-auto shadow rounded-pill"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseContactForm"
+        aria-expanded="false"
+        aria-controls="collapseContactForm"
+      >
+        Get in touch
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden collapsable enquiry form using third party email service FormSpree.io. 
+      Receiving email account logged with formspree. 
+    action="{% url 'frontapp:ContactForm' %}"-->
+  <div class="collapse" id="collapseContactForm">
+    <form id="conForm" method="POST" action="{% url 'frontapp:ContactForm' %}">
+      <div
+        class="container bg-light px-1 pt-3 pb-3 p-sm-3 mb-5 shadow rounded-3"
+        style="max-width: 600px"
+      >
+        <h1 class="text-center text-black-50">Enquiry form</h1>
+
+        <!-- name, email, phone number, enquiry comments -->
+
+        {% csrf_token %} {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary mx-3">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock form %}

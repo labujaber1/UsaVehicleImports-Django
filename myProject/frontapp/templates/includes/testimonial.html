@@ -1,0 +1,51 @@
+<div class="container" method="GET">
+  <div class="row row-cols-1">
+    <div
+      id="testimonial-carousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        {% for testim in testimonial %}
+        <div class="carousel-item {% if forloop.first %} active {% endif %}">
+          <div class="col-12">
+            <div class="col text-center">
+              <i class="fa fa-commenting-o"></i>
+              <hr />
+              <h5 class="mb-2">{{ testim.name }}</h5>
+              <h6 class="mb-3 text-black-50">{{ testim.address }}</h6>
+              <div class="px-xl-3">
+                <i class="fa fa-quote-left pe-2 text-black-50"></i>
+                <span>{{ testim.quote }} </span>
+              </div>
+              <div class="px-xl-3">
+                <i class="fa fa-star mx-auto mb-3 text-warning"></i>
+                <span>{{ testim.rate }}/5 </span>
+              </div>
+              <hr />
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#testimonial-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#testimonial-carousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
