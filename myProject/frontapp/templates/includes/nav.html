@@ -1,88 +1,84 @@
-{% load static %}
-<!-- Nav links to the right of logo, logo smaller-->
-<nav
-  class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg"
-  method="GET"
->
-  <div class="container-md w-50 p-0">
-    <a class="navbar-brand m-0" href="/">
-      <img
-        class="img-fluid"
-        src="{% static 'images/home/usa-imports-logo.png' %}"
-        width="300"
-        alt="USA Vehicle Imports logo"
-      />
-    </a>
-  </div>
-
-  <div class="d-flex align-items-center">
-    <button
-      class="navbar-toggler m-3"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="navbar-collapse collapse" id="navbarNav">
-      <!-- COLLAPSABLE -->
-      <ul class="nav navbar-nav align-items-center">
-        <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Contact2Form' %}"
-            >Contact form</a
-          >
-        </li>
-        <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Footer2Data' %}"
-            >Footer</a
-          >
-        </li>
-        <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}">Home</a>
-        </li>
-        <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
-            >Services</a
-          >
-        </li>
-        <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
-            >Gallery</a
-          >
-        </li>
-        <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
-            >Our News</a
-          >
-        </li>
-        <li>
-          <a class="nav-item nav-link" href="#contactUs">Contact us</a>
-        </li>
-        <li>
-          <a
-            class="nav-item nav-link"
-            style="color: coral"
-            title="Facebook"
-            href="https://www.facebook.com/Usavehicleimports/"
-          >
-            <i class="fa fa-facebook-square fa-2x"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            class="nav-item nav-link"
-            style="color: coral"
-            title="Instagram"
-            href="https://www.instagram.com/usa.vehicle.imports/"
-          >
-            <i class="fa fa-instagram fa-2x"></i
-          ></a>
-        </li>
-      </ul>
+<html>
+  {% load static %}
+  <!-- Nav links to the right of logo, logo smaller-->
+  <nav
+    class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg"
+    method="GET"
+  >
+    <div class="container-md w-50 p-0">
+      <a class="navbar-brand m-0" href="/">
+        <img
+          class="img-fluid"
+          src="{% static 'images/home/usa-imports-logo.png' %}"
+          width="300"
+          alt="USA Vehicle Imports logo"
+        />
+      </a>
     </div>
-  </div>
-</nav>
+
+    <div class="d-flex align-items-center">
+      <button
+        class="navbar-toggler m-3"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="ToggleNavigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarNav">
+        <!-- COLLAPSABLE -->
+        <ul class="nav navbar-nav align-items-center">
+          <li>
+            <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
+              >Gallery</a
+            >
+          </li>
+          <li>
+            <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
+              >Our News</a
+            >
+          </li>
+          <li>
+            <a class="nav-item nav-link" href="#contactUs">Contact us</a>
+          </li>
+          <li>
+            <a
+              class="nav-item nav-link"
+              target="_blank"
+              style="color: coral"
+              title="Facebook"
+              href="https://www.facebook.com/Usavehicleimports/"
+            >
+              <i class="fa fa-facebook-square fa-2x"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              class="nav-item nav-link"
+              target="_blank"
+              style="color: coral"
+              title="Instagram"
+              href="https://www.instagram.com/usa.vehicle.imports/"
+            >
+              <i class="fa fa-instagram fa-2x"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</html>

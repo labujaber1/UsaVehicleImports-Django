@@ -17,6 +17,11 @@ class BusinessDetails(models.Model):
     contact_mobile = models.CharField(max_length=20, blank=True)
     contact_email = models.EmailField(max_length=100, blank=True)
     contact_name = models.CharField(max_length=100, blank=True)
+    facebook = models.URLField(max_length=200, blank=True)
+    instagram = models.URLField(max_length=200, blank=True)
+    twitter = models.URLField(max_length=200, blank=True)
+    linkedIn = models.URLField(max_length=200, blank=True)
+    google_map_link = models.CharField(max_length=300,blank=True)
 
     def __str__(self):
         return self.business_name
@@ -60,7 +65,7 @@ class Images(models.Model):
 
 
 class GeneralEnquiry(models.Model):
-    from_email = models.EmailField(max_length=50, blank=True)
+    email = models.EmailField(max_length=50, blank=True)
     name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=20, blank=True)
     subject = models.CharField(max_length=50, blank=True)
@@ -102,3 +107,6 @@ class Testimonials(models.Model):
 
     def __str__(self):
         return self.name
+
+
+    

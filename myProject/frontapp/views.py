@@ -1,20 +1,72 @@
 
+
+from django.views import View
 import requests
 from django.shortcuts import render, redirect
-from .models import Vehicle, Images, Post, GeneralEnquiry, Testimonials, BusinessDetails
-from django.http import HttpResponse
-from django.http import Http404
-from django.core.mail import send_mail, BadHeaderError
+from .models import Vehicle, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
 from .forms import ContactForm
-from icecream import ic
+from django.views.generic import ListView
 
 # Create your views here.
 
 # test
+# class based views to replace function based
+    
+    
+class HomeView(ListView):
+    model = Testimonials
+    queryset = Testimonials.objects.all()[:3]
+    context_object_name = "testimonial"
+    template_name = "Home.html"
 
 
-def home(request):
+class Gallery(ListView):
+    model = Images   
+    context_object_name = "context"
+    template_name = "Gallery.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(Gallery, self).get_context_data(**kwargs)
+        context['vehicle_images'] = Images.objects.all()
+        context['vehicle'] = Vehicle.objects.all()
+        return context
+    
+    
+class News(ListView):
+    model = Post
+    template_name = "News.html"
+    context_object_name = "context"
+    
+    def get_context_data(self, **kwargs):
+        context = super(News, self).get_context_data(**kwargs)
+        context['data'] = BusinessDetails.objects.all()
+        context['post'] = Post.objects.all()
+        context['testimonial'] = Testimonials.objects.all()[3:]
+        return context
+    
+class FooterListView(ListView):
+    model = BusinessDetails
+    template_name = "includes/footer.html"
+    context_object_name = "context"
+    
+    def get_context_data(self, **kwargs):
+        context = super(FooterListView, self).get_context_data(**kwargs)
+        context['data'] = BusinessDetails.objects.all()
+        return context
+
+class ServicesView(View):
+    def get(self,request):
+        return render(request, 'Services.html')
+    
+class SuccessView(View):
+    def get(self,request):
+        return render(request, "Success.html")
+
+
+
+# function based views
+""" def home(request):
     try:
         # first 3 testimonials so the rest is in news and not repeated
         testimonial = Testimonials.objects.all()[:3]
@@ -22,26 +74,26 @@ def home(request):
         raise Http404(
             "Sorry no testimonials found, I know not why but only what is!")
 
-    return render(request, 'Home.html', {'testimonial': testimonial})
+    return render(request, 'Home.html', {'testimonial': testimonial}) """
 
 
-def services(request):
+""" def services(request):
 
-    return render(request, 'Services.html')
+    return render(request, 'Services.html') """
 
 # dynamically create each vehicle item in the db to pass and then display in a card
 
 
-def gallery(request):
+""" def gallery(request):
     try:
         vehicle_images = Images.objects.all()
         vehicles = Vehicle.objects.all()
     except Vehicle.DoesNotExist:
         raise Http404("Sorry vehicle not found")
     return render(request, 'Gallery.html', {'vehicle_images': vehicle_images, 'vehicle': vehicles})
+ """
 
-
-def news(request):
+""" def news(request):
     try:
         post = Post.objects.all()
         data = BusinessDetails.objects.all()
@@ -54,12 +106,12 @@ def news(request):
     context = {'post': post, 'testimonial': testimonial, 'data': data}
     # return render(request, 'News.html', {'post': post, 'testimonial': testimonial,'data':data})
     return render(request, 'News.html', context)
-
+ """
 
 # display form or receive contact form data, clean fields, send as email, save to db
 
 
-def contactView(request):
+def contactFormView(request):
     if request.method == "GET":
         form = ContactForm()
     elif request.method == "POST":
@@ -93,7 +145,7 @@ def contactView(request):
                     form.save()
                     messages.success(
                         request, 'A new enquiry was successfully added to the db')
-                    return redirect("Success")
+                    return redirect("frontapp:Success")
                 else:
                     messages.error(
                         request, 'An error occurred while sending the email')
@@ -109,12 +161,12 @@ def contactView(request):
     return render(request, 'ContactForm.html', context)
 
 
-def successView(request):
+""" def successView(request):
 
-    return render(request, "Success.html")
+    return render(request, "Success.html") """
 
 
-def footerData(request):
+""" def footerData(request):
     try:
         data = BusinessDetails.objects.all()
     except BusinessDetails.DoesNotExist:
@@ -123,4 +175,5 @@ def footerData(request):
     context = {}
     context = {'data': data}
 
-    return render(request, 'Footer.html', context)
+    return render(request, 'Footer.html', context) """
+

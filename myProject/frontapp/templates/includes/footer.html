@@ -1,11 +1,16 @@
+ <html>
  {% load static %}
- <a id="contactUs" ></a>
+ 
+
+ <a id="contactUs"></a>
 <footer class="bg-dark text-white">
     <div class="container p-5">
         <div class="row row-cols-1 row-cols-sm-2 justify-content-center">
             <div class="col" >
+                
                 <p class="fs-3">Get in touch:</p>
                 <p>Enquiry form above</a></p>
+                
                 {% for data in data %}
                 {% if data %}
                 {% if data.contact_phone %}
@@ -18,16 +23,28 @@
                 
                 <p>Email<a href="mailto:{{ data.contact_email }}"> usavehicleimports</a></p> 
                 {% endif %} 
-                {% endfor %}               
+                                
                 <p>
-                    <a class="nav-item nav-link" title="Facebook" href="https://www.facebook.com/Usavehicleimports/"> Facebook</a>                       
-                    <a class="nav-item nav-link" title="Instagram" href="https://www.instagram.com/usa.vehicle.imports/"> or Instagram</a>
+                    {% if data.facebook %}
+                    <a class="nav-item nav-link" 
+                     title="Facebook" target="_blank" href="{{ data.facebook }}">Facebook <i class="fa fa-facebook-square mx-1" style="color: coral"></i
+                        ></a> 
+                        {% endif %}   {% if data.instagram %}                   
+                    <a class="nav-item nav-link" title="Instagram" target="_blank" href="{{ data.instagram }}">or Instagram <i class="fa fa-instagram mx-1" style="color: coral"></i
+                        ></a>
+                        {% endif %}{% if data.twitter %}
+                    <a class="nav-item nav-link" title="Twitter" target="_blank" href="{{ data.twitter }}">or Twitter <i class="fa fa-twitter-square mx-1" style="color: coral"></i
+                        ></a>
+                        {% endif %}{% if data.linkedIn %}
+                    <a class="nav-item nav-link" title="LinkedIn" target="_blank" href="{{ data.linkedIn }}">or LikedIn <i class="fa fa-linkedin-square mx-1" style="color: coral"></i
+                        ></a>
+                        {% endif %}
                 </p>   
-                             
+                         
             </div>
           
             <div class="col lh-1">
-                {% for data in data %}
+                
                 {% if data %}
                 <p class="m-1 lh-sm">{{ data.business_name }}</p>
                 <p class="m-1 lh-sm">
@@ -39,8 +56,10 @@
                 {% if data.contact_name %}
                 <p class="m-1 lh-sm">Contact: {{ data.contact_name }}</p> 
                 {% endif %}  
+                <!-- google maps link -->
+                
                 <p class="m-1 lh-sm">
-                    <a href="https://www.google.com/maps/place/Lincoln+Rd,+Horncastle+LN9+5AW/@53.2108193,-0.1317135,16z/data=!3m1!4b1!4m6!3m5!1s0x4878709892775519:0x85590e0ac3389ca9!8m2!3d53.210863!4d-0.12588!16s%2Fg%2F1tgnr52l?entry=ttu"
+                    <a href="{{ data.google_map_link }}"
                     target="_blank">
                         {{ data.address_postcode }}
                     </a>
@@ -51,7 +70,10 @@
                     <img class="img-thumbnail mt-3 mb-3 w-50" src="{% static "/images/home/usa-imports-logo.png" %}" alt="USA Vehicle Imports logo">
                 </a>
                 <div class="text-sm-start lh-sm text-white-50">
-                    <p class="m-0 p-0 fw-light" style="font-size: 0.8rem;">Copyright @2023 <span class="text-uppercase">{{ data.business_name }}</span></p>
+                    <p class="m-0 p-0 fw-light" style="font-size: 0.8rem;">
+                        {% now "Y" as curr_yr %}
+                        Copyright @{{ curr_yr }}
+                        <span class="text-uppercase">{{ data.business_name }}</span></p>
                     <p class="fw-lighter" style="font-size: 0.7rem;">All rights reserved</p>
                 </div>
                 <a href="{% url 'admin:index' %}">Admin sign-in</a>
@@ -61,3 +83,4 @@
     </div>
 
 </footer>
+</html>

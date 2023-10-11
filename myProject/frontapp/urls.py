@@ -6,16 +6,18 @@ app_name = 'frontapp'
 # urlconf
 urlpatterns = [
 
-    path('', views.home, name="Home"),
+    path('', views.HomeView.as_view(), name="Home"),
+    
+    path('Services/', views.ServicesView.as_view(), name="Services"),
+    path('Gallery/', views.Gallery.as_view(), name="Gallery"),
+    path('News/', views.News.as_view(), name="News"),
+    # def
+    path('includes/contactForm/', views.contactFormView, name="ContactForm"),
+    # class
+    path('includes/footer/', views.FooterListView.as_view(), name="FooterData"),
 
-    path('Services/', views.services, name="Services"),
-    path('Gallery/', views.gallery, name="Gallery"),
-    path('News/', views.news, name="News"),
-    path('includes/contactForm/', views.contactView, name="ContactForm"),
-    path('includes/footer/', views.footerData, name="FooterData"),
+    path('Success/', views.SuccessView.as_view(), name="Success"),
 
-    path('Success/', views.successView, name="Success"),
-
-    path('ContactForm/', views.contactView, name="Contact2Form"),
-    path('Footer/', views.footerData, name="Footer2Data"),
+    #path('ContactForm/', views.contactFormView, name="Contact2Form"),
+    #path('Footer/', views.footerData, name="Footer2Data"),
 ]

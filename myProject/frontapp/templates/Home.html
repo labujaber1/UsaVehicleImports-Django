@@ -6,54 +6,115 @@
       <h1>WELCOME to USA Vehicle Imports</h1>
       <p>
         We specialise in wholesale and import of pre-owned vehicles from East
-        Coast USA. <i class="fa fa-arrow-circle-o-down ms-5"></i>
+        Coast USA.
       </p>
     </div>
   </div>
 </div>
 
 <header>
-  <div class="container-fluid bg-white text-center">
-    <br />
-    <h2>
-      American Car Sales, Imports, Transportation, Registration, and Sourcing
-    </h2>
-    <br />
-    <div class="container-fluid text-center p-4">
-      <p>
-        We provide a safe and secure way to import cars directly from the USA.
-      </p>
-      <p>We can select and buy cars on your behalf and request.</p>
-      <p>
-        All vehicles are personally inspected by our team before purchase in the
-        United States.
-      </p>
-      <p>
-        We deliver your vehicle(s) from door to door using our own transport
-        team.
-      </p>
-      <p>
-        We have over 25 years experience in buying used American cars, RVs,
-        convertibles, classics, motorbikes, and much more!
-      </p>
-      <p>Delivery can be as soon as 4 weeks depending on shipping locations.</p>
-      <br />
-      <p class="text-break lh-lg">
-        We provide a safe and secure way to import cars directly from the USA.
-        We can select and buy cars on your behalf and request. <br />All
-        vehicles are personally inspected by our team before purchase in the
-        United States. We deliver your vehicle(s) from door to door using our
-        own transport team. We have over 25 years experience in buying used
-        American cars, RVs, convertibles, classics, motorbikes, and much more!
-        Delivery can be as soon as 4 weeks depending on shipping locations.
-      </p>
-      <img
-        class="img-fluid mt-2 mb-2 rounded-2 shadow"
-        src="{% static '/images/home/banner-4.jpg' %}"
-        alt="USA Vehicle Imports logo image"
-      />
+  <div class="container-fluid bg-light text-center">
+    <div
+      class="col-md-8 p-3 bg-dark-subtle shadow position-relative top-0 start-50 translate-middle rounded-2"
+    >
+      <h2>
+        American Car Sales, Imports, Transportation, Registration, and Sourcing
+      </h2>
+    </div>
+    <div class="container-fluid px-lg-5">
+      <div class="row row-cols-1 row-cols-sm-2 pb-lg-5">
+        <div
+          class="col-sm-9 text-center pt-5 pb-5 px-4 mb-4 bg-danger-subtler rounded-pill"
+        >
+          <p>
+            We provide a safe and secure way to import cars directly from the
+            USA.
+          </p>
+          <p>We can select and buy cars on your behalf and request.</p>
+          <p>
+            All vehicles are personally inspected by our team before purchase in
+            the United States.
+          </p>
+          <p>
+            We deliver your vehicle(s) from door to door using our own transport
+            team.
+          </p>
+          <p>
+            We have over 25 years experience in buying used American cars, RVs,
+            convertibles, classics, motorbikes, and much more!
+          </p>
+          <p>
+            Delivery can be as soon as 4 weeks depending on shipping locations.
+          </p>
+          <br />
+          <div class="container-fluid position-relative">
+            <img
+              class="img-fluid mt-2 rounded-2 shadow"
+              src="{% static '/images/home/banner-4.jpg' %}"
+              alt="USA Vehicle Imports logo image"
+            />
+            <button
+              type="button"
+              class="btn btn-sm position-absolute top-100 start-0 translate-middle rounded-circle"
+              data-bs-toggle="collapse"
+              data-bs-target="#imageData"
+              aria-expanded="false"
+              aria-controls="imageData"
+            >
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </button>
+            <div class="collapse" id="imageData">
+              <div class="card card-body bg-danger-subtler">
+                1966 Plymouth Fury 3 v8
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Links to main pages of interest -->
+        <div class="col-12 col-sm-3">
+          <div class="row row-cols-3 row-cols-sm-1">
+            <div class="col-4 my-2 home-card link-effect">
+              <div class="img-fluid">
+                <a
+                  class="nav-item nav-link"
+                  href="{% url 'frontapp:Services' %}"
+                  >Services<img src="{% static "images/home/Services.jpg" %}"
+                  class="img-thumbnail mt-3 shadow rounded-lg" /></a
+                >
+              </div>
+              <div class="nav-link-info">
+                <p>We source, import, and deliver the vehicle you want</p>
+              </div>
+            </div>
+            <div class="col-4 my-2 home-card link-effect">
+              <div class="img-fluid">
+                <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
+                  >Gallery<img src="{% static "images/home/Gallery.jpg" %}"
+                  class="img-thumbnail mt-3 shadow rounded-pill" /></a
+                >
+              </div>
+              <div class="nav-link-info">
+                <p>Examples of current and previous stock</p>
+              </div>
+            </div>
+
+            <div class="col-4 my-2 home-card link-effect">
+              <div class="img-fluid">
+                <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
+                  >News<img src="{% static "images/home/News.jpg" %}"
+                  class="img-thumbnail mt-3 shadow rounded-circle" /></a
+                >
+              </div>
+              <div class="nav-link-info">
+                <p>What we have been up to</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 <section>{% include 'includes/testimonial.html' %}</section>
+
 {% endblock content %}

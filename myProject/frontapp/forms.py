@@ -5,7 +5,7 @@ from .models import GeneralEnquiry
 class ContactForm(ModelForm):
     class Meta:
         model = GeneralEnquiry
-        fields = ["name", "from_email", "phone_number", "subject", "enquiry"]
+        fields = ["name", "email", "phone_number", "subject", "enquiry"]
         widgets = {"enquiry": Textarea(attrs={"cols": 80, "rows": 5}), }
 
 

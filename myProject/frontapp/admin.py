@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import BusinessDetails, Vehicle, Images, GeneralEnquiry, Post, Testimonials
-
+#from .models import BusinessDetails, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+from .models import *
 # Register your models here.
 
 
+
+# Vehicle images added at vehicle screen
 class ImageAdmin(admin.StackedInline):
     model = Images
     extra = 0
@@ -31,6 +33,7 @@ class ImageAdmin(admin.ModelAdmin):
             return 'No default image found'
 
     display_default_image.short_description = 'Default Image'
+
 
 
 @admin.register(GeneralEnquiry)

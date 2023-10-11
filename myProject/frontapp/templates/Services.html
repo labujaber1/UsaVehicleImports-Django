@@ -1,118 +1,150 @@
-{% extends "Base.html" %}{% block content %} {% load static %}
+<html>
+  <!-- prettier-ignore -->
+  {% extends "Base.html" %}{% block title %}Services Page{% endblock title %}
+{% block content %} {% load static %}
 
-<div class="container-fluid bg-dark-subtle text-center">
-  <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
-      <div class="text-center">
-        <h1>IMPORTING</h1>
+  <div class="container-fluid bg-dark-subtle text-center">
+    <div class="row row-cols-1 row-cols-md-2">
+      <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
+        <div class="text-center">
+          <h1>IMPORTING</h1>
 
-        <p>Importing Vehicles from the USA</p>
-        <p>
-          Have you purchased a vehicle from the USA and need it shipped to a UK
-          destination?
-        </p>
-        <p>
-          Use our highly experienced and trustworthy transportation team to
-          import your vehicle.
-        </p>
-        <p>No obligation quotes are available on request.</p>
-        <p>
-          All duties, taxes, fees, and NOVA certificates are dealt with and
-          explained to you before using our services.
-        </p>
+          <p>Importing Vehicles from the USA</p>
+          <p>
+            Have you purchased a vehicle from the USA and need it shipped to a
+            UK destination?
+          </p>
+          <p>
+            Use our highly experienced and trustworthy transportation team to
+            import your vehicle.
+          </p>
+          <p>No obligation quotes are available on request.</p>
+          <p>
+            All duties, taxes, fees, and NOVA certificates are dealt with and
+            explained to you before using our services.
+          </p>
+        </div>
+        <div class="container-fluid position-relative">
+          <img
+            class="img-thumbnail bg-transparent shadow"
+            src="{% static '/images/home/banner-2.jpg' %}"
+            alt="USA Vehicle Imports logo"
+          />
+          <button
+            type="button"
+            class="btn btn-sm position-absolute top-100 start-0 translate-middle rounded-circle"
+            data-bs-toggle="collapse"
+            data-bs-target="#imageData"
+            aria-expanded="false"
+            aria-controls="imageData"
+          >
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+          </button>
+          <div class="collapse" id="imageData">
+            <div class="card card-body bg-light">1941 Dodge Sedan</div>
+          </div>
+        </div>
       </div>
-      <div class="text-center">
-        <img
-          class="img-thumbnail bg-transparent shadow"
-          src="{% static '/images/home/banner-2.jpg' %}"
-          alt="USA Vehicle Imports logo"
-        />
+
+      <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
+        <div class="text-center">
+          <h1>SOURCING</h1>
+
+          <p>Sourcing vehicles in the USA</p>
+          <p>
+            Do you want to find your dream American car or bike but are unsure
+            where to start?
+          </p>
+          <p>
+            Our experienced team can source any type of vehicle including a
+            travel trailer or RV.
+          </p>
+          <p>Just tell us your vehicle specification and budget..</p>
+          <p>
+            ..and we will find your vehicle for you, along with a quote for
+            importation to the UK and home delivery.
+          </p>
+        </div>
+        <div class="container-fluid position-relative">
+          <img
+            class="img-thumbnail bg-transparent shadow"
+            src="{% static '/images/home/banner-3.jpg' %}"
+            alt="USA Vehicle Imports logo"
+          />
+          <button
+            type="button"
+            class="btn btn-sm position-absolute top-100 start-0 translate-middle rounded-circle"
+            data-bs-toggle="collapse"
+            data-bs-target="#imageData"
+            aria-expanded="false"
+            aria-controls="imageData"
+          >
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+          </button>
+          <div class="collapse" id="imageData">
+            <div class="card card-body bg-light">86 Plymouth Fury Cop Car</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
-      <div class="text-center">
-        <h1>SOURCING</h1>
+    <div class="row justify-content-center">
+      <div class="col mb-5">
+        <div class="text-center">
+          <h1>TRANSPORTATION</h1>
 
-        <p>Sourcing vehicles in the USA</p>
-        <p>
-          Do you want to find your dream American car or bike but are unsure
-          where to start?
-        </p>
-        <p>
-          Our experienced team can source any type of vehicle including a travel
-          trailer or RV.
-        </p>
-        <p>Just tell us your vehicle specification and budget..</p>
-        <p>
-          ..and we will find your vehicle for you, along with a quote for
-          importation to the UK and home delivery.
-        </p>
-      </div>
-      <div class="text-center">
-        <img
-          class="img-thumbnail bg-transparent shadow"
-          src="{% static '/images/home/banner-3.jpg' %}"
-          alt="USA Vehicle Imports logo"
-        />
-      </div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center">
-    <div class="col mb-5">
-      <div class="text-center">
-        <h1>TRANSPORTATION</h1>
-
-        <p>
-          We can cater for all your vehicle movements up to 1500 kg Nationwide.
-        </p>
-        <p>
-          Purchased a vehicle from Ebay, Gumtree, Bca, Manheim, or Copart? Is it
-          a non-runner or damaged?
-        </p>
-        <p>Need Transport? …We can help.</p>
-        <p>
-          Please text/ring with the vehicle details and collection/delivery
-          postcodes or addresses for a price, confirming the vehicle is rolling,
-          has all 4 wheels and keys.
-        </p>
-        <p>
-          We still live in cautious times, so we continue to offer a door to
-          door service without personal contact and have masks and gloves (PPE)
-          available at all times.
-        </p>
-        <div class="row row-cols-1 row-cols-md-4 bg-transparent g-2">
+          <p>
+            We can cater for all your vehicle movements up to 1500 kg
+            Nationwide.
+          </p>
+          <p>
+            Purchased a vehicle from Ebay, Gumtree, Bca, Manheim, or Copart? Is
+            it a non-runner or damaged?
+          </p>
+          <p>Need Transport? …We can help.</p>
+          <p>
+            Please text/ring with the vehicle details and collection/delivery
+            postcodes or addresses for a price, confirming the vehicle is
+            rolling, has all 4 wheels and a key.
+          </p>
+          <p>
+            We still live in cautious times, so we continue to offer a door to
+            door service without personal contact and have masks and gloves
+            (PPE) available at all times.
+          </p>
+          <div class="row row-cols-1 row-cols-md-4 bg-transparent g-2">
+            <img
+              class="img-thumbnail bg-transparent p-0"
+              src="{% static '/images/transportation/Front.jpg' %}"
+              alt="Loader front"
+            />
+            <img
+              class="img-thumbnail bg-transparent p-0"
+              src="{% static '/images/transportation/Left-side-angled.jpg' %}"
+              alt="Loader left angled"
+            />
+            <img
+              class="img-thumbnail bg-transparent p-0"
+              src="{% static '/images/transportation/Left-side-loaded2.jpg' %}"
+              alt="Loader right side"
+            />
+            <img
+              class="img-thumbnail bg-transparent p-0"
+              src="{% static '/images/transportation/Left-side-loaded3.jpg' %}"
+              alt="Loader left side"
+            />
+          </div>
+          <a id="enquiryForm"></a>
           <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Front.jpg' %}"
-            alt="Loader front"
-          />
-          <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Left-side-angled.jpg' %}"
-            alt="Loader left angled"
-          />
-          <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Left-side-loaded2.jpg' %}"
-            alt="Loader right side"
-          />
-          <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Left-side-loaded3.jpg' %}"
-            alt="Loader left side"
+            class="img-fluid mt-2 rounded-2 p-0 shadow"
+            src="{% static '/images/home/banner-5.jpg' %}"
+            alt="USA Vehicle Imports logo"
           />
         </div>
-        <a id="enquiryForm"></a>
-        <img
-          class="img-fluid mt-2 rounded-2 p-0 shadow"
-          src="{% static '/images/home/banner-5.jpg' %}"
-          alt="USA Vehicle Imports logo"
-        />
+        <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
       </div>
-      <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
     </div>
   </div>
-</div>
-{% endblock %}
+
+  {% endblock content %}
+</html>
