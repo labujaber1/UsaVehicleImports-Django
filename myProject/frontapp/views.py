@@ -120,7 +120,7 @@ def contactFormView(request):
             # sanitize form data
             name = form.cleaned_data["name"]
             subject = form.cleaned_data["subject"]
-            from_email = form.cleaned_data["from_email"]
+            email = form.cleaned_data["email"]
             phone_number = form.cleaned_data["phone_number"]
             message = form.cleaned_data["enquiry"]
             # to use django send_mail()
@@ -130,7 +130,7 @@ def contactFormView(request):
             payload = {
                 "name": name,
                 "subject": subject,
-                "from_email": from_email,
+                "email": email,
                 "phone_number": phone_number,
                 "message": message
             }

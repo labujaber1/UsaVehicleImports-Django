@@ -1,5 +1,5 @@
 <html>
-  {% load static %}
+  {% load crispy_forms_tags %}{% load static %}
 
   <div class="container-fluid bg-light-subtle mb-5 mt-3" method="GET">
     <div class="container p-4">
@@ -71,11 +71,96 @@
             <!-- /Carousel -->
 
             <!-- Card Body -->
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">{{ item.name }}</h5>
+              <hr />
               <p class="card-text">Price: ${{ item.price }}</p>
               <p class="card-text">Availability: {{ item.availability }}</p>
               <p class="card-text">Description: {{ item.description }}</p>
+              <hr />
+
+              <button
+                class="btn btn-outline-primary align-self-end mt-auto"
+                data-bs-toggle="modal"
+                data-bs-target="#createEnquiryForm"
+                aria-expanded="false"
+                aria-controls="createEnquiryForm"
+              >
+                Make an enquiry
+              </button>
+              <!-- enquiry modal -->
+              <div
+                class="modal fade"
+                id="createEnquiryForm"
+                tabindex="-1"
+                aria-labelledby="createEnquiryFormLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="createEnquiryFormLabel">
+                        Enquiry Form
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <form
+                        method="POST"
+                        action="{% url 'frontapp:ContactForm' %}"
+                      >
+                        {% csrf_token %}
+                        <!--prettier-ignore-->
+                        {{ form.name|as_crispy_field }}
+                        {{ form.email|as_crispy_field }}
+                        form.phone_number|as_crispy_field }}
+                        <!-- first car name in all enquiry submissions -->
+                        <div class="form-group">
+                          <label for="{{ form.subject.id_for_label }}"
+                            >Subject:</label
+                          >
+                          <input
+                            type="text"
+                            name="subject"
+                            value="{{ item.name }}"
+                            class="form-control"
+                            id="{{ form.name.id_for_label }}"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="{{ form.enquiry.id_for_label }}"
+                            >Enquiry:</label
+                          >
+                          <textarea
+                            name="enquiry"
+                            rows="5"
+                            class="form-control"
+                            id="{{ form.enquiry.id_for_label }}"
+                          >
+I would like to enquire about the {{ item.name }} that is shown on your website. Please contact me on the phone number or email provided. Many thanks.</textarea
+                          >
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button class="btn btn-primary">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end modal form -->
             </div>
           </div>
           <!-- /Vehicle Card with Carousel -->

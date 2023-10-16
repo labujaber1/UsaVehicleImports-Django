@@ -1,17 +1,29 @@
-
+/* home page */
 .bg-danger-subtler {
     background: linear-gradient(
-        rgb(252, 226, 255),
-        rgb(250, 239, 251)
-        
+        rgb(174, 189, 239),
+        rgb(174, 189, 239)
+    )    
+}
+/* news post cards */
+.bg-black-light {
+    background: linear-gradient(
+        to top right,
+        rgb(0, 0, 0)80%,      
+        rgb(131, 131, 131)
     )
-        
+}
+
+/* news post cards */
+.box-shadow-dark {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);      
 }
 
 .img, .iframe {
     width: 100%;
     height: auto;
 }
+/* home */
 .header-parallax {
     background: #000;
     background: linear-gradient(
@@ -42,6 +54,7 @@ footer a {
     color: white;
 }
 
+/* get in touch form decoration */
 .container-form-bgcolor {
     background: linear-gradient(
         30deg,
@@ -61,6 +74,7 @@ footer a {
     
 }
 
+/* gallery page previous cars */
 .carousel-background {
     background: linear-gradient(
         
@@ -71,6 +85,7 @@ footer a {
     );
 }
 
+/* gallery page top */
 .image-parallax {
     background: #000;
     background: linear-gradient(
@@ -83,7 +98,7 @@ footer a {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+/* gallery page middle */
 .image-parallax-other {
     background: #000;
     background: linear-gradient(
@@ -96,7 +111,7 @@ footer a {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+/* successful form sent */
 .background-success {
     background: url('../images/other/background-envelope.jpg');
     background-attachment: fixed;
@@ -104,13 +119,13 @@ footer a {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+/* news */
 .img .img-fit {
     aspect-ratio: 16 / 9;
     object-fit:  cover;
-
 }
 
+/* home page  button/pill shaped other page links with pop-out info*/
 .home-card {
     width: 100%;
 }
@@ -119,6 +134,7 @@ footer a {
     transition: 0.3s ease-in-out;
 }
 
+/* other page links as cards */
 .home-card .nav-link-info {
     position: relative;
     margin-top: -40px;
@@ -126,22 +142,40 @@ footer a {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-    transition: 0.3s ease-in-out;
+    transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
 } 
+/* show text pop out bottom of image*/
 .home-card:hover .nav-link-info {
     visibility: visible;
     opacity: 1;
     margin-top: 20px;
-    transition-delay: 0.3s;
-    height:fit-content;
-    
+    transition-delay: 0.5s;
+    height: fit-content;
 }
 
-.hover-effect:hover {
-    opacity: 0.8;
-    transform: scale(1.1);
-    transition: 0.6s ease-in-out;
+/* image in card link */
+.hover-effect {
+    transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
 }
+/* animation for the image in the card link */
+.hover-effect:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    transform: scaleX(0.95) rotateX(1deg); 
+    -moz-transform: scaleX(0.95) rotateX(1deg); 
+}
+
+.fa:hover {
+    color: rgb(139, 5, 25);
+}
+
+/* home page testimonials adjustment to bootstrap */
+.carousel-fade .carousel-item {
+    transition-delay: 0.9s;
+    transition-duration: 1.5s;
+}
+
 
 @media (max-width: 767.98px){
     .img .img-fit {

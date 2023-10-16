@@ -1,5 +1,5 @@
 <html>
-  {% load static %}
+  {% load static %} {% for data in data %}
   <!-- Nav links to the right of logo, logo smaller-->
   <nav
     class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg"
@@ -9,7 +9,7 @@
       <a class="navbar-brand m-0" href="/">
         <img
           class="img-fluid"
-          src="{% static 'images/home/usa-imports-logo.png' %}"
+          src="{{ data.business_logo.url }}"
           width="300"
           alt="USA Vehicle Imports logo"
         />
@@ -34,8 +34,8 @@
         <ul class="nav navbar-nav align-items-center">
           <li>
             <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}"
-              >Home</a
-            >
+              ><i class="fa fa-home fa-2x"></i>
+            </a>
           </li>
           <li>
             <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
@@ -61,7 +61,7 @@
               target="_blank"
               style="color: coral"
               title="Facebook"
-              href="https://www.facebook.com/Usavehicleimports/"
+              href="{{ data.facebook }}"
             >
               <i class="fa fa-facebook-square fa-2x"></i
             ></a>
@@ -72,13 +72,14 @@
               target="_blank"
               style="color: coral"
               title="Instagram"
-              href="https://www.instagram.com/usa.vehicle.imports/"
+              href="{{ data.instagram }}"
             >
               <i class="fa fa-instagram fa-2x"></i
             ></a>
           </li>
         </ul>
       </div>
+      {% endfor %}
     </div>
   </nav>
 </html>

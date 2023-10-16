@@ -5,31 +5,30 @@
   <div class="container-fluid">
     <div class="text text-center">
       <br />
-      <h1 class="p-4">Whats Been Happening..</h1>
+      <h1 class="p-4">What's been happening...</h1>
       <p>Posting news, events, and generally what we've been up to.</p>
       <hr />
       <!-- change to include -->
     </div>
     <div class="container-fluid">
       <div class="row">
+        <!-- 1st col for posts in cards incl images and videos -->
         <div class="col-12 col-sm-8">
           <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
             {% for post in post %}
             <div class="col mb-4">
               <div
-                class="card h-100 shadow-sm bg-primary-subtle mx-auto"
+                class="card h-100 box-shadow-dark mx-auto"
                 style="max-width: 350px"
               >
                 <!-- header -->
-                <div class="card-header">
+                <div class="card-header bg-black-light text-white rounded-0">
                   <h2 class="card-title">{{ post.title }}</h2>
                   <p class="card-text">Author: {{ post.author }}</p>
                   <p class="card-text">Date: {{ post.created }}</p>
                 </div>
                 <!-- dealing with images -->
-
                 {% if post.image_url %}
-
                 <img
                   src="{{ post.image_url }}"
                   class="card-img shadow-sm img-fit mb-3"
@@ -39,7 +38,7 @@
 
                 <img
                   src="{{ post.image_upload.url }}"
-                  class="card-img shadow-sm img-fit"
+                  class="card-img shadow-sm img-fit rounded-0"
                   alt="Sorry uploaded image not working"
                 />
 
@@ -66,8 +65,11 @@
             {% endfor %}
           </div>
         </div>
-        <div class="col-12 col-sm-4">
-          <div class="row bg-light-subtle mb-5">
+        <!-- 1st col end -->
+
+        <!-- 2nd col for where we are, map, and testimonials -->
+        <div class="col-12 col-sm-4 bg-light rounded-2">
+          <div class="row mb-5">
             <h3 class="text-black-50 fw-bold">Where we are</h3>
             {% for data in data %}
             <p>{{ data.business_name }}</p>
@@ -89,7 +91,8 @@
             </div>
           </div>
           <br />
-          <div class="row mb-5 mt-5">
+          <!-- testimonials section: hidden on small screen sizes -->
+          <div class="d-none d-sm-block row mb-5 mt-5">
             <h3 class="text-black-50 fw-bold text-decoration-underline mb-4">
               Testimonials
             </h3>
@@ -117,7 +120,9 @@
               {% endfor %}
             </section>
           </div>
+          <!-- end testimonials -->
         </div>
+        <!-- end 2nd col-->
       </div>
     </div>
   </div>

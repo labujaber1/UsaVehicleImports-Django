@@ -5,11 +5,12 @@
         id="testimonial-carousel"
         class="carousel slide carousel-fade"
         data-bs-ride="carousel"
+        data-bs-interval="15000"
       >
         <div class="carousel-inner">
           {% for testim in testimonial %}
           <div
-            data-bs-interval="7000"
+            data-bs-interval="15000"
             class="carousel-item {% if forloop.first %} active {% endif %}"
           >
             <div class="col-12">

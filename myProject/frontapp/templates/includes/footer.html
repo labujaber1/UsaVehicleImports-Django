@@ -65,9 +65,9 @@
                     </a>
                 </p>
                 {% endif %}
-                {% endfor %}
+                
                 <a class="navbar-brand" href="#">
-                    <img class="img-thumbnail mt-3 mb-3 w-50" src="{% static "/images/home/usa-imports-logo.png" %}" alt="USA Vehicle Imports logo">
+                    <img class="img-thumbnail mt-3 mb-3 w-50" src="{{ data.business_logo.url }}" alt="USA Vehicle Imports logo">
                 </a>
                 <div class="text-sm-start lh-sm text-white-50">
                     <p class="m-0 p-0 fw-light" style="font-size: 0.8rem;">
@@ -76,6 +76,7 @@
                         <span class="text-uppercase">{{ data.business_name }}</span></p>
                     <p class="fw-lighter" style="font-size: 0.7rem;">All rights reserved</p>
                 </div>
+                {% endfor %}
                 <a href="{% url 'admin:index' %}">Admin sign-in</a>
             </div>
             

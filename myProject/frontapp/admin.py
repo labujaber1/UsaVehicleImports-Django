@@ -1,9 +1,11 @@
 from django.contrib import admin
-#from .models import BusinessDetails, Vehicle, Images, GeneralEnquiry, Post, Testimonials
-from .models import *
+from .models import BusinessDetails, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+#from .models import *
+from  django.contrib.auth.models  import  Group
 # Register your models here.
 
-
+# Remove groups from admin site
+admin.site.unregister(Group)
 
 # Vehicle images added at vehicle screen
 class ImageAdmin(admin.StackedInline):
@@ -15,13 +17,14 @@ class ImageAdmin(admin.StackedInline):
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
     inlines = [ImageAdmin]
-
+    list_display = ['name','availability','date_uploaded']
     class Meta:
         model = Vehicle
 
 
 @admin.register(Images)
 class ImageAdmin(admin.ModelAdmin):
+    list_display = ['filename']
     readonly_fields = ('display_default_image',)
 
     def display_default_image(self, obj):
@@ -36,21 +39,42 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(GeneralEnquiry)
+
 class GeneralEnquiryAdmin(admin.ModelAdmin):
-    pass
+    title = ['subject','name','phone_number','email','enquiry','enquiry_date']
+    search_fields = ['subject','name','phone_number','email','enquiry','enquiry_date']
+    list_filter = ['enquiry_date']
+    list_display = ['subject','name','enquiry_date']
+    class Meta:
+        model = GeneralEnquiry
+   
 
 
-@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    pass
+    title = ['title','author','body','image_url','image_upload','video','created']
+    search_fields = ['title','author','image_upload','video','created']
+    list_filter = ['created']
+    list_display = ['title','created']
+    class Meta:
+        model = Post
+  
 
 
-@admin.register(Testimonials)
 class TestimonialsAdmin(admin.ModelAdmin):
-    pass
+    title = ['name','address','quote','rate']
+    list_filter = ['rate']
+    list_display = ['name','rate']
+    class Meta:
+        model = Testimonials
 
 
+        
+admin.site.register(GeneralEnquiry,GeneralEnquiryAdmin)
+admin.site.register(Post,PostAdmin)
+admin.site.register(Testimonials,TestimonialsAdmin)
 @admin.register(BusinessDetails)
+
 class BusinessDetailsAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['business_name','image_tag']
+    class Meta:
+        model = BusinessDetails

@@ -1,5 +1,10 @@
 from django.urls import path
 from . import views
+from django.contrib import admin
+
+#admin.site.site_header  =  "USA Vehicle Imports admin page"  
+#admin.site.site_title  =  "USA Vehicle Imports admin site"
+#admin.site.index_title  =  "USA Vehicle Imports Admin"
 
 app_name = 'frontapp'
 # separate url linked to core project url for when multiple apps in project
@@ -18,6 +23,4 @@ urlpatterns = [
 
     path('Success/', views.SuccessView.as_view(), name="Success"),
 
-    #path('ContactForm/', views.contactFormView, name="Contact2Form"),
-    #path('Footer/', views.footerData, name="Footer2Data"),
 ]
