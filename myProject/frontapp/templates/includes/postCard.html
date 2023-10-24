@@ -1,0 +1,163 @@
+<!--included in News.html-->
+<!-- mt-4 mb-auto alows collapse action downwards -->
+<!-- change to mb-4 my-auto for upwards show action, interesting! -->
+{% for post in post %}
+<div class="col mt-4 mb-auto">
+  <!--building a card-->
+  <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 350px">
+    <!-- header -->
+    <div class="card-header bg-primary text-white rounded-0">
+      <h2 class="card-title">{{ post.title }}</h2>
+      <p class="card-text">Author: {{ post.author }}</p>
+      <p class="card-text">Date: {{ post.created }}</p>
+    </div>
+    <!-- dealing with images -->
+    {% if post.image_upload %}
+    <div class="card-img">
+      <img
+        src="{{ post.image_upload.url }}"
+        class="card-img shadow-sm img-fit rounded-0"
+        alt="Sorry uploaded image not working"
+      />
+    </div>
+    {% endif %} {% if post.body_taster %}
+    <div class="card-body bg-usa-red">
+      <h6 class="card-subtitle">{{ post.body_taster }}...</h6>
+    </div>
+    {% endif %}
+    <!--start content to collapse/hide-->
+    <div class="collapse" id="contents-{{ post.pk }}">
+      <!-- main body text -->
+      <div class="card-body">
+        <p class="card-text">{{ post.body }}</p>
+      </div>
+      {% if post.image_url %}
+      <div class="card-img-bottom">
+        <img
+          src="{{ post.image_url }}"
+          class="card-img img-fit mb-3"
+          alt="Sorry url image link not working"
+        />
+      </div>
+      {% endif %} {% if post.video %}
+      <div class="card-body mt-auto">
+        <video class="w-100 shadow-sm" controls>
+          <source
+            src="{{ MEDIA_URL }}{{ post.video.url }}"
+            type="video/mp4"
+            alt="Sorry video cannot be displayed"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      {% endif %}
+      <hr />
+      <!-- display only administrators activated comments as moderated-->
+      <h4 class="text-center"><em>Moderated Comments</em></h4>
+      {% for comment in post.comments.all %} {% if comment.active == True %}
+      <hr />
+
+      <div class="comments" style="padding: 10px">
+        <p class="font-weight-bold">
+          {{ comment.name }}
+          <span class="text-muted font-weight-normal">
+            {{ comment.created_on }}
+          </span>
+        </p>
+        <q>{{ comment.body }}</q>
+      </div>
+      {% endif %} {% endfor %}
+    </div>
+    <!--end content-->
+
+    <div class="card-footer bg-light mt-auto">
+      <!-- Reveal more to read -->
+      <p>
+        <button
+          class="btn btn-outline-info"
+          data-bs-toggle="collapse"
+          data-bs-target="#contents-{{ post.id }}"
+          aria-expanded="false"
+          aria-controls="contents-{{ post.id }}"
+          ar
+        >
+          Read More
+        </button>
+      </p>
+      <!--Social media - like,comment,copy link options as buttons-->
+      <hr />
+
+      <div class="row row-sm-col-3">
+        <div class="col">
+          <!-- like option -->
+          <form method="POST" action="" input="hidden">
+            {% csrf_token %}
+            <button
+              type="submit"
+              name="post_id"
+              value="{{ post.id }} "
+              class="btn p-1 hover-effect"
+            >
+              <i class="fa fa-gratipay"></i> {{ comment_count }} Like
+            </button>
+          </form>
+        </div>
+        <div class="col">
+          <!--copy url link option-->
+          <form method="POST" action="" input="hidden">
+            <button id="copy-url" class="btn p-1 hover-effect">
+              <i class="fa fa-copy"></i> Link
+            </button>
+          </form>
+        </div>
+        <div class="col">
+          <!--comment option-->
+          <button
+            class="btn m-0 p-1 hover-effect"
+            data-bs-toggle="modal"
+            data-bs-target="#createCommentsForm-{{ post.id }}"
+            aria-expanded="false"
+            aria-controls="createCommentsForm"
+          >
+            <i class="fa fa-comment-o"></i>{{ post.comments.count }} Comment
+          </button>
+          <!--prettier-ignore-->
+          {% include 'includes/commentsForm.html' %}
+        </div>
+      </div>
+      <div class="row">
+        <span
+          ><a
+            class="btn btn-sm btn-primary my-1"
+            href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fusavehicleimports.com&quote=USA%20Vehicle%20Imports"
+            target="_blank"
+            title="Share on Facebook"
+          >
+            <i class="fa fa-facebook-square"></i>
+            Share
+          </a>
+          <a
+            class="btn btn-sm btn-info my-1"
+            href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fusavehicleimports.com&text=USA%20Vehicle%20Imports:%20http%3A%2F%2Fusavehicleimports.com"
+            target="_blank"
+            title="Tweet"
+          >
+            <i class="fa fa-twitter-square"></i>
+            Tweet
+          </a>
+          <a
+            class="btn btn-sm btn-danger my-1"
+            href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fusavehicleimports.com&description=Sales%2C%20Sourcing%2C%20Importing%20of%20American%20Cars%20and%20Bikes"
+            target="_blank"
+            title="Pin it"
+          >
+            <i class="fa fa-pinterest-square"></i>
+            Pin it
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<!--end full card-->

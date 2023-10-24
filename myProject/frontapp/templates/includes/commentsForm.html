@@ -1,0 +1,52 @@
+<!--included in news.html-->
+{% load crispy_forms_tags %}
+
+<div
+  class="modal fade"
+  id="createCommentsForm-{{ post.id }}"
+  tabindex="-1"
+  aria-labelledby="createCommentsFormLabel-{{ post.id }}"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createCommentsFormLabel-{{ post.id }}">
+          Leave a comment
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <form
+          id="commtForm"
+          method="POST"
+          style="margin-top: 1.3em"
+          action="{%  url 'frontapp:PostDetail' post.id %}"
+        >
+          {% csrf_token %} {{ comment_form|crispy }}
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+          </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

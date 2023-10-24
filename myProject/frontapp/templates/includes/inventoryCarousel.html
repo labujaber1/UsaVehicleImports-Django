@@ -1,172 +1,99 @@
-<html>
-  {% load crispy_forms_tags %}{% load static %}
+{% load static %}
 
-  <div class="container-fluid bg-light-subtle mb-5 mt-3" method="GET">
-    <div class="container p-4">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
-        {% for item in vehicle %}
-        <div class="col">
-          <!-- Vehicle Card with Carousel -->
-          <div class="card shadow h-100 rounded-2 rounded-border-bottom">
-            <!-- Carousel -->
-            <div
-              id="carousel-{{ item.id }}"
-              class="carousel slide"
-              data-bs-interval="false"
-            >
-              <!-- Bootstrap Carousel Indicators -->
-              <ol class="carousel-indicators">
-                {% for image in item.vehicle_fk.all %}
-                <a
-                  data-bs-target="#carousel-{{ item.id }}"
-                  data-bs-slide-to="{{ forloop.counter0 }}"
-                  class="{% if forloop.first %}active{% endif %}"
-                  aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
-                  aria-label="Slide {{ forloop.counter }}"
-                ></a>
-                {% endfor %}
-              </ol>
-
-              <!-- Carousel Slides -->
-              <div class="carousel-inner">
-                {% for image in item.vehicle_fk.all %}
-                <div
-                  class="carousel-item {% if forloop.first %}active{% endif %}"
-                >
-                  <img
-                    src="{{ image.images.url }}"
-                    class="d-block w-100"
-                    alt="Vehicle Image"
-                  />
-                </div>
-                {% endfor %}
-              </div>
-
-              <!-- Carousel Controls -->
+<div class="container-fluid bg-light-subtle mb-5 mt-3" method="GET">
+  <div class="container p-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-3">
+      {% for item in vehicle %}
+      <div class="col">
+        <!-- Vehicle Card with Carousel -->
+        <div class="card shadow h-100 rounded-2 rounded-border-bottom">
+          <!-- Carousel -->
+          <div
+            id="carousel-{{ item.id }}"
+            class="carousel slide"
+            data-bs-interval="false"
+          >
+            <!-- Bootstrap Carousel Indicators -->
+            <ol class="carousel-indicators">
+              {% for image in item.vehicle_fk.all %}
               <a
-                class="carousel-control-prev"
-                href="#carousel-{{ item.id }}"
-                role="button"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#carousel-{{ item.id }}"
-                role="button"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </a>
-            </div>
-            <!-- /Carousel -->
+                data-bs-target="#carousel-{{ item.id }}"
+                data-bs-slide-to="{{ forloop.counter0 }}"
+                class="{% if forloop.first %}active{% endif %}"
+                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-label="Slide {{ forloop.counter }}"
+              ></a>
+              {% endfor %}
+            </ol>
 
-            <!-- Card Body -->
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{ item.name }}</h5>
-              <hr />
-              <p class="card-text">Price: ${{ item.price }}</p>
-              <p class="card-text">Availability: {{ item.availability }}</p>
-              <p class="card-text">Description: {{ item.description }}</p>
-              <hr />
-
-              <button
-                class="btn btn-outline-primary align-self-end mt-auto"
-                data-bs-toggle="modal"
-                data-bs-target="#createEnquiryForm"
-                aria-expanded="false"
-                aria-controls="createEnquiryForm"
-              >
-                Make an enquiry
-              </button>
-              <!-- enquiry modal -->
+            <!-- Carousel Slides -->
+            <div class="carousel-inner">
+              {% for image in item.vehicle_fk.all %}
               <div
-                class="modal fade"
-                id="createEnquiryForm"
-                tabindex="-1"
-                aria-labelledby="createEnquiryFormLabel"
-                aria-hidden="true"
+                class="carousel-item {% if forloop.first %}active{% endif %}"
               >
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="createEnquiryFormLabel">
-                        Enquiry Form
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <form
-                        method="POST"
-                        action="{% url 'frontapp:ContactForm' %}"
-                      >
-                        {% csrf_token %}
-                        <!--prettier-ignore-->
-                        {{ form.name|as_crispy_field }}
-                        {{ form.email|as_crispy_field }}
-                        form.phone_number|as_crispy_field }}
-                        <!-- first car name in all enquiry submissions -->
-                        <div class="form-group">
-                          <label for="{{ form.subject.id_for_label }}"
-                            >Subject:</label
-                          >
-                          <input
-                            type="text"
-                            name="subject"
-                            value="{{ item.name }}"
-                            class="form-control"
-                            id="{{ form.name.id_for_label }}"
-                          />
-                        </div>
-                        <div class="form-group">
-                          <label for="{{ form.enquiry.id_for_label }}"
-                            >Enquiry:</label
-                          >
-                          <textarea
-                            name="enquiry"
-                            rows="5"
-                            class="form-control"
-                            id="{{ form.enquiry.id_for_label }}"
-                          >
-I would like to enquire about the {{ item.name }} that is shown on your website. Please contact me on the phone number or email provided. Many thanks.</textarea
-                          >
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button class="btn btn-primary">Submit</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="{{ image.images.url }}"
+                  class="d-block w-100"
+                  alt="Vehicle Image"
+                />
               </div>
-              <!--end modal form -->
+              {% endfor %}
             </div>
+
+            <!-- Carousel Controls -->
+            <a
+              class="carousel-control-prev"
+              href="#carousel-{{ item.id }}"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carousel-{{ item.id }}"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </a>
           </div>
-          <!-- /Vehicle Card with Carousel -->
+          <!-- /Carousel -->
+
+          <!-- Card Body -->
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <hr />
+            <p class="card-text">Price: ${{ item.price }}</p>
+            <p class="card-text">Availability: {{ item.availability }}</p>
+            <p class="card-text">Description: {{ item.description }}</p>
+            <hr />
+
+            <button
+              class="btn btn-outline-primary align-self-end mt-auto"
+              data-bs-toggle="modal"
+              data-bs-target="#createEnquiryForm-{{ item.pk }}"
+              aria-expanded="false"
+              aria-controls="createEnquiryForm"
+            >
+              Make an enquiry
+            </button>
+
+            {% include 'includes/inventoryEnquiryForm.html' %}
+          </div>
         </div>
-        {% endfor %}
+        <!-- /Vehicle Card with Carousel -->
       </div>
+      {% endfor %}
     </div>
   </div>
-</html>
+</div>

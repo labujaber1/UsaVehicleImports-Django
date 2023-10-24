@@ -98,6 +98,7 @@ class Post(models.Model):
     image_upload = models.ImageField(
         default=default_post_image, upload_to='images/other/', height_field=0,
         width_field=0, null=True, blank=True)
+    body_taster = models.CharField(max_length=200, blank=True)
     body = models.TextField()
     video = models.FileField(upload_to='video',
                              validators=[FileExtensionValidator(
@@ -105,8 +106,12 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     id = models.CharField(max_length=100, default=uuid.uuid4,
                           unique=True, primary_key=True, editable=False)
+    likes = models.PositiveIntegerField(default=0)
+    
     class  Meta:  
         verbose_name_plural  =  "Posts"
+    
+    
     def __str__(self):
         return self.title
 
@@ -123,4 +128,17 @@ class Testimonials(models.Model):
         return self.name
 
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    name = models.CharField(max_length=100)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+        
+    
+    def __str__(self):
+        return 'Comment {} status {}'.format(self.name, self.active)
     

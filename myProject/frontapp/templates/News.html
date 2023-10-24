@@ -1,131 +1,94 @@
-<html>
-  <!-- prettier-ignore -->
-  {% extends "Base.html" %} {% block title %}News Page{% endblock title %}
+<!-- prettier-ignore -->
+{% extends "Base.html" %} {% block title %}News Page{% endblock title %}
 {% block content %} {% load static %}
-  <div class="container-fluid">
-    <div class="text text-center">
-      <br />
-      <h1 class="p-4">What's been happening...</h1>
-      <p>Posting news, events, and generally what we've been up to.</p>
-      <hr />
-      <!-- change to include -->
+<div class="container-fluid">
+  <div class="text">
+    <div class="d-inline-block opacity-75 p-5 text-center">
+      <br /><br /><br /><br /><br /><br /><br />
+      <h1 class="text-bg-light mb-0 p-2 p-sm-4 rounded-top-3">
+        What's been happening...
+      </h1>
+      <p class="text-bg-light p-2 px-sm-4 pb-sm-4 rounded-bottom-3">
+        Posting news, events, and generally what we've been up to.
+      </p>
     </div>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- 1st col for posts in cards incl images and videos -->
-        <div class="col-12 col-sm-8">
-          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-            {% for post in post %}
-            <div class="col mb-4">
-              <div
-                class="card h-100 box-shadow-dark mx-auto"
-                style="max-width: 350px"
-              >
-                <!-- header -->
-                <div class="card-header bg-black-light text-white rounded-0">
-                  <h2 class="card-title">{{ post.title }}</h2>
-                  <p class="card-text">Author: {{ post.author }}</p>
-                  <p class="card-text">Date: {{ post.created }}</p>
-                </div>
-                <!-- dealing with images -->
-                {% if post.image_url %}
-                <img
-                  src="{{ post.image_url }}"
-                  class="card-img shadow-sm img-fit mb-3"
-                  alt="Sorry url image link not working"
-                />
-                {% endif %} {% if post.image_upload %}
-
-                <img
-                  src="{{ post.image_upload.url }}"
-                  class="card-img shadow-sm img-fit rounded-0"
-                  alt="Sorry uploaded image not working"
-                />
-
-                {% endif %}
-
-                <!-- main body text -->
-                <div class="card-body">
-                  <p class="card-text">{{ post.body }}</p>
-                </div>
-                {% if post.video %}
-                <div class="card-footer mb-2">
-                  <video class="w-100 shadow-sm" controls>
-                    <source
-                      src="{{ MEDIA_URL}}{{ post.video.url }}"
-                      type="video/mp4"
-                      alt="Sorry video cannot be displayed"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                {% endif %}
-              </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        <!-- 1st col end -->
-
-        <!-- 2nd col for where we are, map, and testimonials -->
-        <div class="col-12 col-sm-4 bg-light rounded-2">
-          <div class="row mb-5">
-            <h3 class="text-black-50 fw-bold">Where we are</h3>
-            {% for data in data %}
-            <p>{{ data.business_name }}</p>
-            <p>{{ data.address_1stline }}, {{ data.address_2ndline }},</p>
-            <p>{{ data.address_town }},</p>
-            <p>{{ data.address_county }} {{ data.address_postcode }}</p>
-            {% endfor %}
-            <div class="ratio ratio-4x3">
-              <!-- google maps embedded link generated all iframe data-->
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2389.392359781355!2d-0.1265744!3d53.210813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4878709892775519%3A0x85590e0ac3389ca9!2sLincoln%20Rd%2C%20Horncastle%20LN9%205AW!5e0!3m2!1sen!2suk!4v1697020253591!5m2!1sen!2suk"
-                width="600"
-                height="450"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-          <br />
-          <!-- testimonials section: hidden on small screen sizes -->
-          <div class="d-none d-sm-block row mb-5 mt-5">
-            <h3 class="text-black-50 fw-bold text-decoration-underline mb-4">
-              Testimonials
-            </h3>
-            <section>
-              {% for testim in testimonial %}
-              <div class="row text-center">
-                <i class="fa fa-commenting text-warning"></i>
-              </div>
-              <hr />
-              <div class="row text-center">
-                <h5 class="mb-2">{{ testim.name }}</h5>
-                <h6 class="mb-3 text-black-50">{{ testim.address }}</h6>
-
-                <div class="px-xl-3">
-                  <i class="fa fa-quote-left pe-2 text-black-50"></i>
-                  <span>{{ testim.quote }} </span>
-                </div>
-                <div class="px-xl-3">
-                  <i class="fa fa-star mx-auto mb-3 text-warning"></i>
-                  <span>{{ testim.rate }}/5 </span>
-                </div>
-              </div>
-              <hr />
-
-              {% endfor %}
-            </section>
-          </div>
-          <!-- end testimonials -->
-        </div>
-        <!-- end 2nd col-->
+    <video
+      id="bg-news-image"
+      autoplay
+      muted
+      loop
+      class="position-absolute end-0 bottom-0 h-auto w-auto z-n1"
+    >
+      <source src="../media/video/forest.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <br />
+  <!--<div class="container-fluid bg-warning p-1">-->
+  <div class="row p-1">
+    <!-- 1st col for posts in cards incl images and videos -->
+    <div class="col-12 col-sm-8">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+        {% include 'includes/postCard.html' %}
       </div>
     </div>
-  </div>
+    <!-- 1st col end -->
 
-  {% endblock %}
-</html>
+    <!-- 2nd col for where we are, map, and testimonials -->
+    <div class="col-12 col-sm-4 bg-light rounded-2 mt-4">
+      <div class="row mb-5">
+        <h3 class="text-black-50 fw-bold">Where we are</h3>
+        {% for data in data %}
+        <p>{{ data.business_name }}</p>
+        <p>{{ data.address_1stline }}, {{ data.address_2ndline }},</p>
+        <p>{{ data.address_town }},</p>
+        <p>{{ data.address_county }} {{ data.address_postcode }}</p>
+        {% endfor %}
+        <div class="ratio ratio-4x3">
+          <!-- google maps embedded link generated all iframe data-->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2389.392359781355!2d-0.1265744!3d53.210813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4878709892775519%3A0x85590e0ac3389ca9!2sLincoln%20Rd%2C%20Horncastle%20LN9%205AW!5e0!3m2!1sen!2suk!4v1697020253591!5m2!1sen!2suk"
+            width="600"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      <br />
+      <!-- testimonials section: hidden on small screen sizes -->
+      <div class="d-none d-sm-block row mb-5 mt-5">
+        <h3 class="text-black-50 fw-bold text-decoration-underline mb-4">
+          Testimonials
+        </h3>
+        <section>
+          {% for testim in testimonial %}
+          <div class="row text-center">
+            <i class="fa fa-comments text-warning"></i>
+          </div>
+          <hr />
+          <div class="row text-center">
+            <h5 class="mb-2">{{ testim.name }}</h5>
+            <h6 class="mb-3 text-black-50">{{ testim.address }}</h6>
+
+            <div class="px-xl-3">
+              <i class="fa fa-quote-left pe-2 text-black-50"></i>
+              <span>{{ testim.quote }} </span>
+            </div>
+            <div class="px-xl-3">
+              <i class="fa fa-star mx-auto mb-3 text-warning"></i>
+              <span>{{ testim.rate }}/5 </span>
+            </div>
+          </div>
+          <hr />
+
+          {% endfor %}
+        </section>
+      </div>
+      <!-- end testimonials -->
+    </div>
+    <!-- end 2nd col-->
+  </div>
+</div>
+{% endblock %}

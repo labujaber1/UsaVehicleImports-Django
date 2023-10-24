@@ -1,11 +1,13 @@
 
 
+from django.http import Http404
+from django.urls import reverse
 from django.views import View
 import requests
-from django.shortcuts import render, redirect
-from .models import Vehicle, Images, Post, Testimonials, BusinessDetails
+from django.shortcuts import get_object_or_404, render, redirect
+from .models import Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
-from .forms import ContactForm
+from .forms import ContactForm,CommentForm,LikeForm
 from django.views.generic import ListView
 
 # Create your views here.
@@ -34,15 +36,18 @@ class Gallery(ListView):
     
     
 class News(ListView):
-    model = Post
+    model = Comment
     template_name = "News.html"
     context_object_name = "context"
     
     def get_context_data(self, **kwargs):
         context = super(News, self).get_context_data(**kwargs)
         context['data'] = BusinessDetails.objects.all()
-        context['post'] = Post.objects.all()
+        queryset = Post.objects.all()
+        #queryset = queryset.filter(comments__active=False)
+        context['post'] = queryset
         context['testimonial'] = Testimonials.objects.all()[3:]
+        context['comment_form'] = CommentForm()
         return context
     
 class FooterListView(ListView):
@@ -64,53 +69,45 @@ class SuccessView(View):
         return render(request, "Success.html")
 
 
-
+#djangocentral
+class PostDetailView(View):
+    template_name = 'includes/commentsForm.html'
+    
+    def get(self, request,id):
+        post = get_object_or_404(Post,id=id)
+        comment_form = CommentForm()
+        context = {'comment_form':comment_form,'post':post}
+        return render(request, 'News.html', context)
+    
+    def post(self,request,id):
+        post = get_object_or_404(Post,id=id)
+        #comments = post.comments.filter(active=False)
+        new_comment = None    # Comment posted
+        comment_form = CommentForm(data=request.POST)
+        
+        if comment_form.is_valid():
+            # Create Comment object, don't save to db
+            new_comment = comment_form.save(commit=False)
+            # Assign current post to comment
+            new_comment.post = post
+            # Save comment to db
+            new_comment.save()
+            messages.success(
+                        request, 'A new comment was successfully made by a user')
+            return redirect('/News/')
+          
+        else:
+            comment_form = CommentForm()
+        context = {'post': post,'new_comment': new_comment,'comment_form': comment_form}
+        return render(request, self.template_name, context )   
+    
+    
 # function based views
-""" def home(request):
-    try:
-        # first 3 testimonials so the rest is in news and not repeated
-        testimonial = Testimonials.objects.all()[:3]
-    except Testimonials.DoesNotExist:
-        raise Http404(
-            "Sorry no testimonials found, I know not why but only what is!")
-
-    return render(request, 'Home.html', {'testimonial': testimonial}) """
-
-
-""" def services(request):
-
-    return render(request, 'Services.html') """
-
-# dynamically create each vehicle item in the db to pass and then display in a card
-
-
-""" def gallery(request):
-    try:
-        vehicle_images = Images.objects.all()
-        vehicles = Vehicle.objects.all()
-    except Vehicle.DoesNotExist:
-        raise Http404("Sorry vehicle not found")
-    return render(request, 'Gallery.html', {'vehicle_images': vehicle_images, 'vehicle': vehicles})
- """
-
-""" def news(request):
-    try:
-        post = Post.objects.all()
-        data = BusinessDetails.objects.all()
-        # ignore first 3 as they are displayed on home page
-        testimonial = Testimonials.objects.all()[3:]
-    except Post.DoesNotExist:
-        raise Http404(
-            "Sorry no posts or testimonials found, I know not why but only what is!")
-    context = {}
-    context = {'post': post, 'testimonial': testimonial, 'data': data}
-    # return render(request, 'News.html', {'post': post, 'testimonial': testimonial,'data':data})
-    return render(request, 'News.html', context)
- """
-
 # display form or receive contact form data, clean fields, send as email, save to db
 
+#serializers
 
+    
 def contactFormView(request):
     if request.method == "GET":
         form = ContactForm()
@@ -138,7 +135,6 @@ def contactFormView(request):
             try:
                 response = requests.post(url, data=payload)
                 print("Send mail response: ", response)
-                # Raise an exception for 4xx or 5xx status codes
                 response.raise_for_status()
                 status_code = response.status_code
                 if status_code == 200:
@@ -161,19 +157,7 @@ def contactFormView(request):
     return render(request, 'ContactForm.html', context)
 
 
-""" def successView(request):
-
-    return render(request, "Success.html") """
-
-
-""" def footerData(request):
-    try:
-        data = BusinessDetails.objects.all()
-    except BusinessDetails.DoesNotExist:
-        raise Http404(
-            "Sorry no business data found, I know not why but only what is!")
-    context = {}
-    context = {'data': data}
-
-    return render(request, 'Footer.html', context) """
+                                           
+                                           
+                                           
 

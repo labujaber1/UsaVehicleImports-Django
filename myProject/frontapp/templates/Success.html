@@ -1,34 +1,32 @@
-<html>
-  <!-- prettier-ignore -->
-  {% extends "Base.html" %}{% block title %}Email Success Page{% endblock title %}
+<!-- prettier-ignore -->
+{% extends "Base.html" %}{% block title %}Email Success Page{% endblock title %}
   {% block content %}{% load static %}
 
-  <div class="container">
-    <a href="/" class="fa fa-arrow-circle-o-left fa-2 text-decoration-none pt-2"
-      >Back home</a
-    >
-    <div class="container-fluid">
-      <div class="flex-lg-row mx-auto" style="max-width: 280px">
-        <img
-          class="card-img-top p-3"
-          src="{% static 'images/other/background-envelope.jpg' %}"
-        />
+<div class="container">
+  <a href="/" class="fa fa-arrow-circle-o-left fa-2 text-decoration-none pt-2"
+    >Back home</a
+  >
+  <div class="container-fluid">
+    <div class="flex-lg-row mx-auto" style="max-width: 280px">
+      <img
+        class="card-img-top p-3"
+        src="{% static 'images/other/background-envelope.jpg' %}"
+      />
 
-        <div class="card-body text-center">
-          <h2 class="card-title">Email sent successfully</h2>
-          <p class="card-text text-black-50">
-            Many thanks for your email we will get back to you as soon as
-            possible.
-          </p>
-        </div>
-        <div class="card-img-bottom mb-0">
-          <img
-            class="img-fluid"
-            src="{% static 'images/other/thank-you.jpg' %}"
-          />
-        </div>
+      <div class="card-body text-center">
+        <h2 class="card-title">Email sent successfully</h2>
+        <p class="card-text text-black-50">
+          Many thanks for your email we will get back to you as soon as
+          possible.
+        </p>
+      </div>
+      <div class="card-img-bottom mb-0">
+        <img
+          class="img-fluid"
+          src="{% static 'images/other/thank-you.jpg' %}"
+        />
       </div>
     </div>
   </div>
-  {% endblock %}
-</html>
+</div>
+{% endblock %}

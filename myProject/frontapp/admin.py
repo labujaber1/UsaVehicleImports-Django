@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BusinessDetails, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+from .models import BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
 #from .models import *
 from  django.contrib.auth.models  import  Group
 # Register your models here.
@@ -12,6 +12,7 @@ class ImageAdmin(admin.StackedInline):
     model = Images
     extra = 0
     max_num = 10
+
 
 
 @admin.register(Vehicle)
@@ -51,10 +52,10 @@ class GeneralEnquiryAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    title = ['title','author','body','image_url','image_upload','video','created']
+    fields = [('title','author'),'body_taster','body','image_url','image_upload','video','likes']
     search_fields = ['title','author','image_upload','video','created']
     list_filter = ['created']
-    list_display = ['title','created']
+    list_display = ['title','body_taster','created','likes']
     class Meta:
         model = Post
   
@@ -68,13 +69,26 @@ class TestimonialsAdmin(admin.ModelAdmin):
         model = Testimonials
 
 
-        
+class CommentAdmin(admin.ModelAdmin):
+    fields = [('name','active'),'body']
+    list_display = ('name', 'body', 'post', 'created_on', 'active')
+    list_filter = ('post','active', 'created_on')
+    search_fields = ('name', 'body')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(active=True)
+                
 admin.site.register(GeneralEnquiry,GeneralEnquiryAdmin)
 admin.site.register(Post,PostAdmin)
 admin.site.register(Testimonials,TestimonialsAdmin)
+admin.site.register(Comment,CommentAdmin)
 @admin.register(BusinessDetails)
 
 class BusinessDetailsAdmin(admin.ModelAdmin):
     list_display = ['business_name','image_tag']
     class Meta:
         model = BusinessDetails
+        
+    
+

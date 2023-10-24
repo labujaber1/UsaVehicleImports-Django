@@ -16,11 +16,13 @@ urlpatterns = [
     path('Services/', views.ServicesView.as_view(), name="Services"),
     path('Gallery/', views.Gallery.as_view(), name="Gallery"),
     path('News/', views.News.as_view(), name="News"),
-    # def
-    path('includes/contactForm/', views.contactFormView, name="ContactForm"),
-    # class
-    path('includes/footer/', views.FooterListView.as_view(), name="FooterData"),
-
     path('Success/', views.SuccessView.as_view(), name="Success"),
+    
+    path('includes/contactForm/', views.contactFormView, name="ContactForm"),
+    path('includes/footer/', views.FooterListView.as_view(), name="FooterData"),
+    #path('includes/inventoryEnquiryForm.html/<int:pk>/', views.inventoryEnquiryFormView, name="InventoryEnquiryForm"),
+    
+    path('includes/commentsForm/<uuid:id>', views.PostDetailView.as_view(), name="PostDetail"),
+    
 
-]
+]   

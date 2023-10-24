@@ -1,85 +1,84 @@
-<html>
-  {% load static %} {% for data in data %}
-  <!-- Nav links to the right of logo, logo smaller-->
-  <nav
-    class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg"
-    method="GET"
-  >
-    <div class="container-md w-50 p-0">
-      <a class="navbar-brand m-0" href="/">
-        <img
-          class="img-fluid"
-          src="{{ data.business_logo.url }}"
-          width="300"
-          alt="USA Vehicle Imports logo"
-        />
-      </a>
-    </div>
+<!--included in base.html-->
+{% load static %} {% for data in data %}
+<!-- Nav links to the right of logo, logo smaller-->
+<nav
+  class="navbar navbar-expand-lg sticky-top p-2 bg-white shadow-lg"
+  method="GET"
+>
+  <div class="container-md w-50 p-0">
+    <a class="navbar-brand m-0" href="/">
+      <img
+        class="img-fluid"
+        src="{{ data.business_logo.url }}"
+        width="300"
+        alt="USA Vehicle Imports logo"
+      />
+    </a>
+  </div>
 
-    <div class="d-flex align-items-center">
-      <button
-        class="navbar-toggler m-3"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="ToggleNavigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div class="d-flex align-items-center">
+    <button
+      class="navbar-toggler m-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="ToggleNavigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="navbar-collapse collapse" id="navbarNav">
-        <!-- COLLAPSABLE -->
-        <ul class="nav navbar-nav align-items-center">
-          <li>
-            <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}"
-              ><i class="fa fa-home fa-2x"></i>
-            </a>
-          </li>
-          <li>
-            <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
-              >Gallery</a
-            >
-          </li>
-          <li>
-            <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
-              >Our News</a
-            >
-          </li>
-          <li>
-            <a class="nav-item nav-link" href="#contactUs">Contact us</a>
-          </li>
-          <li>
-            <a
-              class="nav-item nav-link"
-              target="_blank"
-              style="color: coral"
-              title="Facebook"
-              href="{{ data.facebook }}"
-            >
-              <i class="fa fa-facebook-square fa-2x"></i
-            ></a>
-          </li>
-          <li>
-            <a
-              class="nav-item nav-link"
-              target="_blank"
-              style="color: coral"
-              title="Instagram"
-              href="{{ data.instagram }}"
-            >
-              <i class="fa fa-instagram fa-2x"></i
-            ></a>
-          </li>
-        </ul>
-      </div>
-      {% endfor %}
+    <div class="navbar-collapse collapse" id="navbarNav">
+      <!-- COLLAPSABLE -->
+      <ul class="nav navbar-nav align-items-center">
+        <li>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}"
+            ><i class="fa fa-home fa-2x"></i>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
+            >Gallery</a
+          >
+        </li>
+        <li>
+          <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
+            >Our News</a
+          >
+        </li>
+        <li>
+          <a class="nav-item nav-link" href="#contactUs">Contact us</a>
+        </li>
+        <li>
+          <a
+            class="nav-item nav-link"
+            target="_blank"
+            style="color: coral"
+            title="Facebook"
+            href="{{ data.facebook }}"
+          >
+            <i class="fa fa-facebook-square fa-2x"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            class="nav-item nav-link"
+            target="_blank"
+            style="color: coral"
+            title="Instagram"
+            href="{{ data.instagram }}"
+          >
+            <i class="fa fa-instagram fa-2x"></i
+          ></a>
+        </li>
+      </ul>
     </div>
-  </nav>
-</html>
+    {% endfor %}
+  </div>
+</nav>
