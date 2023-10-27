@@ -111,7 +111,6 @@ class Post(models.Model):
     class  Meta:  
         verbose_name_plural  =  "Posts"
     
-    
     def __str__(self):
         return self.title
 
@@ -134,6 +133,7 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=False)
+    reply = models.CharField(max_length=200,blank=True)
 
     class Meta:
         ordering = ['created_on']

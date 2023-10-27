@@ -1,14 +1,13 @@
 
+from django.urls import reverse, reverse_lazy
 
-from django.http import Http404
-from django.urls import reverse
-from django.views import View
+
 import requests
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
-from .forms import ContactForm,CommentForm,LikeForm
-from django.views.generic import ListView
+from .forms import ContactForm, CommentForm, LikeForm
+from django.views.generic import ListView,View
 
 # Create your views here.
 
@@ -70,36 +69,42 @@ class SuccessView(View):
 
 
 #djangocentral
-class PostDetailView(View):
-    template_name = 'includes/commentsForm.html'
+class CommentOnPostView(View):
     
     def get(self, request,id):
-        post = get_object_or_404(Post,id=id)
+        post_obj = get_object_or_404(Post,id=id)
         comment_form = CommentForm()
-        context = {'comment_form':comment_form,'post':post}
-        return render(request, 'News.html', context)
+        context = {'comment_form':comment_form,'post_obj':post_obj}
+        return render(request, 'includes/commentsForm.html', context)
     
     def post(self,request,id):
-        post = get_object_or_404(Post,id=id)
-        #comments = post.comments.filter(active=False)
+        template = f''
+        post_obj = get_object_or_404(Post,id=id)
+        
         new_comment = None    # Comment posted
         comment_form = CommentForm(data=request.POST)
         
         if comment_form.is_valid():
+            #comment_form = comment_form.cleaned_data
             # Create Comment object, don't save to db
             new_comment = comment_form.save(commit=False)
             # Assign current post to comment
-            new_comment.post = post
-            # Save comment to db
-            new_comment.save()
-            messages.success(
-                        request, 'A new comment was successfully made by a user')
-            return redirect('/News/')
-          
-        else:
-            comment_form = CommentForm()
-        context = {'post': post,'new_comment': new_comment,'comment_form': comment_form}
-        return render(request, self.template_name, context )   
+            new_comment.post = post_obj
+            try:
+                # Save comment to db
+                new_comment.save()
+                success_message = f"A new comment was successfully submitted for post {post_obj.title} and awaiting moderation."
+                messages.success(request, success_message)
+                return redirect('/News/#'+str(id))
+            except Exception as e:
+                messages.error(request, "Apologies but an error occurred submitting your comment. Please try again.") 
+                messages.error(request, str(e))
+        
+        # if not valid return to form      
+        comment_form = CommentForm()
+        context = {'post_obj': post_obj,'new_comment': new_comment,'comment_form': comment_form}
+        
+        return redirect('/News/#'+str(id) , context )   
     
     
 # function based views

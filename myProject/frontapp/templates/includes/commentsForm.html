@@ -10,7 +10,7 @@
 >
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-bg-success">
         <h5 class="modal-title" id="createCommentsFormLabel-{{ post.id }}">
           Leave a comment
         </h5>
@@ -22,16 +22,11 @@
         ></button>
       </div>
       <div class="modal-body">
-        {% if new_comment %}
-        <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
-        </div>
-        {% else %}
         <form
           id="commtForm"
           method="POST"
           style="margin-top: 1.3em"
-          action="{%  url 'frontapp:PostDetail' post.id %}"
+          action="{%  url 'frontapp:CommentOnPost' post.id %}"
         >
           {% csrf_token %} {{ comment_form|crispy }}
           <div class="modal-footer">
@@ -42,10 +37,16 @@
             >
               Close
             </button>
-            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
-        {% endif %}
+        <p class="bg-info-subtle p-2">
+          Note: Once submitted your comment will await moderation by the admin
+          team (not a robot!) before appearing. This is just a general
+          precautionary step and we appreciate your understanding. From all the
+          team here, we would like to thank you for taking the time to let us
+          know what you think.
+        </p>
       </div>
     </div>
   </div>

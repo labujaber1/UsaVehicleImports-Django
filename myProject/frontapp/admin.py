@@ -70,8 +70,8 @@ class TestimonialsAdmin(admin.ModelAdmin):
 
 
 class CommentAdmin(admin.ModelAdmin):
-    fields = [('name','active'),'body']
-    list_display = ('name', 'body', 'post', 'created_on', 'active')
+    fields = [('name','active'),'body','reply']
+    list_display = ('name', 'body', 'post', 'created_on', 'active','reply')
     list_filter = ('post','active', 'created_on')
     search_fields = ('name', 'body')
     actions = ['approve_comments']

@@ -3,6 +3,7 @@
 <!-- change to mb-4 my-auto for upwards show action, interesting! -->
 {% for post in post %}
 <div class="col mt-4 mb-auto">
+  <a id="{{ post.id }}"></a>
   <!--building a card-->
   <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 350px">
     <!-- header -->
@@ -57,15 +58,21 @@
       {% for comment in post.comments.all %} {% if comment.active == True %}
       <hr />
 
-      <div class="comments" style="padding: 10px">
-        <p class="font-weight-bold">
+      <div class="comments p-1">
+        <p class="font-weight-bold mb-0">
           {{ comment.name }}
           <span class="text-muted font-weight-normal">
             {{ comment.created_on }}
           </span>
         </p>
-        <q>{{ comment.body }}</q>
+        <p><q>{{ comment.body }}</q></p>
+        {% if comment.reply %}
+        <p class="px-3 text-black-50">
+          <em><u>Reply:</u> {{ comment.reply }}</em>
+        </p>
+        {% endif %}
       </div>
+
       {% endif %} {% endfor %}
     </div>
     <!--end content-->
@@ -98,7 +105,7 @@
               value="{{ post.id }} "
               class="btn p-1 hover-effect"
             >
-              <i class="fa fa-gratipay"></i> {{ comment_count }} Like
+              <i class="fa fa-gratipay"></i> {{ post.likes }} Like
             </button>
           </form>
         </div>
@@ -121,9 +128,12 @@
           >
             <i class="fa fa-comment-o"></i>{{ post.comments.count }} Comment
           </button>
-          <!--prettier-ignore-->
+
           {% include 'includes/commentsForm.html' %}
         </div>
+      </div>
+      <div class="row">
+        <!--prettier-ignore-->
       </div>
       <div class="row">
         <span
