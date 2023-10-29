@@ -97,7 +97,11 @@
       <div class="row row-sm-col-3">
         <div class="col">
           <!-- like option -->
-          <form method="POST" action="" input="hidden">
+          <form
+            method="POST"
+            action="{% url 'frontapp:LikePost' post.id %}"
+            input="hidden"
+          >
             {% csrf_token %}
             <button
               type="submit"
@@ -111,11 +115,10 @@
         </div>
         <div class="col">
           <!--copy url link option-->
-          <form method="POST" action="" input="hidden">
-            <button id="copy-url" class="btn p-1 hover-effect">
-              <i class="fa fa-copy"></i> Link
-            </button>
-          </form>
+
+          <button id="copy-url-{{post.id}}" class="btn p-1 hover-effect">
+            <i class="fa fa-copy"></i> Link
+          </button>
         </div>
         <div class="col">
           <!--comment option-->
@@ -126,7 +129,9 @@
             aria-expanded="false"
             aria-controls="createCommentsForm"
           >
-            <i class="fa fa-comment-o"></i>{{ post.comments.count }} Comment
+            <!--prettier-ignore-->
+            <i class="fa fa-comment-o"></i>
+            {{ post.comment_count_true }} Comment
           </button>
 
           {% include 'includes/commentsForm.html' %}

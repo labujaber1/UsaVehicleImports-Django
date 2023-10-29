@@ -5,16 +5,11 @@ document.querySelector('video').playbackRate = 0.35;
 
 //bootstrap5 toasts for alert messages
 // used with a button
-document.addEventListener("DOMContentLoaded", function(){
-    
+document.addEventListener("DOMContentLoaded", function(){ 
     var toast = document.getElementById("showToast");
-
     // Create toast instance
-    var myToast = new bootstrap.Toast(toast);
-
-    
+    var myToast = new bootstrap.Toast(toast);    
         myToast.show();
-    
 });
 
 // used after form submission
@@ -24,4 +19,14 @@ document.addEventListener("DOMContentLoaded", function(){
     myToast.show();
 }
 
-
+//copy to clipboard
+document.getElementById("copy-url").addEventListener("click", function() {
+    var url = window.location.href; // Get the current URL
+    navigator.clipboard.writeText(url).then(function() {
+      console.log("URL copied to clipboard!");
+      messages.success(request,"URL copied to clipboard!")
+    }, function(err) {
+      console.error("Failed to copy URL to clipboard:", err);
+      messages.error(request,"Failed to copy URL to clipboard:", err)
+    });
+  });

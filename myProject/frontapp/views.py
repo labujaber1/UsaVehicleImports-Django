@@ -41,13 +41,29 @@ class News(ListView):
     
     def get_context_data(self, **kwargs):
         context = super(News, self).get_context_data(**kwargs)
-        context['data'] = BusinessDetails.objects.all()
-        queryset = Post.objects.all()
-        #queryset = queryset.filter(comments__active=False)
-        context['post'] = queryset
+        context['data'] = BusinessDetails.objects.all()      
+        context['post'] = Post.objects.all()
         context['testimonial'] = Testimonials.objects.all()[3:]
         context['comment_form'] = CommentForm()
         return context
+    
+    def post(self,request,id):
+        post_obj = get_object_or_404(Post,id=id)
+        post_obj.likes += 1
+        # Assign current post to comment
+        try:
+            # Save comment to db
+            post_obj.save()
+            success_message = f"A like was given to the post {post_obj.title}."
+            messages.success(request, success_message)
+            return redirect('/News/#'+str(id),{'post_obj': post_obj})
+        except Exception as e:
+            messages.error(request, "Apologies but an error occurred liking the post. Please try again.") 
+            messages.error(request, str(e))
+        
+        context = {'post_obj': post_obj}
+        return redirect('/News/#'+str(id) , context )   
+        
     
 class FooterListView(ListView):
     model = BusinessDetails
@@ -68,8 +84,8 @@ class SuccessView(View):
         return render(request, "Success.html")
 
 
-#djangocentral
-class CommentOnPostView(View):
+#django central
+class CommentOnPostView(ListView):
     
     def get(self, request,id):
         post_obj = get_object_or_404(Post,id=id)
@@ -78,10 +94,8 @@ class CommentOnPostView(View):
         return render(request, 'includes/commentsForm.html', context)
     
     def post(self,request,id):
-        template = f''
         post_obj = get_object_or_404(Post,id=id)
-        
-        new_comment = None    # Comment posted
+        new_comment = None   
         comment_form = CommentForm(data=request.POST)
         
         if comment_form.is_valid():

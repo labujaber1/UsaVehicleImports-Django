@@ -113,6 +113,11 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+    
+    @property
+    def comment_count_true(self):
+        comment_count = self.comments.filter(active=True).count()
+        return comment_count
 
 
 class Testimonials(models.Model):
@@ -141,4 +146,6 @@ class Comment(models.Model):
     
     def __str__(self):
         return 'Comment {} status {}'.format(self.name, self.active)
+    
+    
     
