@@ -5,7 +5,7 @@
 <div class="col mt-4 mb-auto">
   <a id="{{ post.id }}"></a>
   <!--building a card-->
-  <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 350px">
+  <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 380px">
     <!-- header -->
     <div class="card-header bg-primary text-white rounded-0">
       <h2 class="card-title">{{ post.title }}</h2>
@@ -68,7 +68,7 @@
         <p><q>{{ comment.body }}</q></p>
         {% if comment.reply %}
         <p class="px-3 text-black-50">
-          <em><u>Reply:</u> {{ comment.reply }}</em>
+          <em><u>Reply:</u><q>{{ comment.reply }}</q></em>
         </p>
         {% endif %}
       </div>
@@ -94,8 +94,8 @@
       <!--Social media - like,comment,copy link options as buttons-->
       <hr />
 
-      <div class="row row-sm-col-3">
-        <div class="col">
+      <div class="row row-sm-col-2">
+        <div class="col d-flex justify-content-center">
           <!-- like option -->
           <form
             method="POST"
@@ -108,30 +108,45 @@
               name="post_id"
               value="{{ post.id }} "
               class="btn p-1 hover-effect"
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title="Like"
             >
-              <i class="fa fa-gratipay"></i> {{ post.likes }} Like
+              <i class="fa fa-gratipay"></i>
+              <span class="badge bg-info">{{ post.likes }}</span> Likes
             </button>
           </form>
         </div>
-        <div class="col">
+        <!--<div class="col text-center">
           <!--copy url link option-->
-
-          <button id="copy-url-{{post.id}}" class="btn p-1 hover-effect">
+        <!--{% include 'includes/messages.html' %}
+          <button
+            id="copy-url"
+            class="btn p-1 hover-effect"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Copy URL"
+          >
             <i class="fa fa-copy"></i> Link
           </button>
-        </div>
-        <div class="col">
+        </div>-->
+        <div class="col d-flex justify-content-center">
           <!--comment option-->
+
           <button
             class="btn m-0 p-1 hover-effect"
+            title="Leave a comment"
             data-bs-toggle="modal"
             data-bs-target="#createCommentsForm-{{ post.id }}"
             aria-expanded="false"
             aria-controls="createCommentsForm"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
           >
             <!--prettier-ignore-->
             <i class="fa fa-comment-o"></i>
-            {{ post.comment_count_true }} Comment
+            <span class="badge bg-info">{{ post.comment_count_true }}</span>
+            Comments
           </button>
 
           {% include 'includes/commentsForm.html' %}

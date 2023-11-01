@@ -2,11 +2,15 @@
 {% extends "Base.html" %}{% block title %}Services Page{% endblock title %}
 {% block content %} {% load static %}
 
-<div class="container-fluid bg-dark-subtle text-center">
+<div class="container-fluid bg-dark-subtle text-center fade-in pb-3">
   <div class="row row-cols-1 row-cols-md-2">
     <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
       <div class="text-center">
-        <h1>IMPORTING</h1>
+        <h1>
+          IMPORTING<span class="badge"
+            ><i class="fa fa-code-fork" aria-hidden="true"></i
+          ></span>
+        </h1>
 
         <p>Importing Vehicles from the USA</p>
         <p>
@@ -47,7 +51,11 @@
 
     <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
       <div class="text-center">
-        <h1>SOURCING</h1>
+        <h1>
+          SOURCING<span class="badge"
+            ><i class="fa fa-lightbulb-o" aria-hidden="true"></i
+          ></span>
+        </h1>
 
         <p>Sourcing vehicles in the USA</p>
         <p>
@@ -90,7 +98,11 @@
   <div class="row justify-content-center">
     <div class="col mb-5">
       <div class="text-center">
-        <h1>TRANSPORTATION</h1>
+        <h1>
+          TRANSPORTATION<span class="badge"
+            ><i class="fa fa-envelope" aria-hidden="true"></i
+          ></span>
+        </h1>
 
         <p>
           We can cater for all your vehicle movements up to 1500 kg Nationwide.
@@ -110,6 +122,7 @@
           door service without personal contact and have masks and gloves (PPE)
           available at all times.
         </p>
+        <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
         <div class="row row-cols-1 row-cols-md-4 bg-transparent g-2">
           <img
             class="img-thumbnail bg-transparent p-0"
@@ -139,9 +152,23 @@
           alt="USA Vehicle Imports logo"
         />
       </div>
-      <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
     </div>
   </div>
+
+  {% if faqs %}
+  <!--FAQ-->
+  <div class="container">
+    <h1>FAQs</h1>
+    {% include 'includes/faqs.html' %}
+
+    <p class="text-black-50 mt-2" style="font-size: 0.8rem">
+      <em>
+        # If there are any questions you have that we have not answered, please
+        feel free to get in touch using the form below.
+      </em>
+    </p>
+  </div>
+  {% endif %}
 </div>
 
 {% endblock content %}

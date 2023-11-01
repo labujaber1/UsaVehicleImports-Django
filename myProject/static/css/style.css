@@ -1,10 +1,4 @@
 /* home page */
-
-@keyframes fadeIn { 
-    from { opacity: 0; } 
-  }
-
-  
 .bg-danger-subtler {
     background: linear-gradient(
         rgb(174, 189, 239),
@@ -14,18 +8,35 @@
 
 .bg-usa-red {
     background: #e11717;
-    
 }
+
 
 /* news post cards */
 .box-shadow-dark {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);      
 }
-/* not working/having an effect */
-/* and keyframe */ 
-.video {
-    animation: fadeIn 1s ease-in-out;
-    -webkit-animation: fadeIn 1s ease-in-out;
+
+.fade-in {
+    animation-name: fade-in-slow;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in-slow{
+    from{opacity: 0.6;}
+    to{opacity: 1;}
+}
+
+.fade-in-long {
+    animation-name: fade-in-long;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes fade-in-long {
+    0%{opacity:0.3}
+    50%{opacity:0.6}
+    100%{opacity: 1;}
 }
 
 .img, .iframe {

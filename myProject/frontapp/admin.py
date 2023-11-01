@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+from .models import Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
 #from .models import *
 from  django.contrib.auth.models  import  Group
 # Register your models here.
@@ -56,6 +56,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title','author','image_upload','video','created']
     list_filter = ['created']
     list_display = ['title','body_taster','created','likes']
+    readonly_fields=['likes']
     class Meta:
         model = Post
   
@@ -90,5 +91,9 @@ class BusinessDetailsAdmin(admin.ModelAdmin):
     class Meta:
         model = BusinessDetails
         
-    
+@admin.register(Faqs)
+class FaqsAdmin(admin.ModelAdmin):
+    list_display = ['category','question','answer']
+    class Meta:
+        model = Faqs 
 

@@ -90,11 +90,11 @@ TEMPLATES = [
 ]
 
 MESSAGE_TAGS = {
-        messages.DEBUG: 'alert-secondary',
-        messages.INFO: 'alert-info',
-        messages.SUCCESS: 'alert-success',
-        messages.WARNING: 'alert-warning',
-        messages.ERROR: 'alert-danger',
+        messages.DEBUG: 'text-bg-secondary',
+        messages.INFO: 'text-bg-info',
+        messages.SUCCESS: 'text-bg-success',
+        messages.WARNING: 'text-bg-warning',
+        messages.ERROR: 'text-bg-danger',
 }
 
 WSGI_APPLICATION = 'MyProject.wsgi.application'

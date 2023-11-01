@@ -4,7 +4,7 @@ from django.urls import reverse, reverse_lazy
 
 import requests
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
+from .models import Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
 from .forms import ContactForm, CommentForm, LikeForm
 from django.views.generic import ListView,View
@@ -49,11 +49,18 @@ class News(ListView):
     
     def post(self,request,id):
         post_obj = get_object_or_404(Post,id=id)
+        # check if already liked using session log
+        if str(id) in request.session.get('liked_posts', []):
+            warning_message = f"You have already liked the {post_obj.title} post."
+            messages.warning(request, warning_message)
+            return redirect('/News/#'+str(id),{'post_obj': post_obj})
         post_obj.likes += 1
         # Assign current post to comment
         try:
             # Save comment to db
             post_obj.save()
+            request.session.setdefault('liked_posts', []).append(str(id))
+            request.session.modified = True
             success_message = f"A like was given to the post {post_obj.title}."
             messages.success(request, success_message)
             return redirect('/News/#'+str(id),{'post_obj': post_obj})
@@ -75,9 +82,16 @@ class FooterListView(ListView):
         context['data'] = BusinessDetails.objects.all()
         return context
 
-class ServicesView(View):
-    def get(self,request):
-        return render(request, 'Services.html')
+class ServicesView(ListView):
+    model = Faqs
+    template_name = "Services.html"
+    context_object_name = "context"
+    
+    def get_context_data(self,**kwargs):
+        context = super(ServicesView, self).get_context_data(**kwargs)
+        context['faqs'] = Faqs.objects.all()      
+        #context['services-content'] = ServicesContent.objects.all()
+        return context
     
 class SuccessView(View):
     def get(self,request):

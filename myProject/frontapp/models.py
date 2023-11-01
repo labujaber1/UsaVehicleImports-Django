@@ -119,7 +119,21 @@ class Post(models.Model):
         comment_count = self.comments.filter(active=True).count()
         return comment_count
 
+class Comment(models.Model):
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    name = models.CharField(max_length=100)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+    reply = models.CharField(max_length=200,blank=True)
 
+    class Meta:
+        ordering = ['created_on']
+        
+    def __str__(self):
+        return 'Comment {} status {}'.format(self.name, self.active)
+    
+    
 class Testimonials(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
@@ -132,20 +146,17 @@ class Testimonials(models.Model):
         return self.name
 
 
-class Comment(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
-    name = models.CharField(max_length=100)
-    body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=False)
-    reply = models.CharField(max_length=200,blank=True)
 
-    class Meta:
-        ordering = ['created_on']
-        
+class Faqs(models.Model):
+    CATEGORY_CHOICES=[('Importing', 'Importing'), ('Sourcing', 'Sourcing'),('Transportation','Transportation'),('Registration','Registration'),('Car-Sales','Car-sales'),('Other','Other')]
+    category = models.CharField(
+        max_length=50, choices=CATEGORY_CHOICES,blank=True)
+    question = models.CharField(
+        max_length=250,blank=True)
+    answer = models.TextField()
     
+    class  Meta:  
+        verbose_name_plural  =  "FAQs"
     def __str__(self):
-        return 'Comment {} status {}'.format(self.name, self.active)
-    
-    
+        return self.category  
     

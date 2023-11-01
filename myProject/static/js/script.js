@@ -20,13 +20,14 @@ document.addEventListener("DOMContentLoaded", function(){
 }
 
 //copy to clipboard
+
 document.getElementById("copy-url").addEventListener("click", function() {
     var url = window.location.href; // Get the current URL
     navigator.clipboard.writeText(url).then(function() {
       console.log("URL copied to clipboard!");
-      messages.success(request,"URL copied to clipboard!")
+      alert("URL copied to clipboard");
     }, function(err) {
       console.error("Failed to copy URL to clipboard:", err);
-      messages.error(request,"Failed to copy URL to clipboard:", err)
+      alert("Try again\nInitially failed to copy URL to clipboard:",err);
     });
   });

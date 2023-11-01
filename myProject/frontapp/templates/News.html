@@ -1,9 +1,25 @@
 <!-- prettier-ignore -->
 {% extends "Base.html" %} {% block title %}News Page{% endblock title %}
 {% block content %} {% load static %}
-<div class="container-fluid">
+
+<div class="container-fluid bg-dark-subtle">
   <div class="text">
-    <div class="d-inline-block opacity-75 p-5 text-center">
+    <video
+      id="bg-news-image"
+      preload="auto"
+      playsinline
+      autoplay
+      loop
+      muted
+      class="position-absolute end-0 bottom-0 h-auto w-auto object-fit-cover fade-in-long z-0 bg-lilac-subtle"
+    >
+      <source
+        src="../media/video/forest.mp4"
+        poster="{% static 'images/other/bg-forest.jpg' %} "
+        type="video/mp4"
+      />
+    </video>
+    <div class="d-inline-block p-5 opacity-75 z-1 text-center">
       <br /><br /><br /><br /><br /><br /><br />
       <h1 class="text-bg-light mb-0 p-2 p-sm-4 rounded-top-3">
         What's been happening...
@@ -12,29 +28,20 @@
         Posting news, events, and generally what we've been up to.
       </p>
     </div>
-    <video
-      id="bg-news-image"
-      autoplay
-      muted
-      loop
-      class="position-absolute end-0 bottom-0 h-auto w-auto z-n1"
-    >
-      <source src="../media/video/forest.mp4" type="video/mp4" />
-    </video>
   </div>
   <br />
   <!--<div class="container-fluid bg-warning p-1">-->
-  <div class="row p-1">
+  <div class="row p-1 z-1">
     <!-- 1st col for posts in cards incl images and videos -->
     <div class="col-12 col-sm-8">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+      <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3">
         {% include 'includes/postCard.html' %}
       </div>
     </div>
     <!-- 1st col end -->
 
     <!-- 2nd col for where we are, map, and testimonials -->
-    <div class="col-12 col-sm-4 bg-light rounded-2 mt-4">
+    <div class="col-12 col-sm-4 bg-light rounded-2 mt-4 z-1">
       <div class="row mb-5">
         <h3 class="text-black-50 fw-bold">Where we are</h3>
         {% for data in data %}
@@ -58,11 +65,14 @@
       </div>
       <hr />
       <div class="text">
-        <h3 class="text-black-50 fw-bold text-decoration-underline mb-4">
-          Message board
-        </h3>
-        <!--message toast-->
         {% include 'includes/messages.html' %}
+        <h3 class="text-black-50 fw-bold mb-4">Most recent message</h3>
+        <ul>
+          {% for mes in messages %}
+          <li>{{ mes }}</li>
+          {% endfor %}
+        </ul>
+        <!--message toast-->
       </div>
       <hr />
       <br />
