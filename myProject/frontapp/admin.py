@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
-#from .models import *
 from  django.contrib.auth.models  import  Group
 # Register your models here.
 
@@ -13,20 +12,18 @@ class ImageAdmin(admin.StackedInline):
     extra = 0
     max_num = 10
 
-
-
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
+    fields = [('name','type'),('availability','price'),('description','video')]
     inlines = [ImageAdmin]
     list_display = ['name','availability','date_uploaded']
     class Meta:
         model = Vehicle
 
-
 @admin.register(Images)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['filename']
-    readonly_fields = ('display_default_image',)
+    
 
     def display_default_image(self, obj):
         default_image_obj = Images.objects.filter(
@@ -84,8 +81,8 @@ admin.site.register(GeneralEnquiry,GeneralEnquiryAdmin)
 admin.site.register(Post,PostAdmin)
 admin.site.register(Testimonials,TestimonialsAdmin)
 admin.site.register(Comment,CommentAdmin)
-@admin.register(BusinessDetails)
 
+@admin.register(BusinessDetails)
 class BusinessDetailsAdmin(admin.ModelAdmin):
     list_display = ['business_name','image_tag']
     class Meta:
