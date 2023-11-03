@@ -2,7 +2,7 @@
 from .models import BusinessDetails
 from .forms import ContactForm
 import requests
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.contrib import messages
 from .forms import ContactForm
 
