@@ -1,8 +1,10 @@
 
 // slow down video play in news.html header
-document.querySelector('video').defaultPlaybackRate = 1.0;
-document.querySelector('video').playbackRate = 0.35;
-
+const video = document.querySelector('video');
+if (video) {
+  video.defaultPlaybackRate = 1.0;
+  video.playbackRate = 0.35;
+}
 //bootstrap5 toasts for alert messages
 // used with a button
 document.addEventListener("DOMContentLoaded", function(){ 
@@ -21,13 +23,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //copy to clipboard
 
-document.getElementById("copy-url").addEventListener("click", function() {
+const copyUrlElement = document.getElementById("copy-url");
+if (copyUrlElement) {
+  copyUrlElement.addEventListener("click", function() {
     var url = window.location.href; // Get the current URL
     navigator.clipboard.writeText(url).then(function() {
       console.log("URL copied to clipboard!");
       alert("URL copied to clipboard");
     }, function(err) {
       console.error("Failed to copy URL to clipboard:", err);
-      alert("Try again\nInitially failed to copy URL to clipboard:",err);
+      alert("Try again\nInitially failed to copy URL to clipboard:", err);
     });
   });
+}

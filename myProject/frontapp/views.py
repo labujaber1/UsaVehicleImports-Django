@@ -4,7 +4,7 @@ from django.urls import reverse, reverse_lazy
 
 import requests
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
+from .models import PreviousExamplesImages,Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
 from .forms import ContactForm, CommentForm, LikeForm
 from django.views.generic import ListView,View
@@ -31,6 +31,7 @@ class Gallery(ListView):
         context = super(Gallery, self).get_context_data(**kwargs)
         context['vehicle_images'] = Images.objects.all()
         context['vehicle'] = Vehicle.objects.all()
+        context['peImages'] = PreviousExamplesImages.objects.all()
         return context
     
     

@@ -81,6 +81,9 @@ class GeneralEnquiry(models.Model):
     subject = models.CharField(max_length=50, blank=True)
     enquiry = models.TextField(max_length=500)
     enquiry_date = models.DateTimeField(auto_now_add=True)
+    replied = models.BooleanField(default=False)
+    replied_date = models.DateTimeField(blank=True,null=True)
+    
     class  Meta:  
         verbose_name_plural  =  "General Enquiries"
     def __str__(self):
@@ -159,6 +162,24 @@ class Faqs(models.Model):
         verbose_name_plural  =  "FAQs"
     def __str__(self):
         return self.category  
+
+
+# gallery previous stock images
+class PreviousExamplesImages(models.Model):
+    images = models.ImageField(
+        default=default_image, upload_to='images/gallery/', height_field=0,
+        width_field=0)
+    filename = models.CharField(
+        max_length=100, null=True, blank=True, default='default.jpg')
+    vehicleInfo = models.CharField(
+        max_length=100, null=True, blank=True)
+    
+    class  Meta:  
+        verbose_name_plural  =  "PreviousExamplesImages"
+    def __str__(self):
+        return self.images.url
+
+
 
 #title used to identify div element id where if <title> state used in for loop
 #heading <h1>

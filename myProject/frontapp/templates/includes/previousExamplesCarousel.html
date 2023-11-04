@@ -1,0 +1,56 @@
+<!-- Fixed gallery carousel of cars non-dynamic-->
+
+<div
+  class="container-fluid p-2 carousel-background rounded-3 shadow"
+  style="max-width: 600px"
+>
+  <!-- Gallery loaded and unloaded example cars -->
+  <div
+    id="carouselCaption"
+    class="carousel slide rounded-3"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      {% for item in peImages %}
+      <button
+        type="button"
+        data-bs-target="#carouselCaption"
+        data-bs-slide-to="{{ forloop.counter0 }}"
+        class="{% if forloop.first %}active{% endif %}"
+        aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+        aria-label="Slide {{ forloop.counter }}"
+      ></button>
+      {% endfor %}
+    </div>
+    <!-- Carousel Slides -->
+    <div class="carousel-inner rounded-3">
+      {% for item in peImages %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ item.images.url }}" class="d-block w-100" alt="..." />
+        <div class="carousel-caption rounded-pill text-bg-dark opacity-50 pt-0">
+          {{ item.vehicleInfo }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselCaption"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselCaption"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

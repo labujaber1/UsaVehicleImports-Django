@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "debug_toolbar",
     "admin_honeypot",
+    "admin_reorder",
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -67,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 ROOT_URLCONF = 'MyProject.urls'
@@ -128,6 +130,44 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+ADMIN_REORDER = (
+    'sites',
+    {'app': 'auth', 'label': 'Authentication and Authorisation'},
+    {'app': 'admin_honeypot', 'label': 'Admin Honeypot'},
+    {'app': 'admin_interface', 'label': 'Admin Interface'},
+    {
+        'app':'frontapp',
+        'label':'SiteContent',
+        'models':(
+            
+            'frontapp.BusinessDetails',
+            'frontapp.Testimonials',
+            'frontapp.Faqs',
+        )
+    },
+    {
+        'app':'frontapp',
+        'label':'SiteNews',
+        'models':(
+            'frontapp.Post',
+            'frontapp.Comment',
+            'frontapp.GeneralEnquiry',
+            
+        )
+    },
+    {
+        'app':'frontapp',
+        'label':'SiteInventory',
+        'models':(
+            'frontapp.Vehicle',
+            'frontapp.Images',
+            'frontapp.PreviousExamplesImages',
+        )
+    }
+) 
+
+
 
 # Login to admin
 LOGOUT_REDIRECT_URL = '/'

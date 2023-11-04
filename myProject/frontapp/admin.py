@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+from .models import PreviousExamplesImages,Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
 from  django.contrib.auth.models  import  Group
 # Register your models here.
 
@@ -39,10 +39,10 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 class GeneralEnquiryAdmin(admin.ModelAdmin):
-    title = ['subject','name','phone_number','email','enquiry','enquiry_date']
-    search_fields = ['subject','name','phone_number','email','enquiry','enquiry_date']
-    list_filter = ['enquiry_date']
-    list_display = ['subject','name','enquiry_date']
+    title = ['subject','name','phone_number','email','enquiry','enquiry_date','replied','replied_date']
+    search_fields = ['subject','name','phone_number','email','enquiry','enquiry_date','replied','replied_date']
+    list_filter = ['enquiry_date','replied_date']
+    list_display = ['subject','name','enquiry_date','replied','replied_date']
     class Meta:
         model = GeneralEnquiry
    
@@ -84,7 +84,7 @@ admin.site.register(Comment,CommentAdmin)
 
 @admin.register(BusinessDetails)
 class BusinessDetailsAdmin(admin.ModelAdmin):
-    list_display = ['business_name','image_tag']
+    list_display = ['business_name','address_postcode','image_tag']
     class Meta:
         model = BusinessDetails
         
@@ -94,3 +94,13 @@ class FaqsAdmin(admin.ModelAdmin):
     class Meta:
         model = Faqs 
 
+# gallery previous stock images
+@admin.register(PreviousExamplesImages)
+class PreviousExamplesImagesAdmin(admin.ModelAdmin):
+    list_display = ['vehicleInfo','filename']
+    class Meta:
+        model = PreviousExamplesImages
+        
+        
+        
+# editable content classes
