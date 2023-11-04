@@ -25,9 +25,14 @@
     <!-- Carousel Slides -->
     <div class="carousel-inner rounded-3">
       {% for item in peImages %}
-      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+      <div
+        class="carousel-item pb-3 bg-dark {% if forloop.first %}active{% endif %}"
+        data-bs-interval="7000"
+      >
         <img src="{{ item.images.url }}" class="d-block w-100" alt="..." />
-        <div class="carousel-caption rounded-pill text-bg-dark opacity-50 pt-0">
+        <div
+          class="carousel-caption position-relative bottom-0 start-0 text-bg-dark pb-4 pt-2"
+        >
           {{ item.vehicleInfo }}
         </div>
       </div>
