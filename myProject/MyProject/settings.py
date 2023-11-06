@@ -140,7 +140,10 @@ ADMIN_REORDER = (
         'app':'frontapp',
         'label':'SiteContent',
         'models':(
-            
+            'frontapp.EditableStaticContent',
+            'frontapp.ESCParagraph',
+            'frontapp.ESCExternalLink',
+            'frontapp.ESCImage',
             'frontapp.BusinessDetails',
             'frontapp.Testimonials',
             'frontapp.Faqs',

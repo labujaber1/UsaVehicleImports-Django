@@ -186,24 +186,24 @@ class PreviousExamplesImages(models.Model):
 #subheading <h2>
 #content - paragraphs <p>
 #short description used in links on home page
-""" class EditableStaticContent(models.Model):
+class EditableStaticContent(models.Model):
     TITLE_CHOICES = [('HomeHero','HomeHero'),('Home','Home'),('Importing','Importing'),('Sourcing','Sourcing'),('Transportation','Transportation'),('GalleryHero','GalleryHero'),('GalleryBreaker','GalleryBreaker'),('GalleryExamplePics','GalleryExamplePics'),('NewsHero','NewsHero'),('',''),('','')]
     title = models.CharField(
         max_length=100,choices=TITLE_CHOICES,blank=True)
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True)
     header = models.CharField(
         max_length=100,blank=True)
     subHeader = models.CharField(
         max_length=100,blank=True)
-    badge = models.ImageField(upload_to='images/editableContent/', height_field=50,
-        width_field=50)
+    badge = models.ImageField(upload_to='images/editableContent/', height_field=0,
+        width_field=0,blank=True)
     shortDescription = models.CharField(
         max_length=200,blank=True)
     def __str__(self):
         return self.title 
     
 class ESCParagraph(models.Model):
-    paragraph = models.TextField()
+    paragraph = models.TextField(blank=True)
     editableStaticContentFk = models.ForeignKey(
         EditableStaticContent, related_name='escToPara_fk', on_delete=models.CASCADE, default=None)
      
@@ -219,11 +219,11 @@ class ESCExternalLink(models.Model):
 
 class ESCImage(models.Model):
     images = models.ImageField(
-        upload_to='images/editableContent/', height_field=0, width_field=0)
+        upload_to='images/editableContent/', height_field=0, width_field=0,blank=True)
     filename = models.CharField(
         max_length=100, null=True, blank=True, default='default.jpg')
     description = models.CharField(
         max_length=100,blank=True)
     editableStaticContentFk = models.ForeignKey(
         EditableStaticContent, related_name='escToImage_fk', on_delete=models.CASCADE, default=None)
-      """
+      

@@ -2,35 +2,81 @@
 {% extends "Base.html" %}{% block title %}Services Page{% endblock title %}
 {% block content %} {% load static %}
 
-<div class="container-fluid bg-dark-subtle text-center fade-in pb-3">
+<div class="container-fluid bg-secondary-subtle text-center fade-in pb-3">
   <div class="row row-cols-1 row-cols-md-2">
-    <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
+    <!--prettier-ignore-->
+    {% for content in editableStaticContent %} 
+    {% if content.title == 'Importing' %}
+    <div
+      id="Importing"
+      class="col mb-4 mt-4 d-flex flex-column justify-content-between"
+    >
       <div class="text-center">
-        <h1>
-          IMPORTING<span class="badge"
-            ><i class="fa fa-code-fork" aria-hidden="true"></i
-          ></span>
+        <h1 class="position-relative pt-3 fw-semibold">
+          {{ content.header }}<span
+            class="position-absolute top-0 start-70 translate-middle"
+            ><img
+              src="{{ content.badge.url }}"
+              class="rounded-circle border border-primary shadow"
+          /></span>
         </h1>
-
-        <p>Importing Vehicles from the USA</p>
-        <p>
-          Have you purchased a vehicle from the USA and need it shipped to a UK
-          destination?
-        </p>
-        <p>
-          Use our highly experienced and trustworthy transportation team to
-          import your vehicle.
-        </p>
-        <p>No obligation quotes are available on request.</p>
-        <p>
-          All duties, taxes, fees, and NOVA certificates are dealt with and
-          explained to you before using our services.
-        </p>
+        <h5>{{ content.subHeader }}</h5>
+        {% for para in content.escToPara_fk.all %}
+        <p>{{ para.paragraph }}</p>
+        {% endfor %}
       </div>
+
+      <div class="container-fluid position-relative">
+        {% for image in content.escToImage_fk.all %}
+        <img
+          class="img-thumbnail bg-transparent shadow"
+          src="{{ image.images.url }}"
+          alt="USA Vehicle Imports logo"
+        />
+
+        <button
+          type="button"
+          class="btn btn-sm position-absolute top-100 start-0 translate-middle rounded-circle"
+          data-bs-toggle="collapse"
+          data-bs-target="#imageData"
+          aria-expanded="false"
+          aria-controls="imageData"
+        >
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </button>
+        <div class="collapse" id="imageData">
+          <div class="card card-body bg-light">{{ image.description }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!--prettier-ignore-->
+    {% endif %} {% endfor %} 
+    {% for content in editableStaticContent %}
+    {% if content.title == 'Sourcing' %}
+    <div
+      id="sourcing"
+      class="col mb-4 mt-4 d-flex flex-column justify-content-between"
+    >
+      <div class="text-center">
+        <h1 class="position-relative pt-3 fw-semibold">
+          {{content.header }}<span
+            class="position-absolute top-0 start-70 translate-middle p-2"
+            ><img
+              src="{{ content.badge.url }}"
+              class="rounded-circle border border-success shadow"
+          /></span>
+        </h1>
+        <h5>{{ content.subHeader }}</h5>
+        {% for para in content.escToPara_fk.all %}
+        <p>{{ para.paragraph }}</p>
+        {% endfor %}
+      </div>
+      {% for image in content.escToImage_fk.all %}
       <div class="container-fluid position-relative">
         <img
           class="img-thumbnail bg-transparent shadow"
-          src="{% static '/images/home/banner-2.jpg' %}"
+          src="{{ image.images.url }}"
           alt="USA Vehicle Imports logo"
         />
         <button
@@ -44,118 +90,58 @@
           <i class="fa fa-info-circle" aria-hidden="true"></i>
         </button>
         <div class="collapse" id="imageData">
-          <div class="card card-body bg-light">1941 Dodge Sedan</div>
+          <div class="card card-body bg-light">{{ image.description }}</div>
         </div>
       </div>
+      {% endfor %}
     </div>
-
-    <div class="col mb-4 mt-4 d-flex flex-column justify-content-between">
-      <div class="text-center">
-        <h1>
-          SOURCING<span class="badge"
-            ><i class="fa fa-lightbulb-o" aria-hidden="true"></i
-          ></span>
-        </h1>
-
-        <p>Sourcing vehicles in the USA</p>
-        <p>
-          Do you want to find your dream American car or bike but are unsure
-          where to start?
-        </p>
-        <p>
-          Our experienced team can source any type of vehicle including a travel
-          trailer or RV.
-        </p>
-        <p>Just tell us your vehicle specification and budget..</p>
-        <p>
-          ..and we will find your vehicle for you, along with a quote for
-          importation to the UK and home delivery.
-        </p>
-      </div>
-      <div class="container-fluid position-relative">
-        <img
-          class="img-thumbnail bg-transparent shadow"
-          src="{% static '/images/home/banner-3.jpg' %}"
-          alt="USA Vehicle Imports logo"
-        />
-        <button
-          type="button"
-          class="btn btn-sm position-absolute top-100 start-0 translate-middle rounded-circle"
-          data-bs-toggle="collapse"
-          data-bs-target="#imageData"
-          aria-expanded="false"
-          aria-controls="imageData"
-        >
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </button>
-        <div class="collapse" id="imageData">
-          <div class="card card-body bg-light">86 Plymouth Fury Cop Car</div>
-        </div>
-      </div>
-    </div>
+    {% endif %} {% endfor %}
   </div>
-
-  <div class="row justify-content-center">
+  <!--prettier-ignore-->
+  {% for content in editableStaticContent %} 
+  {% if content.title == 'Transportation' %}
+  <div id="transportation" class="row justify-content-center">
     <div class="col mb-5">
-      <div class="text-center">
-        <h1>
-          TRANSPORTATION<span class="badge"
-            ><i class="fa fa-envelope" aria-hidden="true"></i
-          ></span>
-        </h1>
-
-        <p>
-          We can cater for all your vehicle movements up to 1500 kg Nationwide.
-        </p>
-        <p>
-          Purchased a vehicle from Ebay, Gumtree, Bca, Manheim, or Copart? Is it
-          a non-runner or damaged?
-        </p>
-        <p>Need Transport? …We can help.</p>
-        <p>
-          Please text/ring with the vehicle details and collection/delivery
-          postcodes or addresses for a price, confirming the vehicle is rolling,
-          has all 4 wheels and a key.
-        </p>
-        <p>
-          We still live in cautious times, so we continue to offer a door to
-          door service without personal contact and have masks and gloves (PPE)
-          available at all times.
-        </p>
+      <div class="container">
+        <div class="text-center p-md-5">
+          <h1 class="position-relative pt-3 fw-semibold">
+            {{ content.header }}<span
+              class="position-absolute top-0 start-70 translate-middle p-2"
+            >
+              <img
+                src="{{ content.badge.url }}"
+                class="rounded-circle border border-dark shadow"
+              />
+            </span>
+          </h1>
+          <h5>{{ content.subHeader }}</h5>
+          {% for para in content.escToPara_fk.all %}
+          <p>{{ para.paragraph }}</p>
+          {% endfor %}
+        </div>
         <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
+
         <div class="row row-cols-1 row-cols-md-4 bg-transparent g-2">
+          {% for image in content.escToImage_fk.all|slice:":4" %}
           <img
             class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Front.jpg' %}"
+            src="{{ image.images.url }}"
             alt="Loader front"
           />
-          <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Left-side-angled.jpg' %}"
-            alt="Loader left angled"
-          />
-          <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Left-side-loaded2.jpg' %}"
-            alt="Loader right side"
-          />
-          <img
-            class="img-thumbnail bg-transparent p-0"
-            src="{% static '/images/transportation/Left-side-loaded3.jpg' %}"
-            alt="Loader left side"
-          />
+          {% endfor %}
         </div>
+
         <a id="enquiryForm"></a>
+        {% for image in content.escToImage_fk.all|slice:"4:5" %}
         <img
           class="img-fluid mt-2 rounded-2 p-0 shadow"
-          src="{% static '/images/home/banner-5.jpg' %}"
+          src="{{ image.images.url }}"
           alt="USA Vehicle Imports logo"
-        />
+        />{% endfor %}
       </div>
     </div>
   </div>
-
-  {% if faqs %}
+  {% endif %}{% endfor %} {% if faqs %}
   <!--FAQ-->
   <div class="container">
     <h1>FAQs</h1>
@@ -170,5 +156,4 @@
   </div>
   {% endif %}
 </div>
-
 {% endblock content %}

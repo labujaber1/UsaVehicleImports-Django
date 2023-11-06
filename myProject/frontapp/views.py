@@ -1,10 +1,11 @@
 
+from typing import Any
 from django.urls import reverse, reverse_lazy
 
 
 import requests
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import PreviousExamplesImages,Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
+from .models import EditableStaticContent,PreviousExamplesImages,Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
 from .forms import ContactForm, CommentForm, LikeForm
 from django.views.generic import ListView,View
@@ -17,9 +18,18 @@ from django.views.generic import ListView,View
     
 class HomeView(ListView):
     model = Testimonials
-    queryset = Testimonials.objects.all()[:3]
     context_object_name = "testimonial"
     template_name = "Home.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        try:
+            context['testimonials'] = Testimonials.objects.all().order_by('id')[:3]
+        except Testimonials.DoesNotExist:
+            context['testimonials'] = None
+        context['editableStaticContent'] = EditableStaticContent.objects.all()
+        
+        return context
 
 
 class Gallery(ListView):
@@ -32,6 +42,8 @@ class Gallery(ListView):
         context['vehicle_images'] = Images.objects.all()
         context['vehicle'] = Vehicle.objects.all()
         context['peImages'] = PreviousExamplesImages.objects.all()
+        context['editableStaticContent'] = EditableStaticContent.objects.all()
+        
         return context
     
     
@@ -46,6 +58,8 @@ class News(ListView):
         context['post'] = Post.objects.all()
         context['testimonial'] = Testimonials.objects.all()[3:]
         context['comment_form'] = CommentForm()
+        context['editableStaticContent'] = EditableStaticContent.objects.all()
+        
         return context
     
     def post(self,request,id):
@@ -90,8 +104,9 @@ class ServicesView(ListView):
     
     def get_context_data(self,**kwargs):
         context = super(ServicesView, self).get_context_data(**kwargs)
-        context['faqs'] = Faqs.objects.all()      
-        #context['services-content'] = ServicesContent.objects.all()
+        context['faqs'] = Faqs.objects.all()
+        context['editableStaticContent'] = EditableStaticContent.objects.all()
+              
         return context
     
 class SuccessView(View):

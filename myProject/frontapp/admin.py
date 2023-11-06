@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PreviousExamplesImages,Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+from .models import ESCImage,ESCExternalLink,ESCParagraph,EditableStaticContent,PreviousExamplesImages,Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
 from  django.contrib.auth.models  import  Group
 # Register your models here.
 
@@ -7,7 +7,7 @@ from  django.contrib.auth.models  import  Group
 admin.site.unregister(Group)
 
 # Vehicle images added at vehicle screen
-class ImageAdmin(admin.StackedInline):
+class ImageInline(admin.StackedInline):
     model = Images
     extra = 0
     max_num = 10
@@ -15,7 +15,7 @@ class ImageAdmin(admin.StackedInline):
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
     fields = [('name','type'),('availability','price'),('description','video')]
-    inlines = [ImageAdmin]
+    inlines = [ImageInline]
     list_display = ['name','availability','date_uploaded']
     class Meta:
         model = Vehicle
@@ -102,5 +102,56 @@ class PreviousExamplesImagesAdmin(admin.ModelAdmin):
         model = PreviousExamplesImages
         
         
-        
+       
 # editable content classes
+#add classes inline to main EditableStaticContentAdmin
+class ESCParagraphInline(admin.StackedInline):
+    model = ESCParagraph
+    extra = 0
+    max_num = 10
+    fk_name = 'editableStaticContentFk'
+    classes = ['collapse']
+class ESCExternalLinkInline(admin.StackedInline):
+    model = ESCExternalLink
+    extra = 0
+    max_num = 10
+    fk_name = 'editableStaticContentFk'
+    classes = ['collapse']
+class ESCImageInline(admin.StackedInline):
+    model = ESCImage
+    extra = 0
+    max_num = 10
+    fk_name = 'editableStaticContentFk'
+    classes = ['collapse']
+    
+@admin.register(EditableStaticContent)
+class EditableStaticContentAdmin(admin.ModelAdmin):
+    list_display = ['id','title','header']
+    readonly_fields = ('id',)
+    inlines = (ESCParagraphInline,ESCExternalLinkInline,ESCImageInline,)
+    class Meta:
+        model = EditableStaticContent
+        
+@admin.register(ESCParagraph)
+class ESCParagraphAdmin(admin.ModelAdmin):
+    list_display = ['id']
+    
+    class Meta:
+        model = ESCParagraph
+        
+@admin.register(ESCExternalLink)
+class ESCExternalLinkAdmin(admin.ModelAdmin):
+    list_display = ['title','externalLink']
+    
+    class Meta:
+        model = ESCExternalLink
+        
+@admin.register(ESCImage)
+class ESCImageAdmin(admin.ModelAdmin):
+    list_display = ['filename','description']
+    
+    class Meta:
+        model = ESCImage
+        
+
+
