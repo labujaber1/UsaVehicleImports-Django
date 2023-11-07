@@ -68,44 +68,63 @@
         <!-- Links to main pages of interest -->
         <div class="col-12 col-sm-3 px-xl-5">
           <div class="row row-cols-3 row-cols-sm-1">
+            <!--prettier-ignore-->
+            {% for page in navHTMLPage %} 
+            {% if page.page == 'Page2' %}
             <div class="col-4 my-2 home-card link-effect">
               <div class="img-fluid">
+                {% with pagetitle=page.title %}
                 <a
                   class="nav-item nav-link"
-                  href="{% url 'frontapp:Services' %}"
-                  >Services<img class="img-thumbnail mt-1 rounded-lg
-                  hover-effect" src="{% static "images/home/Services.jpg" %}"
-                  /></a
-                >
+                  href="{% url 'frontapp:'|add:pagetitle %}"
+                  >{{ page.title }}<img
+                    class="img-thumbnail mt-1 rounded-lg hover-effect"
+                    src="{{ page.imageIcon.url}}" /></a
+                >{% endwith %}
               </div>
               <div class="nav-link-info">
-                <p>We source, import, and deliver the vehicle you want</p>
+                <p>{{ page.description }}</p>
               </div>
             </div>
+            <!--prettier-ignore-->
+            {% endif %}{% endfor %}
+            {% for page in navHTMLPage %}
+            {% if page.page == 'Page3' %}
             <div class="col-4 my-2 home-card link-effect">
               <div class="img-fluid">
-                <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
-                  >Gallery<img class="img-thumbnail mt-1 rounded-pill
-                  hover-effect" src="{% static "images/home/Gallery.jpg" %}"
-                  /></a
-                >
+                {% with pagetitle=page.title %}
+                <a
+                  class="nav-item nav-link"
+                  href="{% url 'frontapp:'|add:pagetitle %}"
+                  >{{ page.title }}<img
+                    class="img-thumbnail mt-1 rounded-pill hover-effect"
+                    src="{{ page.imageIcon.url}}" /></a
+                >{% endwith %}
               </div>
               <div class="nav-link-info">
-                <p>Examples of current and previous stock</p>
+                <p>{{ page.description }}</p>
               </div>
             </div>
+            <!--prettier-ignore-->
+            {% endif %}{% endfor %} {% for page in navHTMLPage %} 
+            {% if page.page == 'Page4' %}
 
             <div class="col-4 my-2 home-card link-effect">
               <div class="img-fluid">
-                <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
-                  >News<img class="img-thumbnail mt-1 rounded-circle
-                  hover-effect" src="{% static "images/home/News.jpg" %}" /></a
-                >
+                {% with pagetitle=page.title %}
+                <a
+                  class="nav-item nav-link"
+                  href="{% url 'frontapp:'|add:pagetitle %}"
+                  >{{ page.title }}<img
+                    class="img-thumbnail mt-1 rounded-circle hover-effect"
+                    src="{{ page.imageIcon.url}}" /></a
+                >{% endwith %}
               </div>
               <div class="nav-link-info">
-                <p>What we have been up to</p>
+                <p>{{ page.description }}</p>
               </div>
             </div>
+            {% endif %}{% endfor %}
           </div>
         </div>
       </div>
@@ -113,6 +132,6 @@
   </div>
   {% endif %}
 </section>
-{% endfor %} {% if testimonials %}
+{% endfor %} {% if testimonial %}
 <section>{% include 'includes/testimonial.html' %}</section>
 {% endif %} {% endblock content %}

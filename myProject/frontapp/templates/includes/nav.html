@@ -32,29 +32,56 @@
     <div class="navbar-collapse collapse" id="navbarNav">
       <!-- COLLAPSABLE -->
       <ul class="nav navbar-nav align-items-center">
+        <!--prettier-ignore-->
+        {% for page in navLink %} 
+        {% if page.page == 'Home' %} 
+        {% with pagetitle=page.title %}
         <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Home' %}"
-            ><i class="fa fa-home fa-2x"></i>
+          <a
+            class="nav-item nav-link"
+            href="{% url 'frontapp:'|add:pagetitle %}"
+            ><i class="{{ page.fontAwesomeIcon }} fa-2x"></i>
           </a>
         </li>
+        <!--prettier-ignore-->
+        {% endwith %} {% endif %} 
+        {% if page.page == 'Page2' %} 
+        {% with pagetitle=page.title %}
         <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Services' %}"
-            >Services</a
+          <a
+            class="nav-item nav-link"
+            href="{% url 'frontapp:'|add:pagetitle %}"
+            >{{ page.title }}</a
           >
         </li>
+        <!--prettier-ignore-->
+        {% endwith %} {% endif %} 
+        {% if page.page == 'Page3' %} 
+        {% with pagetitle=page.title %}
         <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:Gallery' %}"
-            >Gallery</a
+          <a
+            class="nav-item nav-link"
+            href="{% url 'frontapp:'|add:pagetitle %}"
+            >{{ page.title }}</a
           >
         </li>
+        <!--prettier-ignore-->
+        {% endwith %} {% endif %} 
+        {% if page.page == 'Page4' %} 
+        {% with pagetitle=page.title %}
         <li>
-          <a class="nav-item nav-link" href="{% url 'frontapp:News' %}"
-            >Our News</a
+          <a
+            class="nav-item nav-link"
+            href="{% url 'frontapp:'|add:pagetitle %}"
+            >{{ page.title }}</a
           >
         </li>
+        {% endwith %} {% endif %} {% endfor %}
         <li>
           <a class="nav-item nav-link" href="#contactUs">Contact us</a>
         </li>
+
+        {% if data.facebook %}
         <li>
           <a
             class="nav-item nav-link"
@@ -66,6 +93,7 @@
             <i class="fa fa-facebook-square fa-2x"></i
           ></a>
         </li>
+        {% endif %}{% if data.instagram %}
         <li>
           <a
             class="nav-item nav-link"
@@ -77,6 +105,7 @@
             <i class="fa fa-instagram fa-2x"></i
           ></a>
         </li>
+        {% endif %}
       </ul>
     </div>
     {% endfor %}

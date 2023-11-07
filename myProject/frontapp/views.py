@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 
 import requests
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import EditableStaticContent,PreviousExamplesImages,Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
+from .models import NavHTMLPage,EditableStaticContent,PreviousExamplesImages,Faqs,Vehicle, Comment, Images, Post, Testimonials, BusinessDetails
 from django.contrib import messages
 from .forms import ContactForm, CommentForm, LikeForm
 from django.views.generic import ListView,View
@@ -24,10 +24,11 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         try:
-            context['testimonials'] = Testimonials.objects.all().order_by('id')[:3]
+            context['testimonial'] = Testimonials.objects.all()[:3]
         except Testimonials.DoesNotExist:
-            context['testimonials'] = None
+            context['testimonial'] = None
         context['editableStaticContent'] = EditableStaticContent.objects.all()
+        context['navHTMLPage'] = NavHTMLPage.objects.all()
         
         return context
 
@@ -54,12 +55,11 @@ class News(ListView):
     
     def get_context_data(self, **kwargs):
         context = super(News, self).get_context_data(**kwargs)
-        context['data'] = BusinessDetails.objects.all()      
+        #context['data'] = BusinessDetails.objects.all()      
         context['post'] = Post.objects.all()
         context['testimonial'] = Testimonials.objects.all()[3:]
-        context['comment_form'] = CommentForm()
         context['editableStaticContent'] = EditableStaticContent.objects.all()
-        
+        context['comment_form'] = CommentForm()
         return context
     
     def post(self,request,id):

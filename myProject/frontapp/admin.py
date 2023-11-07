@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ESCImage,ESCExternalLink,ESCParagraph,EditableStaticContent,PreviousExamplesImages,Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
+from .models import NavHTMLPage,ESCImage,ESCExternalLink,ESCParagraph,EditableStaticContent,PreviousExamplesImages,Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
 from  django.contrib.auth.models  import  Group
 # Register your models here.
 
@@ -153,5 +153,9 @@ class ESCImageAdmin(admin.ModelAdmin):
     class Meta:
         model = ESCImage
         
-
+@admin.register(NavHTMLPage)
+class NavHTMLPageAdmin(admin.ModelAdmin):
+    list_display = ['page','title' ]
+    class Meta:
+        model = NavHTMLPage
 

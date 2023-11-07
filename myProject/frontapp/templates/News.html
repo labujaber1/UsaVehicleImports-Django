@@ -21,12 +21,17 @@
     </video>
     <div class="d-inline-block p-5 opacity-75 z-1 text-center">
       <br /><br /><br /><br /><br /><br /><br />
+      <!--prettier-ignore-->
+      {% for content in editableStaticContent %} 
+      {% if content.title == 'NewsHero' %}
       <h1 class="text-bg-light mb-0 p-2 p-sm-4 rounded-top-3">
-        What's been happening...
+        {{ content.header }}
       </h1>
+      {% for para in content.escToPara_fk.all %}
       <p class="text-bg-light p-2 px-sm-4 pb-sm-4 rounded-bottom-3">
-        Posting news, events, and generally what we've been up to.
+        {{ para.paragraph }}
       </p>
+      {% endfor %}{% endif %}{% endfor %}
     </div>
   </div>
   <br />

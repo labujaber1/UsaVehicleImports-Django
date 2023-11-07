@@ -2,7 +2,9 @@
 {% extends "Base.html" %}{% block title %}Services Page{% endblock title %}
 {% block content %} {% load static %}
 
-<div class="container-fluid bg-secondary-subtle text-center fade-in pb-3">
+<div
+  class="container-fluid bg-secondary-subtle text-center fade-in pb-3 px-xxl-5"
+>
   <div class="row row-cols-1 row-cols-md-2">
     <!--prettier-ignore-->
     {% for content in editableStaticContent %} 
@@ -22,7 +24,7 @@
         </h1>
         <h5>{{ content.subHeader }}</h5>
         {% for para in content.escToPara_fk.all %}
-        <p>{{ para.paragraph }}</p>
+        <p class="px-2 px-xxl-5">{{ para.paragraph }}</p>
         {% endfor %}
       </div>
 
@@ -69,7 +71,7 @@
         </h1>
         <h5>{{ content.subHeader }}</h5>
         {% for para in content.escToPara_fk.all %}
-        <p>{{ para.paragraph }}</p>
+        <p class="px-2 px-xxl-5">{{ para.paragraph }}</p>
         {% endfor %}
       </div>
       {% for image in content.escToImage_fk.all %}
@@ -116,7 +118,7 @@
           </h1>
           <h5>{{ content.subHeader }}</h5>
           {% for para in content.escToPara_fk.all %}
-          <p>{{ para.paragraph }}</p>
+          <p class="px-2 px-xxl-5">{{ para.paragraph }}</p>
           {% endfor %}
         </div>
         <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
@@ -143,7 +145,7 @@
   </div>
   {% endif %}{% endfor %} {% if faqs %}
   <!--FAQ-->
-  <div class="container">
+  <div class="container p-2 p-md-5">
     <h1>FAQs</h1>
     {% include 'includes/faqs.html' %}
 

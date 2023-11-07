@@ -226,4 +226,23 @@ class ESCImage(models.Model):
         max_length=100,blank=True)
     editableStaticContentFk = models.ForeignKey(
         EditableStaticContent, related_name='escToImage_fk', on_delete=models.CASCADE, default=None)
-      
+
+
+class NavHTMLPage(models.Model):
+    TITLE_CHOICES = [('Home','Home'),('Page2','Page2'),('Page3','Page3'),('Page4','Page4'),('Page5','Page5')]
+    page = models.CharField(
+        max_length=100,choices=TITLE_CHOICES,blank=True)
+    title = models.CharField(
+        max_length=100,blank=True)
+    slug = models.SlugField(blank=True)
+    fontAwesomeIcon = models.CharField(
+        max_length=50,blank=True)
+    description = models.CharField(
+        max_length=100,blank=True)
+    imageIcon = models.ImageField(
+        upload_to='images/editableContent/', height_field=0, width_field=0,blank=True)
+    
+    class  Meta:  
+        verbose_name_plural  =  "NavHTMLPage"
+    def __str__(self):
+        return 'Page {} : title {}'.format(self.page, self.title)  

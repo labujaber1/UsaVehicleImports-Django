@@ -3,6 +3,7 @@
 <!-- change to mb-4 my-auto for upwards show action, interesting! -->
 {% for post in post %}
 <div class="col mt-4 mb-auto">
+  <!--for redirect on form submit-->
   <a id="{{ post.id }}"></a>
   <!--building a card-->
   <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 380px">
@@ -117,19 +118,7 @@
             </button>
           </form>
         </div>
-        <!--<div class="col text-center">
-          <!--copy url link option-->
-        <!--{% include 'includes/messages.html' %}
-          <button
-            id="copy-url"
-            class="btn p-1 hover-effect"
-            data-bs-toggle="tooltip"
-            data-bs-placement="bottom"
-            title="Copy URL"
-          >
-            <i class="fa fa-copy"></i> Link
-          </button>
-        </div>-->
+
         <div class="col d-flex justify-content-center">
           <!--comment option-->
 
@@ -188,6 +177,7 @@
       </div>
     </div>
   </div>
+  <!--end card build-->
 </div>
 {% endfor %}
-<!--end full card-->
+<!--end all cards-->

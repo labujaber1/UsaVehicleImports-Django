@@ -1,5 +1,5 @@
 
-from .models import BusinessDetails
+from .models import NavHTMLPage,BusinessDetails
 from .forms import ContactForm
 import requests
 from django.shortcuts import redirect
@@ -8,7 +8,9 @@ from .forms import ContactForm
 
 def get_business_data(request):
     data = BusinessDetails.objects.all()
-    return {'data': data}
+    navLink = NavHTMLPage.objects.all()
+    context = {'data': data,'navLink':navLink}
+    return context
 
 def get_form_data(request):
     if request.method == "GET":
