@@ -157,11 +157,12 @@ class CommentOnPostView(ListView):
 #serializers
 
     
-def contactFormView(request):
+""" def contactFormView(request):
     if request.method == "GET":
         form = ContactForm()
     elif request.method == "POST":
         form = ContactForm(request.POST or None)
+        
         if form.is_valid():
             # sanitize form data
             name = form.cleaned_data["name"]
@@ -169,6 +170,9 @@ def contactFormView(request):
             email = form.cleaned_data["email"]
             phone_number = form.cleaned_data["phone_number"]
             message = form.cleaned_data["enquiry"]
+            last_name = form.cleaned_data["last_name"]
+            if last_name is not None:
+                return
             # to use django send_mail()
             # enquiry = f"Name: {name}\nPhone Number: {phone_number}\n\n{message}"
             # prepare data to send email without adding smtp in settings
@@ -178,7 +182,8 @@ def contactFormView(request):
                 "subject": subject,
                 "email": email,
                 "phone_number": phone_number,
-                "message": message
+                "message": message,
+                "last_name":last_name
             }
 
             try:
@@ -203,9 +208,125 @@ def contactFormView(request):
     else:
         form = ContactForm()
     context = {'form': form}
-    return render(request, 'ContactForm.html', context)
+    return render(request, 'ContactForm.html', context) """
+
+# pass in form and clean data 
+def validate_contact_form(form):
+    name = form.cleaned_data["name"]
+    subject = form.cleaned_data["subject"]
+    email = form.cleaned_data["email"]
+    phone_number = form.cleaned_data["phone_number"]
+    message = form.cleaned_data["enquiry"]
+    last_name = form.cleaned_data["last_name"]
+    #honeypot check for bots, hidden from user in html page
+    if last_name is not None:
+        return False
+    else:
+        return name, subject, email, phone_number, message, last_name
+    
+# pass in form and send email
+def send_email(name, subject, email, phone_number, message, last_name):
+    url = "https://formspree.io/f/mbjvoewj"
+    payload = {
+        "name": name,
+        "subject": subject,
+        "email": email,
+        "phone_number": phone_number,
+        "message": message,
+        "last_name":last_name
+    }
+    response = requests.post(url, data=payload)
+    print("Send mail response: ", response)
+    response.raise_for_status()
+    status_code = response.status_code
+    return status_code
+    
+#deal with get and post
+#get just send contactform and return render html page
+#post recieves post, check if form valid, pass form to clean function and return form or false,
+# if not false pass returned form to send email function (return true or false),
+# if true send message and redirect to success message, if false send error message and render page 
+def contactFormView(request):
+    if request.method == "GET":
+        form = ContactForm()
+    elif request.method == "POST":
+        form = ContactForm(request.POST or None)
+        
+        if form.is_valid():
+            clean_form = validate_contact_form(form)
+            if clean_form is not False:
+                name, subject, email, phone_number, message, last_name = clean_form
+                status_code = send_email(name, subject, email, phone_number, message, last_name)
+                if status_code == 200:
+                    clean_form.save()
 
 
+
+#bito based on my function
+""" #used in contactFormView()
+def validate_contact_form(form):
+    if form.is_valid():
+        name = form.cleaned_data["name"]
+        subject = form.cleaned_data["subject"]
+        email = form.cleaned_data["email"]
+        phone_number = form.cleaned_data["phone_number"]
+        message = form.cleaned_data["enquiry"]
+        last_name = form.cleaned_data["last_name"]
+        
+        if last_name is not None:
+            return name, subject, email, phone_number, message, last_name
+
+    return None
+
+# used in contactFormView()
+def send_contact_email(request, name, subject, email, phone_number, message, last_name):
+    url = "https://formspree.io/f/mbjvoewj"
+    payload = {
+        "name": name,
+        "subject": subject,
+        "email": email,
+        "phone_number": phone_number,
+        "message": message,
+        "last_name":last_name
+    }
+
+    try:
+        response = requests.post(url, data=payload)
+        print("Send mail response: ", response)
+        response.raise_for_status()
+        status_code = response.status_code
+
+        if status_code == 200:
+            return True
+        else:
+            messages.error(request, 'An error occurred while sending the email')
+    except requests.RequestException as e:
+        print("An error occurred while sending the email:", e)
+        messages.error(request, 'An error occurred while sending the email')
+
+    return False
+
+def contactFormView(request):
+    if request.method == "GET":
+        form = ContactForm()
+    elif request.method == "POST":
+        form = ContactForm(request.POST or None)
+        form_data = validate_contact_form(form)
+        
+        if form_data is not None:
+            name, subject, email, phone_number, message, last_name = form_data
+            if send_contact_email(request, name, subject, email, phone_number, message, last_name):
+                form.save()
+                messages.success(request, 'A new enquiry was successfully added to the db')
+                return redirect("frontapp:Success")
+            else:
+                messages.error(request, 'An error occurred while sending the email')
+        else:
+            messages.error(request, 'An error occurred saving a new enquiry')
+    else:
+        form = ContactForm()
+
+    return render(request, 'ContactForm.html', {'form': form}) """
                                            
                                            
                                            

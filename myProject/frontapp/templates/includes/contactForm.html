@@ -25,11 +25,15 @@
         style="max-width: 600px"
       >
         <h1 class="text-center text-black-50">Enquiry form</h1>
-
         <!-- name, email, phone number, enquiry comments -->
-
-        {% csrf_token %} {{ form|crispy }}
-
+        <!--prettier-ignore-->
+        {% csrf_token %} 
+        {{ form.name|as_crispy_field }}
+        {{ form.email|as_crispy_field }}
+        {{ form.phone_number|as_crispy_field }}
+        {{ form.subject|as_crispy_field }}
+        {{ form.enquiry|as_crispy_field }}
+        {{ form.last_name.as_hidden }}
         <button type="submit" class="btn btn-primary mx-3">Submit</button>
       </div>
     </form>

@@ -34,19 +34,19 @@
       <ul class="nav navbar-nav align-items-center">
         <!--prettier-ignore-->
         {% for page in navLink %} 
-        {% if page.page == 'Home' %} 
         {% with pagetitle=page.title %}
+        {% if page.fontAwesomeIcon %}
         <li>
           <a
             class="nav-item nav-link"
+            target="_blank"
+            style="color: coral"
+            title="{{ page.title }}"
             href="{% url 'frontapp:'|add:pagetitle %}"
             ><i class="{{ page.fontAwesomeIcon }} fa-2x"></i>
           </a>
         </li>
-        <!--prettier-ignore-->
-        {% endwith %} {% endif %} 
-        {% if page.page == 'Page2' %} 
-        {% with pagetitle=page.title %}
+        {% else %}
         <li>
           <a
             class="nav-item nav-link"
@@ -55,28 +55,8 @@
           >
         </li>
         <!--prettier-ignore-->
-        {% endwith %} {% endif %} 
-        {% if page.page == 'Page3' %} 
-        {% with pagetitle=page.title %}
-        <li>
-          <a
-            class="nav-item nav-link"
-            href="{% url 'frontapp:'|add:pagetitle %}"
-            >{{ page.title }}</a
-          >
-        </li>
-        <!--prettier-ignore-->
-        {% endwith %} {% endif %} 
-        {% if page.page == 'Page4' %} 
-        {% with pagetitle=page.title %}
-        <li>
-          <a
-            class="nav-item nav-link"
-            href="{% url 'frontapp:'|add:pagetitle %}"
-            >{{ page.title }}</a
-          >
-        </li>
-        {% endwith %} {% endif %} {% endfor %}
+        {% endif %} {% endwith %}{% endfor %}
+
         <li>
           <a class="nav-item nav-link" href="#contactUs">Contact us</a>
         </li>
@@ -87,7 +67,7 @@
             class="nav-item nav-link"
             target="_blank"
             style="color: coral"
-            title="Facebook"
+            title="Instagram"
             href="{{ data.facebook }}"
           >
             <i class="fa fa-facebook-square fa-2x"></i
@@ -103,6 +83,30 @@
             href="{{ data.instagram }}"
           >
             <i class="fa fa-instagram fa-2x"></i
+          ></a>
+        </li>
+        {% endif %}{% if data.twitter %}
+        <li>
+          <a
+            class="nav-item nav-link"
+            target="_blank"
+            style="color: coral"
+            title="Twitter"
+            href="{{ data.twitter }}"
+          >
+            <i class="fa fa-twitter-square fa-2x"></i
+          ></a>
+        </li>
+        {% endif %}{% if data.linkedIn %}
+        <li>
+          <a
+            class="nav-item nav-link"
+            target="_blank"
+            style="color: coral"
+            title="LinkedIn"
+            href="{{ data.linkedIn }}"
+          >
+            <i class="fa fa-linkedIn-square fa-2x"></i
           ></a>
         </li>
         {% endif %}

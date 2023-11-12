@@ -39,10 +39,11 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 class GeneralEnquiryAdmin(admin.ModelAdmin):
-    title = ['subject','name','phone_number','email','enquiry','enquiry_date','replied','replied_date']
+    title = ['name','subject','phone_number','email','enquiry','enquiry_date','replied','replied_date']
     search_fields = ['subject','name','phone_number','email','enquiry','enquiry_date','replied','replied_date']
     list_filter = ['enquiry_date','replied_date']
     list_display = ['subject','name','enquiry_date','replied','replied_date']
+    readonly_fields=['last_name']
     class Meta:
         model = GeneralEnquiry
    

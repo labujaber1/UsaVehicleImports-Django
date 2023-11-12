@@ -83,7 +83,7 @@ class GeneralEnquiry(models.Model):
     enquiry_date = models.DateTimeField(auto_now_add=True)
     replied = models.BooleanField(default=False)
     replied_date = models.DateTimeField(blank=True,null=True)
-    
+    last_name = models.CharField(max_length=50, blank=True)
     class  Meta:  
         verbose_name_plural  =  "General Enquiries"
     def __str__(self):
