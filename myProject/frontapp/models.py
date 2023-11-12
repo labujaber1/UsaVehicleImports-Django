@@ -190,7 +190,6 @@ class EditableStaticContent(models.Model):
     TITLE_CHOICES = [('HomeHero','HomeHero'),('Home','Home'),('Importing','Importing'),('Sourcing','Sourcing'),('Transportation','Transportation'),('GalleryHero','GalleryHero'),('GalleryBreaker','GalleryBreaker'),('GalleryExamplePics','GalleryExamplePics'),('NewsHero','NewsHero'),('',''),('','')]
     title = models.CharField(
         max_length=100,choices=TITLE_CHOICES,blank=True)
-    slug = models.SlugField(blank=True)
     header = models.CharField(
         max_length=100,blank=True)
     subHeader = models.CharField(
@@ -214,6 +213,7 @@ class ESCExternalLink(models.Model):
     externalLink = models.URLField(max_length=200,blank=True)
     editableStaticContentFk = models.ForeignKey(
         EditableStaticContent, related_name='escToLink_fk', on_delete=models.CASCADE, default=None)
+    
     def __str__(self):
         return self.title 
 
@@ -229,12 +229,11 @@ class ESCImage(models.Model):
 
 
 class NavHTMLPage(models.Model):
-    TITLE_CHOICES = [('Home','Home'),('Page2','Page2'),('Page3','Page3'),('Page4','Page4'),('Page5','Page5')]
+    TITLE_CHOICES = [('Home','Home'),('Services','Services'),('Gallery','Gallery'),('News','News')]
     page = models.CharField(
         max_length=100,choices=TITLE_CHOICES,blank=True)
     title = models.CharField(
         max_length=100,blank=True)
-    slug = models.SlugField(blank=True)
     fontAwesomeIcon = models.CharField(
         max_length=50,blank=True)
     description = models.CharField(

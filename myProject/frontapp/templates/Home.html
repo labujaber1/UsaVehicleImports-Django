@@ -70,10 +70,10 @@
           <div class="row row-cols-3 row-cols-sm-1">
             <!--prettier-ignore-->
             {% for page in navHTMLPage %} 
-            {% if page.page == 'Page2' %}
+            {% if page.page == 'Services' %}
             <div class="col-4 my-2 home-card link-effect">
               <div class="img-fluid">
-                {% with pagetitle=page.title %}
+                {% with pagetitle=page.page %}
                 <a
                   class="nav-item nav-link"
                   href="{% url 'frontapp:'|add:pagetitle %}"
@@ -89,10 +89,10 @@
             <!--prettier-ignore-->
             {% endif %}{% endfor %}
             {% for page in navHTMLPage %}
-            {% if page.page == 'Page3' %}
+            {% if page.page == 'Gallery' %}
             <div class="col-4 my-2 home-card link-effect">
               <div class="img-fluid">
-                {% with pagetitle=page.title %}
+                {% with pagetitle=page.page %}
                 <a
                   class="nav-item nav-link"
                   href="{% url 'frontapp:'|add:pagetitle %}"
@@ -107,11 +107,11 @@
             </div>
             <!--prettier-ignore-->
             {% endif %}{% endfor %} {% for page in navHTMLPage %} 
-            {% if page.page == 'Page4' %}
+            {% if page.page == 'News' %}
 
             <div class="col-4 my-2 home-card link-effect">
               <div class="img-fluid">
-                {% with pagetitle=page.title %}
+                {% with pagetitle=page.page %}
                 <a
                   class="nav-item nav-link"
                   href="{% url 'frontapp:'|add:pagetitle %}"

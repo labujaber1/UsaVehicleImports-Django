@@ -25,6 +25,18 @@
         <h5>{{ content.subHeader }}</h5>
         {% for para in content.escToPara_fk.all %}
         <p class="px-2 px-xxl-5">{{ para.paragraph }}</p>
+        {% endfor %} {% for link in content.escToLink_fk.all %}
+        <p class="px-2 px-xxl-5">
+          Useful source: {{ link.title }} ->
+          <span class="fst-italic fw-light"
+            ><a
+              href="{{ link.externalLink }}"
+              class="text-reset"
+              target="_blank"
+              >{{ link.externalLink }}</a
+            ></span
+          >
+        </p>
         {% endfor %}
       </div>
 
@@ -72,6 +84,18 @@
         <h5>{{ content.subHeader }}</h5>
         {% for para in content.escToPara_fk.all %}
         <p class="px-2 px-xxl-5">{{ para.paragraph }}</p>
+        {% endfor %} {% for link in content.escToLink_fk.all %}
+        <p class="px-2 px-xxl-5">
+          Useful source: {{ link.title }} ->
+          <span class="fst-italic fw-light"
+            ><a
+              href="{{ link.externalLink }}"
+              class="text-reset"
+              target="_blank"
+              >{{ link.externalLink }}</a
+            ></span
+          >
+        </p>
         {% endfor %}
       </div>
       {% for image in content.escToImage_fk.all %}
@@ -119,6 +143,18 @@
           <h5>{{ content.subHeader }}</h5>
           {% for para in content.escToPara_fk.all %}
           <p class="px-2 px-xxl-5">{{ para.paragraph }}</p>
+          {% endfor %} {% for link in content.escToLink_fk.all %}
+          <p class="px-2 px-xxl-5">
+            Useful source: {{ link.title }} ->
+            <span class="fst-italic fw-light"
+              ><a
+                href="{{ link.externalLink }}"
+                class="text-reset"
+                target="_blank"
+                >{{ link.externalLink }}</a
+              ></span
+            >
+          </p>
           {% endfor %}
         </div>
         <!-- iMAGES OF TRANSPORTATION VEHICLE AND LOADS -->
