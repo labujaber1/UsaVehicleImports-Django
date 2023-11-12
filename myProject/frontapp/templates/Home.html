@@ -32,7 +32,7 @@
           class="col-sm-9 pt-5 pb-5 px-4 mb-4 bg-danger-subtler rounded-pill px-xxl-5"
         >
           <div class="text-center rounded-5 px-2 pt-3 pt-md-5 px-md-5 pt-xl-2">
-            <div class="text pt-5 px-5">
+            <div class="text pt-5 px-3 px-sm-3 px-lg-5">
               {% for para in content.escToPara_fk.all %}
               <p>{{ para.paragraph }}</p>
               {% endfor %}
@@ -67,12 +67,12 @@
         </div>
         <!-- Links to main pages of interest -->
         <div class="col-12 col-sm-3 px-xl-5">
-          <div class="row row-cols-3 row-cols-sm-1">
+          <div class="row row-cols-3 row-cols-sm-1 pt-sm-5">
             <!--prettier-ignore-->
             {% for page in navHTMLPage %} 
             {% if page.page == 'Services' %}
-            <div class="col-4 my-2 home-card link-effect">
-              <div class="img-fluid">
+            <div class="col-4 my-2 home-card link-effect px-5 px-sm-2 pt-sm-3">
+              <div class="img-fluid mx-4 mx-sm-0">
                 {% with pagetitle=page.page %}
                 <a
                   class="nav-item nav-link"
@@ -90,8 +90,8 @@
             {% endif %}{% endfor %}
             {% for page in navHTMLPage %}
             {% if page.page == 'Gallery' %}
-            <div class="col-4 my-2 home-card link-effect">
-              <div class="img-fluid">
+            <div class="col-4 my-2 home-card link-effect px-5 px-sm-2 pt-sm-3">
+              <div class="img-fluid mx-4 mx-sm-0">
                 {% with pagetitle=page.page %}
                 <a
                   class="nav-item nav-link"
@@ -109,8 +109,8 @@
             {% endif %}{% endfor %} {% for page in navHTMLPage %} 
             {% if page.page == 'News' %}
 
-            <div class="col-4 my-2 home-card link-effect">
-              <div class="img-fluid">
+            <div class="col-4 my-2 home-card link-effect px-5 px-sm-2 pt-sm-3">
+              <div class="img-fluid mx-4 mx-sm-0">
                 {% with pagetitle=page.page %}
                 <a
                   class="nav-item nav-link"
