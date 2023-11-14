@@ -33,6 +33,8 @@
         >
           <div class="text-center rounded-5 px-2 pt-3 pt-md-5 px-md-5 pt-xl-2">
             <div class="text pt-5 px-3 px-sm-3 px-lg-5">
+              <!--prettier-ignore-->
+              <h5>{{ content.subHeader }}</h5>
               {% for para in content.escToPara_fk.all %}
               <p>{{ para.paragraph }}</p>
               {% endfor %}

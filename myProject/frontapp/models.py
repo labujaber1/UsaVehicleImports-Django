@@ -182,10 +182,11 @@ class PreviousExamplesImages(models.Model):
 
 
 #title used to identify div element id where if <title> state used in for loop
-#heading <h1>
-#subheading <h2>
+#heading <h1 or h2>
+#subheading <h2 or h5>
 #content - paragraphs <p>
 #short description used in links on home page
+#images and external site links (services only)
 class EditableStaticContent(models.Model):
     TITLE_CHOICES = [('HomeHero','HomeHero'),('Home','Home'),('Importing','Importing'),('Sourcing','Sourcing'),('Transportation','Transportation'),('GalleryHero','GalleryHero'),('GalleryBreaker','GalleryBreaker'),('GalleryExamplePics','GalleryExamplePics'),('NewsHero','NewsHero'),('',''),('','')]
     title = models.CharField(
