@@ -1,6 +1,6 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
-from frontapp.views import HomeView,ServicesView,Gallery,News,contactFormView,FooterListView,SuccessView
+from frontapp.views import HomeView,ServicesView,Gallery,News,processContactFormView,FooterListView,SuccessView,Error404View
 
 class TestUrls(SimpleTestCase):
     
@@ -27,7 +27,7 @@ class TestUrls(SimpleTestCase):
     def test_contact_form_url_resolves(self):
         url = reverse('frontapp:ContactForm')
         print(resolve(url))
-        self.assertEquals(resolve(url).func,contactFormView)  
+        self.assertEquals(resolve(url).func,processContactFormView)  
     
     def test_footer_data_url_resolves(self):
         url = reverse('frontapp:FooterData')
@@ -38,5 +38,10 @@ class TestUrls(SimpleTestCase):
         url = reverse('frontapp:Success')
         print(resolve(url))
         self.assertEquals(resolve(url).func.view_class,SuccessView)  
+        
+    def test_error404_urls_resolves(self):
+        url = reverse('frontapp:Error404')
+        print(resolve(url))
+        self.assertEquals(resolve(url).func.view_class,Error404View) 
     
         

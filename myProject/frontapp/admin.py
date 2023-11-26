@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import NavHTMLPage,ESCImage,ESCExternalLink,ESCParagraph,EditableStaticContent,PreviousExamplesImages,Faqs,BusinessDetails, Comment, Vehicle, Images, GeneralEnquiry, Post, Testimonials
 from  django.contrib.auth.models  import  Group
-# Register your models here.
 
 # Remove groups from admin site
 admin.site.unregister(Group)

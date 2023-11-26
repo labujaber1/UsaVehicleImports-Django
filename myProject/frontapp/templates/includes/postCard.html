@@ -6,7 +6,7 @@
   <!--for redirect on form submit-->
   <a id="{{ post.id }}"></a>
   <!--building a card-->
-  <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 380px">
+  <div class="card h-100 box-shadow-dark mx-auto" style="max-width: 450px">
     <!-- header -->
     <div class="card-header bg-primary text-white rounded-0">
       <h2 class="card-title">{{ post.title }}</h2>
@@ -23,8 +23,8 @@
       />
     </div>
     {% endif %} {% if post.body_taster %}
-    <div class="card-body bg-usa-red">
-      <h6 class="card-subtitle">{{ post.body_taster }}...</h6>
+    <div class="card-body bg-light">
+      <h5 class="card-subtitle">{{ post.body_taster }}...</h5>
     </div>
     {% endif %}
     <!--start content to collapse/hide-->
@@ -55,7 +55,7 @@
       {% endif %}
       <hr />
       <!-- display only administrators activated comments as moderated-->
-      <h4 class="text-center"><em>Moderated Comments</em></h4>
+      <h4 class="text-left px-2"><em>Moderated Comments</em></h4>
       {% for comment in post.comments.all %} {% if comment.active == True %}
       <hr />
 

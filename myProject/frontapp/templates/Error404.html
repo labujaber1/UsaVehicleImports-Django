@@ -1,0 +1,35 @@
+<!-- prettier-ignore -->
+{% extends "Base.html" %}{% block title %}Error 404 Page{% endblock title %}
+{% block content %}{% load static %}
+<div class="container">
+  <a href="/" class="fa fa-arrow-circle-o-left fa-2 text-decoration-none pt-2"
+    >Back home</a
+  >
+  <div class="container-fluid">
+    <div class="flex-lg-row mx-auto" style="max-width: 380px">
+      <img
+        class="card-img-top p-1 rounded-4"
+        src="{% static 'images/other/oops.jpg' %}"
+      />
+
+      <div class="card-body text-center p-2">
+        <h2 class="card-title">Sorry, an error 404 has occurred</h2>
+        <p class="card-text text-black-50">
+          This error has appeared when trying to load some data from the
+          database.
+          <br />
+          Try again, we hope it works but if not then we apologise and will try
+          to fix it lickety-split.
+        </p>
+      </div>
+      <div class="card-img-bottom mb-0">
+        <img
+          class="img-fluid"
+          src="{% static 'images/other/thank-you.jpg' %}"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

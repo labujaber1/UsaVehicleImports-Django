@@ -35,19 +35,18 @@
     </div>
   </div>
   <br />
-  <!--<div class="container-fluid bg-warning p-1">-->
   <div class="row p-1 z-1">
     <!-- 1st col for posts in cards incl images and videos -->
-    <div class="col-12 col-sm-8">
-      <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3">
+    <div class="col-12 col-md-8">
+      <div class="row row-cols-1 row-cols-lg-2">
         {% include 'includes/postCard.html' %}
       </div>
     </div>
     <!-- 1st col end -->
 
     <!-- 2nd col for where we are, map, and testimonials -->
-    <div class="col-12 col-sm-4 bg-light rounded-2 mt-4 z-1">
-      <div class="row mb-5">
+    <div class="col-12 col-md-4 bg-dark-subtle rounded-2 mt-4 z-1">
+      <div class="row pb-4 bg-light rounded-top-2">
         <h3 class="text-black-50 fw-bold">Where we are</h3>
         {% for data in data %}
         <p>{{ data.business_name }}</p>
@@ -68,21 +67,24 @@
           ></iframe>
         </div>
       </div>
-      <hr />
-      <div class="text">
+
+      <div class="row pb-4 pt-4 bg-light px-2">
+        <br />
+        <hr />
         {% include 'includes/messages.html' %}
-        <h3 class="text-black-50 fw-bold mb-4">Most recent message</h3>
+        <h3 class="text-black-50 fw-bold mb-4 px-1">Most recent message...</h3>
         <ul>
           {% for mes in messages %}
           <li>{{ mes }}</li>
           {% endfor %}
         </ul>
         <!--message toast-->
+        <hr />
+        <br />
       </div>
-      <hr />
-      <br />
+
       <!-- testimonials section: hidden on small screen sizes -->
-      <div class="d-none d-sm-block row mb-5 mt-5">
+      <div class="d-none d-sm-block row pb-4 pt-4 bg-light rounded-bottom-2">
         <h3 class="text-black-50 fw-bold text-decoration-underline mb-4">
           Testimonials
         </h3>

@@ -142,9 +142,6 @@ ADMIN_REORDER = (
         'models':(
             'frontapp.NavHTMLPage',
             'frontapp.EditableStaticContent',
-            'frontapp.ESCParagraph',
-            'frontapp.ESCExternalLink',
-            'frontapp.ESCImage',
             'frontapp.BusinessDetails',
             'frontapp.Testimonials',
             'frontapp.Faqs',
@@ -165,7 +162,6 @@ ADMIN_REORDER = (
         'label':'SiteInventory',
         'models':(
             'frontapp.Vehicle',
-            'frontapp.Images',
             'frontapp.PreviousExamplesImages',
         )
     }
