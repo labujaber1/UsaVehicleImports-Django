@@ -31,7 +31,6 @@ Each page has designated named areas with specific content types, shown below, s
 | | 'GalleryBreaker' | header, paragraph |
 | | 'GalleryExamplePics' | header, paragraph |
 | News page |'NewsHero' | header, paragraph |
-<br>
 | Nav links | |Can change name of page links and include a description which is used on the home page. Fixed field names Home, Services, Gallery, and News are used for navigation with title added to change what is displayed. |
 ||||
 
@@ -39,7 +38,7 @@ Each page has designated named areas with specific content types, shown below, s
     <img src="readmeImages/editableContent.png" width="75%" height="75%">
     <figcaption><em>Admin view with titles selected from dropdown menu on creation.</em></figcaption>
 </figure>
-
+<p></p>
 Additional database tasks required to setup prior to release and ongoing light self maintenance by adding images to PreviousExamplesImages (carousel), include Faqs for user reassurance, adding Testimonials if available, and update BusinessDetails if needed.
 
 ## 
@@ -54,7 +53,7 @@ Additional database tasks required to setup prior to release and ongoing light s
     <img src="readmeImages/adminView.png" width="50%" height="50%">
     <figcaption><em>In sitecontent the Editable content includes in-line tables esc paragraphs, esc images, esc external links. In site inventory the vehicle includes in-line table images</em></figcaption>
 </figure>
-
+<p></p>
 The business can add posts consisting of text, an image, and a video. These posts include the options for the user to like, comment, and share on social media. The like takes session data so the post is not liked multiple times by the same user during the session. This is not foolproof against manipulation but may be enough for the expected audience without having to go down the route of recording ip addresses. Dislikes are not included. Each post is constructed from different content types and only take up space if they exist.
 
 <figure>
@@ -62,14 +61,14 @@ The business can add posts consisting of text, an image, and a video. These post
     <img src="readmeImages/expandedPostView.png" width="54%" height="54%">
     <figcaption><em>Gibberish post. Read more drops down to show post text content, video, external linked image, comments and replys. </em></figcaption>
 </figure>
-
+<p></p>
 User comments are not automatically shown within the post it relates to. Each one requires moderation to check its suitability and will be shown if the active field is clicked in the admin page. The business can make a reply to a comment. The comment number shown on the site only counts moderated comments. A message is displayed to the user on submission and includes an explanation on the form that it will be sent for moderation first.
 
 <figure>
     <img src="readmeImages/commentAdmin.png" width="75%" height="75%">
     <figcaption><em>All data shown is gibberish and for example view only.</em></figcaption>
 </figure>
-
+<p></p>
 A generalEnquiry submitted by a user can be either through the contact us form or inventory enquiry form. Both are saved to the database and both are emailed to a free third party service Formspree where it is also stored and a confirmation email sent to a designated business address. The admin page includes fields for the advocate to record when the enquiry has been responded to by the business admin team but no further details as their own systems should be used without any double entry. It keeps the responsibilities of the website and business admin system separate.
 
 Vehicle inventory to add/delete/edit cars for sale or sold. As the site does not cater for direct sales an enquiry form button is added. Each vehicle is displayed in a card with a carousel for images, description, availability, price, type (dropdown choices), and video fields.
@@ -78,7 +77,7 @@ Vehicle inventory to add/delete/edit cars for sale or sold. As the site does not
     <img src="readmeImages/vehicleInventoryView.png" width="25%" height="25%">
     <figcaption><em>Data shown is directly taken from active site.</em></figcaption>
 </figure>
-
+<p></p>
 Testimonials and faqs are only shown and take up space if they exist. Navbar links can be either text or a fontawesome icon. When creating an fa icon the full path such as fa fa-home is entered in db and only fa types not the newer fas, fab etc.
 
 ## NOTES
