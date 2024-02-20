@@ -13,7 +13,7 @@ It provides the client with an admin page to add/edit site content, vehicle inve
 The site provides user interaction with local default email access, contact us form, dynamically generated stock viewing including enquiry form. A news post including capabilities to like, comment, share on social media, and play a video. Redirection to business social media accounts via navbar, and business address with open google map view/redirection in news page and footer. Services content can also include a useful resource external link. No business requirement or benefit to create users so all visitors are anonymous.
 
 The site is a two tier model with no requirement to purchase stock as enquiries are preferred to be redirected to the business owner/team. Services that are provided are dependent on clients requirements and has no fixed priced service to advertise. Limited holding stock dependant on client to update.
-This can be off putting to new enquires as other competitors do advertise some costs. This also misses the chance of further SEO optimisation where they can provide a price comparison table if the data is in their favour. However, it does reduce the burden on site administration support.  
+This can be off putting to new enquires as other competitors do advertise some costs. This also misses the chance of further SEO optimisation where they can provide a price comparison table if the data is in their favour. However, it does reduce the burden on site administration support.
 
 ## SECTION TITLES WITH EDITABLE CONTENT TYPES AVAILABLE ON EACH PAGE
 
@@ -31,7 +31,6 @@ Each page has designated named areas with specific content types, shown below, s
 | | 'GalleryBreaker' | header, paragraph |
 | | 'GalleryExamplePics' | header, paragraph |
 | News page |'NewsHero' | header, paragraph |
-<br>
 | Nav links | |Can change name of page links and include a description which is used on the home page. Fixed field names Home, Services, Gallery, and News are used for navigation with title added to change what is displayed. |
 ||||
 
@@ -39,14 +38,14 @@ Each page has designated named areas with specific content types, shown below, s
     <img src="readmeImages/editableContent.png" width="75%" height="75%">
     <figcaption><em>Admin view with titles selected from dropdown menu on creation.</em></figcaption>
 </figure>
-
+<p></p>
 Additional database tasks required to setup prior to release and ongoing light self maintenance by adding images to PreviousExamplesImages (carousel), include Faqs for user reassurance, adding Testimonials if available, and update BusinessDetails if needed.
 
-## 
+##
 
 > **NOTE:** If the business postcode needs changing it will require the website creator to get the google map link and overwrite the existing link in the news.html, iframe, line 61 and footer. Currently no api linked to database to automatically change. Gallery background images are set in css so this would also need the website creator to change if required after production.
 
-## 
+##
 
 ## ONGOING SITE ADMINISTRATION TASKS BY BUSINESS ADVOCATE
 
@@ -54,7 +53,7 @@ Additional database tasks required to setup prior to release and ongoing light s
     <img src="readmeImages/adminView.png" width="50%" height="50%">
     <figcaption><em>In sitecontent the Editable content includes in-line tables esc paragraphs, esc images, esc external links. In site inventory the vehicle includes in-line table images</em></figcaption>
 </figure>
-
+<p></p>
 The business can add posts consisting of text, an image, and a video. These posts include the options for the user to like, comment, and share on social media. The like takes session data so the post is not liked multiple times by the same user during the session. This is not foolproof against manipulation but may be enough for the expected audience without having to go down the route of recording ip addresses. Dislikes are not included. Each post is constructed from different content types and only take up space if they exist.
 
 <figure>
@@ -62,14 +61,14 @@ The business can add posts consisting of text, an image, and a video. These post
     <img src="readmeImages/expandedPostView.png" width="54%" height="54%">
     <figcaption><em>Gibberish post. Read more drops down to show post text content, video, external linked image, comments and replys. </em></figcaption>
 </figure>
-
+<p></p>
 User comments are not automatically shown within the post it relates to. Each one requires moderation to check its suitability and will be shown if the active field is clicked in the admin page. The business can make a reply to a comment. The comment number shown on the site only counts moderated comments. A message is displayed to the user on submission and includes an explanation on the form that it will be sent for moderation first.
 
 <figure>
     <img src="readmeImages/commentAdmin.png" width="75%" height="75%">
     <figcaption><em>All data shown is gibberish and for example view only.</em></figcaption>
 </figure>
-
+<p></p>
 A generalEnquiry submitted by a user can be either through the contact us form or inventory enquiry form. Both are saved to the database and both are emailed to a free third party service Formspree where it is also stored and a confirmation email sent to a designated business address. The admin page includes fields for the advocate to record when the enquiry has been responded to by the business admin team but no further details as their own systems should be used without any double entry. It keeps the responsibilities of the website and business admin system separate.
 
 Vehicle inventory to add/delete/edit cars for sale or sold. As the site does not cater for direct sales an enquiry form button is added. Each vehicle is displayed in a card with a carousel for images, description, availability, price, type (dropdown choices), and video fields.
@@ -78,7 +77,7 @@ Vehicle inventory to add/delete/edit cars for sale or sold. As the site does not
     <img src="readmeImages/vehicleInventoryView.png" width="25%" height="25%">
     <figcaption><em>Data shown is directly taken from active site.</em></figcaption>
 </figure>
-
+<p></p>
 Testimonials and faqs are only shown and take up space if they exist. Navbar links can be either text or a fontawesome icon. When creating an fa icon the full path such as fa fa-home is entered in db and only fa types not the newer fas, fab etc.
 
 ## NOTES
@@ -106,26 +105,26 @@ A: The process of importing a car from the United States to the United Kingdom c
 
 The costs involved in importing a car from the United States to the United Kingdom can vary depending on the make, model, and year of the car. However, you can expect to pay the following costs:
 
-* Shipping costs: The shipping costs will vary depending on the size of the car and the shipping company you use. You can expect to pay anywhere from £1,000 to £3,000 for shipping.
-* Import duties and taxes: The import duties and taxes will vary depending on the value of the car. You can expect to pay anywhere from 10% to 20% of the value of the car in import duties and taxes.
-* Inspection fees: You will need to pay an inspection fee to have the car inspected by a government-approved inspector. The inspection fee will typically cost around £100.
-* Title and registration fees: You will need to pay a title and registration fee to have the car titled and registered in the United Kingdom. The title and registration fees will typically cost around £200.
+- Shipping costs: The shipping costs will vary depending on the size of the car and the shipping company you use. You can expect to pay anywhere from £1,000 to £3,000 for shipping.
+- Import duties and taxes: The import duties and taxes will vary depending on the value of the car. You can expect to pay anywhere from 10% to 20% of the value of the car in import duties and taxes.
+- Inspection fees: You will need to pay an inspection fee to have the car inspected by a government-approved inspector. The inspection fee will typically cost around £100.
+- Title and registration fees: You will need to pay a title and registration fee to have the car titled and registered in the United Kingdom. The title and registration fees will typically cost around £200.
 
 **Q: What are the benefits of importing a car from the United States to the United Kingdom?**
 
 There are a few benefits to importing a car from the United States to the United Kingdom. These benefits include:
 
-* You can get a car that is not available in the United Kingdom.
-* You can get a car that is more affordable than a similar car in the United Kingdom.
-* You can get a car that has more features than a similar car in the United Kingdom.
+- You can get a car that is not available in the United Kingdom.
+- You can get a car that is more affordable than a similar car in the United Kingdom.
+- You can get a car that has more features than a similar car in the United Kingdom.
 
 **Q: What are the risks of importing a car from the United States to the United Kingdom?**
 
 There are a few risks associated with importing a car from the United States to the United Kingdom. These risks include:
 
-* The car may not meet the safety requirements of the United Kingdom.
-* The car may not be compatible with the electrical system of the United Kingdom.
-* The car may not be covered by a warranty in the United Kingdom.
+- The car may not meet the safety requirements of the United Kingdom.
+- The car may not be compatible with the electrical system of the United Kingdom.
+- The car may not be covered by a warranty in the United Kingdom.
 
 **Q: Is it worth it to import a car from the United States to the United Kingdom?**
 
@@ -135,22 +134,22 @@ Whether or not it is worth it to import a car from the United States to the Unit
 
 A: There are a variety of different types of cars that can be imported from the United States to the United Kingdom. Some of the most popular types of cars include:
 
-* Sedans
-* Coupes
-* SUVs
-* Trucks
-* Vans
-* Sports cars
-* Luxury cars
-* Electric cars
+- Sedans
+- Coupes
+- SUVs
+- Trucks
+- Vans
+- Sports cars
+- Luxury cars
+- Electric cars
 
 **Q: What are the different shipping methods that can be used to import a car from the United States to the United Kingdom?**
 
 A: There are a few different shipping methods that can be used to import a car from the United States to the United Kingdom. The most common shipping methods include:
 
-* Ro-Ro shipping: Ro-Ro shipping is a type of shipping in which the car is loaded onto a ship and driven off the ship at its destination.
-* Container shipping: Container shipping is a type of shipping in which the car is loaded into a container and shipped in a container ship.
-* Air freight: Air freight is a type of shipping in which the car is flown to its destination.
+- Ro-Ro shipping: Ro-Ro shipping is a type of shipping in which the car is loaded onto a ship and driven off the ship at its destination.
+- Container shipping: Container shipping is a type of shipping in which the car is loaded into a container and shipped in a container ship.
+- Air freight: Air freight is a type of shipping in which the car is flown to its destination.
 
 **Q: How long does it take to import a car from the United States to the United Kingdom?**
 
@@ -160,49 +159,49 @@ The length of time it takes to import a car from the United States to the United
 
 The documents that are required to import a car from the United States to the United Kingdom include:
 
-* A bill of sale
-* A title
-* A registration certificate
-* A customs declaration
-* A carnet de passage
-* A vehicle inspection report
-* A vehicle safety certificate
-* A vehicle emissions certificate
+- A bill of sale
+- A title
+- A registration certificate
+- A customs declaration
+- A carnet de passage
+- A vehicle inspection report
+- A vehicle safety certificate
+- A vehicle emissions certificate
 
 **Q: What are the different government agencies that are involved in the import of cars from the United States to the United Kingdom?**
 
 The different government agencies that are involved in the import of cars from the United States to the United Kingdom include:
 
-* The Department of Transportation
-* The Environmental Protection Agency
-* The Customs and Border Protection Agency
-* The National Highway Traffic Safety Administration
-* The Department of Agriculture
-* The Department of Commerce
+- The Department of Transportation
+- The Environmental Protection Agency
+- The Customs and Border Protection Agency
+- The National Highway Traffic Safety Administration
+- The Department of Agriculture
+- The Department of Commerce
 
 **Q: What are the different requirements that are imposed on cars that are imported from the United States to the United Kingdom?**
 
 The different requirements that are imposed on cars that are imported from the United States to the United Kingdom include:
 
-* The car must meet all of the safety requirements of the United Kingdom.
-* The car must be compatible with the electrical system of the United Kingdom.
-* The car must be covered by a warranty in the United Kingdom.
+- The car must meet all of the safety requirements of the United Kingdom.
+- The car must be compatible with the electrical system of the United Kingdom.
+- The car must be covered by a warranty in the United Kingdom.
 
 **Q: What are the different benefits of importing a car from the United States to the United Kingdom?**
 
 The different benefits of importing a car from the United States to the United Kingdom include:
 
-* You can get a car that is not available in the United Kingdom.
-* You can get a car that is more affordable than a similar car in the United Kingdom.
-* You can get a car that has more features than a similar car in the United Kingdom.
+- You can get a car that is not available in the United Kingdom.
+- You can get a car that is more affordable than a similar car in the United Kingdom.
+- You can get a car that has more features than a similar car in the United Kingdom.
 
 **Q: What are the different risks of importing a car from the United States to the United Kingdom?**
 
 The different risks of importing a car from the United States to the United Kingdom include:
 
-* The car may not meet the safety requirements of the United Kingdom.
-* The car may not be compatible with the electrical system of the United Kingdom.
-* The car may not be covered by a warranty in the United Kingdom.
+- The car may not meet the safety requirements of the United Kingdom.
+- The car may not be compatible with the electrical system of the United Kingdom.
+- The car may not be covered by a warranty in the United Kingdom.
 
 **Q: Is it worth it to import a car from the United States to the United Kingdom?**
 
