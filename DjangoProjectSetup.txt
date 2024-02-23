@@ -112,4 +112,9 @@ what is in each page
 how is going to be accessed
 
 
+## VERY IMPORTANT ##
+when project finished add requirments.txt for deployment:
+in virtual enviroment on cli (env_myproject green highlighted) enter command
+'pip freeze > requirements.txt'. This creates dependancy list in myproject.
 
+Installing dependancies on deployment 'pip install -r requirements.txt'
