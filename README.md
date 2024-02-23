@@ -85,6 +85,11 @@ Testimonials and faqs are only shown and take up space if they exist. Navbar lin
 - Holding stock advertised with price but unclear where to visit and view in person without requesting via form. May require confirmation on website or redirection to enquiries.
 - Not clear of the process to import. May need further explanation on separate page, within the services page, or part of Faqs section. Competitors go into some detail with licenses, fees, tax etc.
 
+## ADMIN LOGIN EXCL ADMINISTRATOR
+
+guest: user = guest, password = guestpassword (view only)
+advocate business-content only: user = business, password = businesspassword (all rights for editorial content: posts, inventory, comments (excl add), general enquiry (excl add), images, previous example gallery, testimonials (excl add). All other read-only rights )
+
 ## EXAMPLE FAQs
 
 - Is there a catalogue of american vehicles that can be viewed on the website?
@@ -207,5 +212,3 @@ The different risks of importing a car from the United States to the United King
 
 Whether or not it is worth it to import a car from the United States to the United Kingdom depends on your individual circumstances. If you are looking for a car that is not available in the United Kingdom, or if you are looking for a car that is more affordable than a similar car in the United Kingdom, then it may be worth it to import a car from the United States. However, if you are concerned about the safety of the car, or if you are concerned about the car being compatible with the electrical system of the United Kingdom, then it may not be worth it to import a car from the United States.
 
-guest: user = guest, password = guestpassword (view only)
-advocate business-content only: user = business, password = businesspassword (all rights for editorial content: posts, inventory, comments (excl add), general enquiry (excl add), images, previous example gallery, testimonials (excl add). All other read-only rights )
