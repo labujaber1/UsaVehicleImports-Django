@@ -88,6 +88,7 @@ Testimonials and faqs are only shown and take up space if they exist. Navbar lin
 ## ADMIN LOGIN EXCL ADMINISTRATOR
 
 guest: user = guest, password = guestpassword (view only)
+
 advocate business-content only: user = business, password = businesspassword (all rights for editorial content: posts, inventory, comments (excl add), general enquiry (excl add), images, previous example gallery, testimonials (excl add). All other read-only rights )
 
 ## EXAMPLE FAQs
