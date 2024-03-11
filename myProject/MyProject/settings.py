@@ -28,9 +28,9 @@ SECRET_KEY = 'django-insecure-#qv!vc!!s&-so09li=nrtx9)n#qt5644*p)+b!@6q3u_s9egyk
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+TEMPLATE_DEBUG = False
+ALLOWED_HOSTS = ['djangousavi.azurewebsites.net']
 
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -61,6 +61,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -192,6 +193,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 
 IMAGE_URL = '/static/images/'
