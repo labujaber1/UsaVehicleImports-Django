@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "ms-python.autopep8"
   },
   "python.formatting.provider": "none",
-  "editor.inlineSuggest.showToolbar": "always",
+  "editor.inlineSuggest.showToolbar": "onHover",
   "appService.defaultWebAppToDeploy": "/subscriptions/934f3b4b-8ea8-4e30-8023-e7305a88b424/resourceGroups/Django_application/providers/Microsoft.Web/sites/djangoUSAVI",
   "appService.deploySubpath": "."
 }
