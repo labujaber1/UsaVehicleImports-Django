@@ -6,7 +6,7 @@ SECRET_KEY = os.environ['SECRET']
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 CRSF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = False
 STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/images")
 STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/images")
