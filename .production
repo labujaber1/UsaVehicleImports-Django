@@ -1,2 +1,4 @@
 [config]
+Project = myProject.frontapp
 SCM_DO_BUILD_DURING_DEPLOYMENT = True
+PRODUCTION = YES
