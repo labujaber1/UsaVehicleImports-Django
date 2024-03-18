@@ -6,10 +6,14 @@ SECRET_KEY = os.environ['SECRET']
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 CRSF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
+
 DEBUG = False
 TEMPLATE_DEBUG = False
-STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/staticfiles/")
-STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./staticfiles/")
+
+#STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/staticfiles/")
+#STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./staticfiles/")
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
