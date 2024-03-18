@@ -10,10 +10,9 @@ CRSF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-#STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/staticfiles/")
-#STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./staticfiles/")
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = '/static/'
+STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/staticfiles/")
+STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./staticfiles/")
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
