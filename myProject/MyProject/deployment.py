@@ -52,5 +52,6 @@ DATABASES = {
         'HOST': parameters['host'],
         'USER': parameters['user'],
         'PASSWORD': parameters['password'],
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
