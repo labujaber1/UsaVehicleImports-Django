@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     "admin_reorder",
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_URL = os.path.join(BASE_DIR, '/myProject/staticfiles/')
-STATIC_ROOT = os.path.join(BASE_DIR, '/myProject/staticfiles')
+STATIC_URL = os.path.join(BASE_DIR, '/staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 parameters = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}
