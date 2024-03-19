@@ -1,0 +1,205 @@
+/* home page */
+.bg-danger-subtler {
+    background: linear-gradient(
+        rgb(174, 189, 239),
+        rgb(174, 189, 239)
+    )    
+}
+
+.bg-usa-red {
+    background: #e11717;
+}
+
+
+/* news post cards */
+.box-shadow-dark {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);      
+}
+
+.fade-in {
+    animation-name: fade-in-slow;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in-slow{
+    from{opacity: 0.6;}
+    to{opacity: 1;}
+}
+
+.fade-in-long {
+    animation-name: fade-in-long;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+@keyframes fade-in-long {
+    0%{opacity:0.3}
+    50%{opacity:0.6}
+    100%{opacity: 1;}
+}
+
+.img, .iframe {
+    width: 100%;
+    height: auto;
+}
+/* home */
+.header-parallax {
+    background: #000;
+    background: linear-gradient(
+        rgb(0,0,0,0.1),
+        rgb(0,0,0,0.7)
+    ),
+    url('../images/home/banner-1.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-content {
+    padding: 320px 0 120px 0;
+    color: white;
+}
+
+.navbar-collapse ul li a {
+    color: blue;
+}
+
+.navbar-collapse ul li a:hover {
+    text-decoration: underline;
+}
+
+footer a {
+    color: white;
+}
+
+/* get in touch form decoration */
+.container-form-bgcolor {
+    background: linear-gradient(
+        30deg,
+        rgb(5, 5, 143) 10%,
+        rgb(222, 6, 6) 10%,
+        rgb(222, 6, 6) 17%,
+        rgb(249, 248, 215)17%,
+        rgb(249, 248, 215)24%,
+        rgb(250,250,250)24%,
+        rgb(250,250,250)76%,
+        rgb(249, 248, 215)76%,
+        rgb(249, 248, 215)83%,
+        rgb(222, 6, 6) 83%,
+        rgb(222, 6, 6) 90%,
+        rgb(5, 5, 143) 90%
+        )
+    
+}
+
+/* gallery page previous cars */
+.carousel-background {
+    background: linear-gradient(
+        
+        135deg,
+        rgb(5, 5, 143)20%,
+        rgb(222, 6, 6)50%,
+        rgb(255,255,255)80%
+    );
+}
+
+/* gallery page top */
+.image-parallax {
+    background: #000;
+    background: linear-gradient(
+        rgb(0,0,0,0.1),
+        rgb(0,0,0,1)
+    ),
+    url('../images/gallery/gallery-4.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* gallery page middle */
+.image-parallax-other {
+    background: #000;
+    background: linear-gradient(
+        rgb(0,0,0,0.1),
+        rgb(0,0,0,0.7)
+    ),
+    url('../images/gallery/gallery-6.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* successful form sent */
+.background-success {
+    background: url('../images/other/background-envelope.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* news */
+.img .img-fit {
+    aspect-ratio: 16 / 9;
+    object-fit:  cover;
+}
+
+/* home page  button/pill shaped other page links with pop-out info*/
+.home-card {
+    width: 100%;
+}
+
+.home-card .link-effect {
+    transition: 0.3s ease-in-out;
+}
+
+/* other page links as cards */
+.home-card .nav-link-info {
+    position: relative;
+    margin-top: -40px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.8s ease-in-out;
+    -moz-transition: all 0.8s ease-in-out;
+} 
+/* show text pop out bottom of image*/
+.home-card:hover .nav-link-info {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 20px;
+    transition-delay: 0.5s;
+    height: fit-content;
+}
+
+/* image in card link */
+.hover-effect {
+    transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
+}
+/* animation for the image in the card link */
+.hover-effect:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    transform: scaleX(0.95) rotateX(1deg); 
+    -moz-transform: scaleX(0.95) rotateX(1deg); 
+}
+
+.fa:hover {
+    color: rgb(139, 5, 25);
+}
+
+/* home page testimonials adjustment to bootstrap */
+.carousel-fade .carousel-item {
+    transition-delay: 0.9s;
+    transition-duration: 1.5s;
+}
+
+
+
+@media (max-width: 767.98px){
+    .img .img-fit {
+        aspect-ratio: 1.45 / 1;
+    }
+}
