@@ -10,9 +10,6 @@ CRSF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
 DEBUG = False
 TEMPLATE_DEBUG = False
 
-#STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/staticfiles/")
-#STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./staticfiles/")
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -44,6 +41,8 @@ INSTALLED_APPS = [
     "admin_reorder",
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATIC_URL = os.path.join(BASE_DIR, "/staticfiles/")
+STATIC_ROOT = os.environ.get(BASE_DIR, "/staticfiles/")
 
 connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 parameters = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}

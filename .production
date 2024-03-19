@@ -1,4 +1,4 @@
 [config]
-Project = myProject.MyProject.frontapp
-SCM_DO_BUILD_DURING_DEPLOYMENT = False
-PRODUCTION = YES
+
+SCM_DO_BUILD_DURING_DEPLOYMENT = True
+
