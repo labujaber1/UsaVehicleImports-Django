@@ -42,9 +42,9 @@ INSTALLED_APPS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-print("static root deploy = " + os.path.join(BASE_DIR, '/static/'))
-MEDIA_ROOT = BASE_DIR / 'staticfiles/media'
+STATIC_ROOT = BASE_DIR / 'staticfiles/'
+print("static root deploy = " + STATIC_ROOT)
+MEDIA_ROOT = BASE_DIR / 'staticfiles/media/'
 
 connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
 parameters = {pair.split('=')[0]: pair.split('=')[1] for pair in connection_string.split(' ')}
