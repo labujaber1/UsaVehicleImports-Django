@@ -199,7 +199,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-print("static root settings = " + STATIC_ROOT)
+print("static root settings = static root")
 IMAGE_URL = '/static/images/'
 IMAGEFILE_DIR = [
     os.path.join(BASE_DIR, 'static/images/')
