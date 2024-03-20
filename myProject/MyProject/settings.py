@@ -32,6 +32,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 #changed in production file
 
 TEMPLATE_DEBUG = True
@@ -198,7 +199,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
-
+print("static root settings = " + os.path.join(BASE_DIR, '/static/'))
 IMAGE_URL = '/static/images/'
 IMAGEFILE_DIR = [
     os.path.join(BASE_DIR, 'static/images/')
