@@ -19,8 +19,6 @@ jobs:
           source venv/bin/activate
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run Django database migrations
-        run: python manage.py migrate
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -53,3 +51,5 @@ jobs:
           app-name: "django-usavi"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1F9A9E8A9E694372A5739A883C4D40F0 }}
+      - name: "Print for debugging"
+        run: print("end workflow file")
