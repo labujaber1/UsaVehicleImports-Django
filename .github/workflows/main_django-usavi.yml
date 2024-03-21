@@ -42,10 +42,6 @@ jobs:
           name: python-app
       - name: Unzip artifact for deployment
         run: unzip release.zip
-      - name: Run collectstatic
-        run: |
-          cd myProject
-          python manage.py collectstatic --noinput
       - name: "Deploy to Azure Web App"
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
