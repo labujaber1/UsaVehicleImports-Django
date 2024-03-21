@@ -36,7 +36,7 @@ DEBUG = True
 #changed in production file
 
 TEMPLATE_DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = [
     '127.0.0.1',

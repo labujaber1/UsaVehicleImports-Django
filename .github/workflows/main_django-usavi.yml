@@ -49,5 +49,3 @@ jobs:
           app-name: "django-usavi"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1F9A9E8A9E694372A5739A883C4D40F0 }}
-      - name: "Print for debugging"
-        run: print("end workflow file")
