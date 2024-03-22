@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "admin_honeypot",
     "admin_reorder",
-    #"python-dotenv",
-    #"psycopg2",
+    "python-dotenv",
+    "psycopg2",
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
